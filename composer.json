@@ -24,7 +24,8 @@
         "symfony/assetic-bundle": "^2.8",
         "twbs/bootstrap": "^3.3",
         "components/jquery": "^3.1" ,
-        "oyejorge/less.php": "v1.7.0.14"
+        "oyejorge/less.php": "v1.7.0.14",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
