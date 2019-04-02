@@ -7,6 +7,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+use Doctrine\ORM\Mapping as ORM;
+
  * @ORM\Entity
  * @ORM\Table(name="membre")
  */
@@ -29,7 +31,22 @@ class Membre extends BaseUser
      */
     protected $prenom;
     
-     /**
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $adresse;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $cp;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $ville;
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $tel;
@@ -110,5 +127,77 @@ class Membre extends BaseUser
     public function getTel()
     {
         return $this->tel;
+    }
+
+    /**
+     * Set adresse
+     *
+     * @param string $adresse
+     *
+     * @return Membre
+     */
+    public function setAdresse($adresse)
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * Get adresse
+     *
+     * @return string
+     */
+    public function getAdresse()
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param string $cp
+     *
+     * @return Membre
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return string
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set ville
+     *
+     * @param string $ville
+     *
+     * @return Membre
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get ville
+     *
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
     }
 }

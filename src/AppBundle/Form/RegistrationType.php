@@ -12,6 +12,9 @@ class RegistrationType extends AbstractType
     {
         $builder->add('Nom')
         ->add('Prenom')
+        ->add('Adresse')
+        ->add('Cp')
+        ->add('Ville')
         ->add('Tel');
     }
 

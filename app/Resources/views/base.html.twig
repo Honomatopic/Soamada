@@ -5,75 +5,91 @@
         <meta charset="UTF-8" />
         <title>{% block title %}L'association Soamada{% endblock %}</title>
         {% block stylesheets %}
-  <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-{% endblock %}
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.eot') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.svg') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.ttf') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.woff') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.eot') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.svg') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.ttf') }}">
+            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.woff') }}">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-                <nav class="navbar-expand-lg navbar-inverse">
 
-            <div class="container test">
+        <nav class="navbar-fixed-top navbar-default">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed"
-                            data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-                            aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span> <span
-                            class="icon-bar"></span> <span class="icon-bar"></span> <span
-                            class="icon-bar"></span>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand"></a>
+                    <a class="navbar-brand" href="#">Soamada</a>
                 </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav smooth-scroll list-unstyled">
-                        <li><a href=""><span class="glyphicon glyphicon-home"> </span>
-                                Accueil</a></li>
-                                <li><a class="nav-link js-scroll-trigger" href=""><span class="glyphicon glyphicon-cutlery"> </span>
-                                Projet Cantine</a></li>
-                                <li><a class="nav-link js-scroll-trigger" href=""><span
-                                    class="glyphicon glyphicon-glass"></span> Projet Fontaine</a></li>
-                                     <li><a class="nav-link js-scroll-trigger" href=""><span
-                                    class="glyphicon glyphicon-briefcase"></span> Projet Fourniture</a></li>
-                                <li><a href=""><span
-                                    class="glyphicon glyphicon-envelope"></span> Contactez-nous</a></li>
-                                  
-                        <div class = "nav navbar-nav pull-right">
-                             <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-               <li><a href="{{ path('fos_user_profile_show')}}"><span
-                                    class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
-                <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                    </button>
-                    
-                </a>
-               <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning">
-                    {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
-                    </button></li>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-            <a href="{{ path('fos_user_registration_register') }}"><button type="button" class="btn btn-primary">Devenez membre</button></a>
-        </div>
-                            <!--li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-success">Se connecter</button></a></li-->
-                            <!--li><a href="{{ path('fos_user_registration_register') }}"><button type="button" class="btn btn-primary">Devenez membre</button></a></li-->
-                        </div>
-                                     
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#accueil"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#nous"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#cantine"><span class="glyphicon glyphicon-cutlery"> </span> Projet cantine <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#fontaine"><span class="glyphicon glyphicon-glass"></span> Projet Fontaine à eau <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Projet Fourniture scolaire<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-success">Se connecter</button></a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}"><button type="button" class="btn btn-primary">Devenez membre</button></a></li>
                     </ul>
-
-
-
+                    </li>
+                    </ul>
                 </div>
+                    <ul class="nav navbar-nav navbar-right">
 
-            </div>
-            <!-- /.nav-collapse -->
+                        <div>
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <li><a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
+                                            class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
+                                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </button>
 
-            <!-- /.container -->
+                                    </a>
+                                    <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning">
+                                            {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
+                                        </button></li></a>
+                                    {% else %}
+                                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            {% endif %}
+                        </div>
 
+                    </ul>                
+                </div>
+            
         </nav>
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <script src="{{ asset('js/jquery.min.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.js') }}"></script>
-        {% endblock %}
-    </body>
+    </div>
+
+</div>
+<!-- /.nav-collapse -->
+
+<!-- /.container -->
+
+
+<section class="container center-block">
+{% block body %}{% endblock %}
+</section>
+<hr>
+<footer class="container center-block">&copy Andria</footer>
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+    <script src="{{ asset('js/autocomplete.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}
+</body>
 </html>

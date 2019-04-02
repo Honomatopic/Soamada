@@ -1,0 +1,52 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27 mars 2019, 09:58:01
+    Author     : Honoré
+*/
+
+body {
+    padding : 10%;
+}
+
+#cantine {
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+}
+
+#nous{
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+}
+
+#accueil {
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+
+}
+.jumbotron {
+    color: blue;
+    background: transparent;
+}
+#fontaine {
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+
+}
+
+#fourniture {
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+}
+
+footer {
+    text-align: center;
+}
