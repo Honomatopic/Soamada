@@ -18,7 +18,7 @@ body {
     vertical-align:middle;
 }
 
-#nous{
+#nous {
     padding : 10%;
     display: block;
     vertical-align:middle;
@@ -38,7 +38,6 @@ body {
     padding : 10%;
     display: block;
     vertical-align:middle;
-
 }
 
 #fourniture {
@@ -46,6 +45,21 @@ body {
     display: block;
     vertical-align:middle;
 }
+
+#message {
+    padding : 10%;
+    display: block;
+    vertical-align:middle;
+}
+
+.fos_user_user_show {
+    padding: 10%;
+}
+
+#info {
+    padding: 10%;
+}
+
 
 footer {
     text-align: center;

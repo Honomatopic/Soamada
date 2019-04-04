@@ -5,19 +5,12 @@
         <meta charset="UTF-8" />
         <title>{% block title %}L'association Soamada{% endblock %}</title>
         {% block stylesheets %}
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css" rel="stylesheet">
             <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
             <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.css') }}">
             <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.eot') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.svg') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.ttf') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings-regular.woff') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.eot') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.svg') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.ttf') }}">
-            <link rel="stylesheet" href="{{ asset('fonts/glyphicons-halflings_glyphicons-halflings-regular_1.woff') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -34,7 +27,7 @@
                     <a class="navbar-brand" href="#">Soamada</a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="#accueil"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
                         <li><a href="#nous"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
@@ -42,33 +35,25 @@
                         <li><a href="#fontaine"><span class="glyphicon glyphicon-glass"></span> Projet Fontaine à eau <span class="sr-only">(current)</span></a></li>
                         <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Projet Fourniture scolaire<span class="sr-only">(current)</span></a></li>
                         <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-success">Se connecter</button></a></li>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><button type="button" class="btn btn-primary">Devenez membre</button></a></li>
-                    </ul>
-                    </li>
-                    </ul>
-                </div>
-                    <ul class="nav navbar-nav navbar-right">
-
-                        <div>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <li><a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenez membre<span class="sr-only">(current)</span></a></li>
+                        
+                        <li>                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
                                             class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
-                                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success">
+                                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">
                                             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                                         </button>
-
                                     </a>
-                                    <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning">
+                                     <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning my-2 my-sm-0">
                                             {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
-                                        </button></li></a>
+                                        </button></a>
                                     {% else %}
-                                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                <a href="{{ path('fos_user_security_login') }}"><button type="button" class="btn btn-success my-2 my-sm-0 navbar-toggler navbar-toggler-right">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</button></a>
                             {% endif %}
-                        </div>
-
-                    </ul>                
-                </div>
+                                </li>
+                                
+                    </ul>
+              
             
         </nav>
     </div>

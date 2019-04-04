@@ -1,5 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+{% block body %}
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control'}}) }}
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}
@@ -15,3 +15,4 @@
         <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
     </div>
 {{ form_end(form) }}
+{% endblock %}

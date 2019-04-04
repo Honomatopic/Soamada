@@ -1,0 +1,85 @@
+{% extends "base.html.twig"%}
+
+{% block body %}
+    <section id="accueil">
+        <article class="row">
+                <h1>Soamada</h1>
+                <p class="lead">L'association SOAMADA est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc.</p>
+                <hr>
+                <p>Si vous voulez plus d'information, cliquez en bas : </p>
+                <p>
+                    <a class="btn btn-primary btn-lg" href="#nous" role="button">Plus d'informations</a>
+                </p>
+            </article>
+        </section>
+    <section id="nous">
+        <article class="row">
+                <h1 >Qui sommes-nous ?</h1>
+                <p>L'association SOAMADA est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc.</p>
+                <hr>
+                <img class="center-block" src="{{ asset('img/mada.jpg') }}">
+        </article>
+    </section>
+    <section id="cantine">
+        <article class="row">
+                <h1>Création d'une cantine</h1>
+                <p>L'association SOAMADA est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc.</p>
+                <hr>
+                <img class="center-block" src="{{ asset('img/mada.jpg') }}">
+            </div>
+        </article>
+    </section>
+
+    <section id="fontaine">
+        <article class="row">
+                <h1>Création d'une fontaine à eau</h1>
+                <p>L'association SOAMADA est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc.</p>
+                <hr>
+                <img class="center-block" src="{{ asset('img/mada.jpg') }}">
+        </article>
+    </section>
+    <section id="fourniture">
+        <article class="row">
+                <h1>Distribution de fourniture scolaire</h1>
+                <p>L'association SOAMADA est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc.</p>
+                <hr>
+                <img class="center-block" src="{{ asset('img/mada.jpg') }}">
+            
+        </article>
+    </section>
+
+    <section id="message">
+        <article class="row">
+            <h1>Si vous voulez nous contacter</h1>
+            <div class="alert alert-dismissible alert-info">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            Veuillez remplir ses champs qui sont obligatoires dans le message : 
+            <br>
+            <ul>
+            <li><em>Email</em></li>
+            <li><em>Corps</em></li>
+            </ul>
+            </div>
+            
+            {% for flash_message in app.session.flashBag.get('info') %}
+            <div class="alert alert-success flash-notice" role="alert">
+                {{ flash_message }}
+            </div>
+            {% endfor %}
+            <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
+            {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
+            {{ form_row(form.nom, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control', 'type': 'text'}}) }}
+            {{ form_row(form.prenom, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control', 'type': 'text'}}) }}
+            {{ form_row(form.email, {'attr': {'placeholder': 'Votre adresse mail', 'class': 'form-control', 'type': 'text'}}) }}
+            {{ form_row(form.corps, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'type': 'textarea', 'cols': '10', 'size': '10'}}) }}
+            {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'type': 'hidden', 'value': app.user.id}}) }}
+            <input type="submit" class="btn btn-primary" value="Envoyer">
+            {{ form_end(form) }}
+        </article>
+    </section>
+{% endblock %}
