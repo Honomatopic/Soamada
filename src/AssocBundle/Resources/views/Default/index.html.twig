@@ -71,12 +71,15 @@
                     {{ flash_message }}
                 </div>
             {% endfor %}
+            <ul>
+</ul>
+           
             <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
                 {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
-                {{ form_row(form.nom, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control'}}) }}
-                {{ form_row(form.prenom, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control'}}) }}
-                {{ form_row(form.email, {'attr': {'placeholder': 'Votre adresse mail', 'class': 'form-control'}}) }}
-                {{ form_row(form.corps, {'attr': {'placeholder': 'Votre message', 'class': 'form-control'}}) }}
+                {{ form_row(form.nom) }}
+                {{ form_row(form.prenom) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.corps) }}
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
                 {% endif %}

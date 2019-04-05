@@ -32,3 +32,8 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+swiftmailer:
+    transport: gmail
+    username:  honore.rasamoelina
+    password:  hono95140
