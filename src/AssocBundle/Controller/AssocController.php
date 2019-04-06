@@ -36,13 +36,14 @@ class AssocController extends Controller
             $em->persist($message);
             $em->flush($message);
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
+            /*$email = $_POST["email"];
+            $message->setEmail($email);*/
             $message = \Swift_Message::newInstance()
-                ->setSubject('votre message sur le formulaire de contact')
+                ->setSubject('Votre message sur le formulaire de contact')
         ->setFrom('admin@admin.com')
-        ->setTo('honore.rasamoelina@gmail.com')
+        ->setTo($message->getEmail())
         ->setBody(
             $this->renderView(
-                // app/Resources/views/Emails/registration.html.twig
                 'Emails/contact.html.twig'
             ),
             'text/html'
