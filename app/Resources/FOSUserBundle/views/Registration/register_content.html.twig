@@ -5,14 +5,17 @@
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}
 {{ form_row(form.Nom, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control'}}) }}
 {{ form_row(form.Prenom, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control'}}) }}
-{{ form_row(form.Adresse, {'attr': {'placeholder': 'Votre adresse', 'id': 'adresse', 'name': 'adresse', 'class': 'form-control'}}) }}
-{{ form_row(form.Cp, {'attr': {'placeholder': 'Votre code postal', 'id': 'cp', 'name': 'cp', 'class': 'form-control'}}) }}
-{{ form_row(form.Ville, {'attr': {'placeholder': 'Votre ville', 'id': 'ville', 'name': 'ville', 'class': 'form-control'}}) }}
+{{ form_row(form.Adresse, {'attr': {'placeholder': 'Votre adresse', 'class': 'form-control'}}) }}
+{{ form_row(form.Cp, {'attr': {'placeholder': 'Votre code postal', 'class': 'form-control'}}) }}
+{{ form_row(form.Ville, {'attr': {'placeholder': 'Votre ville', 'class': 'form-control'}}) }}
 {{ form_row(form.Tel, {'attr': {'placeholder': 'Votre téléphone', 'class': 'form-control'}}) }}
 {{ form_row(form.plainPassword.first, {'attr': {'placeholder': 'Votre mot de passe', 'class': 'form-control', 'label': 'form.password'}}) }}   
 {{ form_row(form.plainPassword.second, {'attr': {'placeholder': 'Votre mot de passe confirmé', 'class': 'form-control', 'label': 'form.password'}}) }}    
     <div>
         <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+    </div>
+    <div>
+        <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
 {{ form_end(form) }}
 {% endblock %}

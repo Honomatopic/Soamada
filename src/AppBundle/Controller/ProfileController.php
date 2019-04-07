@@ -9,8 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Controller;
+//namespace FOS\UserBundle\Controller;
+namespace AppBundle\Controller;
 
+use AppBundle\Entity\Membre;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;
@@ -30,12 +32,14 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
  *
  * @author Christophe Coevoet <stof@notk.org>
  */
-class ProfileController extends Controller {
+class ProfileController extends Controller
+{
 
     /**
      * Show the user.
      */
-    public function showAction() {
+    public function showAction()
+    {
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -44,11 +48,10 @@ class ProfileController extends Controller {
         $flashbag = $this->get('session')->getFlashBag();
 
         // Set a flash message
-      $flashbag->add("success", "Votre profil a été modifier avec succès");
-
+        $flashbag->add("success", "Votre profil a été modifier avec succès");
 
         return $this->render('@FOSUser/Profile/show.html.twig', array(
-                    'user' => $user
+            'user' => $user,
         ));
     }
 
@@ -59,7 +62,9 @@ class ProfileController extends Controller {
      *
      * @return Response
      */
-    public function editAction(Request $request) {
+    public function editAction(Request $request)
+    {
+
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -77,8 +82,8 @@ class ProfileController extends Controller {
 
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
+        $form = $formFactory->createForm(new ProfileFormType(), $user);
 
-        $form = $formFactory->createForm();
         $form->setData($user);
 
         $form->handleRequest($request);
@@ -103,7 +108,7 @@ class ProfileController extends Controller {
         }
 
         return $this->render('@FOSUser/Profile/edit.html.twig', array(
-                    'form' => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 

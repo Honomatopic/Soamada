@@ -1,7 +1,7 @@
-$("#adresse").autocomplete({
+$("#fos_user_profile_form_adresse").autocomplete({
     source: function (request, response) {
         $.ajax({
-            url: "https://api-adresse.data.gouv.fr/search/?label="+$("input[name='adresse']").val(),
+            url: "https://api-adresse.data.gouv.fr/search/?label=" + $("input[name='fos_user_profile_form[adresse]']").val(),
             data: { q: request.term },
             dataType: "json",
             success: function (data) {
@@ -23,15 +23,15 @@ $("#adresse").autocomplete({
     
     // On remplit aussi le cp et la ville
     select: function(event, ui) {
-        $('#cp').val(ui.item.postcode);
-        $('#ville').val(ui.item.city);
+        $('#fos_user_profile_form_cp').val(ui.item.postcode);
+        $('#fos_user_profile_form_ville').val(ui.item.city);
     }
 });
 
-$("#cp").autocomplete({
+$("#fos_user_profile_form_cp").autocomplete({
     source: function (request, response) {
         $.ajax({
-            url: "https://api-adresse.data.gouv.fr/search/?postcode="+$("input[name='cp']").val(),
+            url: "https://api-adresse.data.gouv.fr/search/?postcode=" + $("input[name='fos_user_registration_form_Cp']").val(),
             data: { q: request.term },
             dataType: "json",
             success: function (data) {
@@ -51,6 +51,6 @@ $("#cp").autocomplete({
     },
     // On remplit aussi la ville
     select: function(event, ui) {
-        $('#ville').val(ui.item.city);
+        $('#fos_user_profile_form_ville').val(ui.item.city);
     }
 });

@@ -28,7 +28,6 @@ class AssocController extends Controller
      */
     public function envoiAction(Request $request) {
         $message = new Message();
-        $nom = (isset($_POST["nom"])) ? $_POST["nom"] : "";
         $form = $this->createForm('AssocBundle\Form\MessageType', $message);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
@@ -36,8 +35,6 @@ class AssocController extends Controller
             $em->persist($message);
             $em->flush($message);
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
-            /*$email = $_POST["email"];
-            $message->setEmail($email);*/
             $message = \Swift_Message::newInstance()
                 ->setSubject('Votre message sur le formulaire de contact')
         ->setFrom('admin@admin.com')

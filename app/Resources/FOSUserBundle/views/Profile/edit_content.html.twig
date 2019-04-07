@@ -1,10 +1,20 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+{% block body %}
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit', 'class': 'form-group' } }) }}
 {{ form_row(form.username, {'attr': {'class': 'form-control'}}) }}
 {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.nom, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.prenom, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.adresse, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.cp, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.ville, {'attr': {'class': 'form-control'}}) }}
+{{ form_row(form.tel, {'attr': {'class': 'form-control'}}) }}
 {{ form_row(form.current_password, {'attr': {'class': 'form-control'}}) }}
     <div>
         <input type="submit" class="btn btn-warning" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
+       <div>
+<a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
+    </div>
 {{ form_end(form) }}
+{% endblock %}
