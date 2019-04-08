@@ -55,7 +55,7 @@
 
     <section id="message">
         <article class="row">
-            <h1>Si vous voulez nous contacter</h1>
+            <h1>Je formule l'air du contact</h1>
             <div class="alert alert-dismissible alert-info">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 Veuillez remplir ses champs qui sont obligatoires dans le message : 
@@ -84,6 +84,7 @@
                 {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
                 {% endif %}
                 {{ form_end(form) }}
+            </div>
         </article>
     </section>
 {% endblock %}

@@ -1,3 +1,11 @@
 assoc_homepage:
     path:     /
     defaults: { _controller: AssocBundle:Assoc:envoi }
+
+assoc_journal:
+    path:    /journal
+    defaults: { _controller: AssocBundle:Assoc:afficherJournal }
+
+assoc_creerarticles:
+    path:    /admin/articles
+    defaults: { _controller: AssocBundle:Assoc:creerArticles }

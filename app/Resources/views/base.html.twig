@@ -39,9 +39,11 @@
               </ul>
                         <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
                         <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
-                        
+                        <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                         
+                         <a style="color: black" href="{{ path('assoc_creerarticles') }}"><span
+                                            class="nav-link js-scroll-trigger glyphicon glyphicon-pencil"></span> Créer un article </a>
+                                    
                                 <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
                                             class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
                                     <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">

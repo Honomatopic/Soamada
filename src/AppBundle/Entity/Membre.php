@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use AssocBundle\Entity\Lettre as Lettre;
 
 /**
 use Doctrine\ORM\Mapping as ORM;
@@ -50,6 +51,18 @@ class Membre extends BaseUser
      * @ORM\Column(type="string",nullable=true)
      */
     protected $tel;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Lettre")
+     * @ORM\Column(name="lettre_id",nullable=true,type="integer")
+     */
+    protected $lettre;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Article")
+     * @ORM\Column(name="article_id",nullable=true,type="integer")
+     */
+    protected $article;
 
     public function __construct()
     {

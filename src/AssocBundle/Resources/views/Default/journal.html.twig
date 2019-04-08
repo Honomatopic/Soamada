@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h1>Le journal</h1>
+{% for article in articles %}
+<h2>{{ article.titre }}</h2>
+<p id="auteur">Par {{ article.auteur }} le {{ article.date|date("m/d/Y") }}</p>
+<p>{{ article.corps }}</p>
+<img src="{{ asset('img/solidaire.jpg') }}"/>
+{% endfor %}
+{% endblock %}

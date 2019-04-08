@@ -60,6 +60,10 @@ body {
     padding: 10%;
 }
 
+#auteur {
+    font-style: italic;
+    color: lightslategrey;
+}
 
 footer {
     text-align: center;
