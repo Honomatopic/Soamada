@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %} 
+
+<div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
+<h1>Editer l'article</h1>
+    {{ form_start(form, {'method': 'post', 'action': path('assoc_editerarticles',{'id':article.id}), 'attr': {'class': 'form-group'}}) }}
+    {{ form_row(form.titre, {'attr': {'class': 'form-control', 'value': article.titre }}) }}
+    {{ form_row(form.corps, {'attr': {'class': 'form-control', 'value': article.corps }}) }}
+    {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'value': article.auteur }}) }}
+    {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': article.date|date("m/d/Y")  }}) }}
+    {{ form_row(form.photo, {'attr': {'class': 'form-control', 'value': article.photo }}) }}
+    {{ form_row(form.lettre, {'attr': {'class': 'form-control', 'value': article.lettre }}) }}
+    <div>
+        <input type="submit" class="btn btn-warning" value="Editer l'article" />
+    </div>
+     {{ form_end(form) }}
+</div>
+{% endblock %}

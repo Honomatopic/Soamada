@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+{% block body %}
+{% if is_granted("ROLE_ADMIN") %}
+{% for lettre in lettres %}
+<p>{{lettre.emailabonne }}</p>
+<div>
+    <a href="{{ path('assoc_envoisnewsletter') }}"><input type="submit" class="btn btn-primary" value="Envoyer la newsletter" /></a>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

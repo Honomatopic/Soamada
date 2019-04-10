@@ -69,3 +69,27 @@ footer {
     text-align: center;
 }
 
+
+a.navbar-brand {
+    margin-right: 200px;
+    text-align: center;
+}
+
+
+#bs-example-navbar-collapse-1 {
+    margin-left: 100px;
+    margin-right: -10px;
+}
+
+a.bouton {
+    margin-top: -10px;
+}
+
+.navbar-nav {
+    text-align: center;
+}
+
+.navbar-nav > li {
+      float: none;
+      display: inline-block;
+}

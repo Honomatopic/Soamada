@@ -45,21 +45,21 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
+     * @ORM\Column(name="date", type="date", nullable=true)
      */
     private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="blob")
+     * @ORM\Column(name="photo", type="blob", nullable=true)
      */
     private $photo;
 
     /**
      * @ORM\ManyToOne(targetEntity="Lettre")
      * @ORM\JoinColumn(name="lettre_id", referencedColumnName="id", onDelete="CASCADE")
-     * @ORM\Column(name="lettre_id", type="integer")
+     * @ORM\Column(name="lettre_id", type="integer", nullable=true)
      *
      * @var [type]
      */
@@ -150,7 +150,7 @@ class Article
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \Date $date
      *
      * @return Article
      */
@@ -164,14 +164,12 @@ class Article
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDate()
     {
         return $this->date;
     }
-
-    
 
     /**
      * Set lettre
@@ -191,14 +189,12 @@ class Article
      * Get lettre
      *
      * @return integer
-     * 
+     *
      */
     public function getLettre()
     {
         return $this->lettre;
     }
-
-
 
     /**
      * Set photo

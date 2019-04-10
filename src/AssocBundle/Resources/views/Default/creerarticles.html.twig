@@ -10,6 +10,11 @@
 <h1>Créer un article</h1>
     {{ form_start(form, {'method': 'post', 'action': path('assoc_creerarticles'), 'attr': {'class': 'form-group'}}) }}
     {{ form_widget(form) }}
-    {{ form_end(form) }}
+    {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'value': app.user.username }}) }}
+    {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': "now"|date("d/m/Y") }}) }}
+    <div>
+        <input type="submit" class="btn btn-primary" value="Créer un article" />
+    </div>
+     {{ form_end(form) }}
 </div>
 {% endblock %}

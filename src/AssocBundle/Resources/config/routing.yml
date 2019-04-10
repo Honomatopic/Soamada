@@ -6,6 +6,27 @@ assoc_journal:
     path:    /journal
     defaults: { _controller: AssocBundle:Assoc:afficherJournal }
 
+assoc_inscriptionnewsletter:
+    path:    /inscriptionnewsletter
+    defaults: { _controller: AssocBundle:Assoc:inscriptionNewsletter }
+
 assoc_creerarticles:
     path:    /admin/articles
     defaults: { _controller: AssocBundle:Assoc:creerArticles }
+
+assoc_editerarticles:
+    path:    /admin/articles/edit/{id}
+    defaults: { _controller: AssocBundle:Assoc:editerArticles }
+
+assoc_supprimerarticles:
+    path:    /admin/articles/supprime/{id}
+    defaults: { _controller: AssocBundle:Assoc:supprimerArticles }
+
+assoc_listeabonnes:
+    path:    /listeabonnes
+    defaults: { _controller: AssocBundle:Assoc:listeAbonnes }
+
+assoc_envoisnewsletter:
+    path:    /envoi
+    defaults: { _controller: AssocBundle:Assoc:envoyerNewsletter }
+

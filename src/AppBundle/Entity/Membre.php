@@ -3,9 +3,9 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\ORM\Mapping as ORM;
 use AssocBundle\Entity\Lettre as Lettre;
+use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
 use Doctrine\ORM\Mapping as ORM;
@@ -21,13 +21,13 @@ class Membre extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
+
     /**
      * @ORM\Column(type="string")
      */
     protected $nom;
-    
-     /**
+
+    /**
      * @ORM\Column(type="string")
      */
     protected $prenom;

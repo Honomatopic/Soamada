@@ -1,10 +1,28 @@
 {% extends "base.html.twig" %}
 {% block body %}
 <h1>Le journal</h1>
+{% if is_granted("ROLE_ADMIN") %}
+{% for flash_message in app.session.flashBag.get('success') %}
+<div class="alert alert-success flash-notice" role="alert">
+{{ flash_message }}
+</div>
+{% endfor %}
+<p><a href="{{ path('assoc_creerarticles') }}"><button type="button "class="btn btn-primary btn-lg">Créer un article</button></a></p>
+{% endif %}
+<h3><em>Pour recevoir la lettre d'information</em></h3>
+<p>Pour s'inscrire à la newsletter : <a href="{{ path('assoc_inscriptionnewsletter')}}">Cliquer ici</a></p>
+
 {% for article in articles %}
 <h2>{{ article.titre }}</h2>
-<p id="auteur">Par {{ article.auteur }} le {{ article.date|date("m/d/Y") }}</p>
+<p id="auteur">Par {{ article.auteur }} le {{ article.date|date("d/m/Y") }}</p>
 <p>{{ article.corps }}</p>
 <img src="{{ asset('img/solidaire.jpg') }}"/>
+{% if is_granted("ROLE_ADMIN") %}
+<p><a href="{{ path('assoc_editerarticles', {'id':article.id})}}"><button type="button "class="btn btn-warning">Editer</button></a>
+<a href="{{ path('assoc_supprimerarticles',{'id': article.id})}}" onclick="return confirm('Êtes-vous sûr de supprimer cet article ?')"><button type="button "class="btn btn-danger">Supprimer</button></a></p>
+{% endif %}
 {% endfor %}
+{% if is_granted("ROLE_ADMIN") %}
+<h2><em><a href="{{ path('assoc_listeabonnes') }}">La liste des abonnés</a></em></h2>
+{% endif %}
 {% endblock %}
