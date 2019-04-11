@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AssocController extends Controller
 {
     /**
-     * Méthode affichant la page d'accueil
+     * Méthode permettant d'afficher la page d'accueil
      *
      * @return void
      */
@@ -45,11 +45,8 @@ class AssocController extends Controller
                         'Emails/contact.html.twig'
                     ),
                     'text/html'
-                )
-
-            ;
+                );
             $this->get('mailer')->send($message);
-
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
@@ -213,6 +210,5 @@ class AssocController extends Controller
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
-
     }
 }
