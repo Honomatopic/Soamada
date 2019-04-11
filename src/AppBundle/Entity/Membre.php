@@ -3,12 +3,10 @@
 
 namespace AppBundle\Entity;
 
-use AssocBundle\Entity\Lettre as Lettre;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
-use Doctrine\ORM\Mapping as ORM;
 
  * @ORM\Entity
  * @ORM\Table(name="membre")

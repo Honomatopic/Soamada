@@ -5,12 +5,12 @@ namespace AssocBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Lettre
+ * Abonne
  *
- * @ORM\Table(name="lettre")
- * @ORM\Entity(repositoryClass="AssocBundle\Repository\LettreRepository")
+ * @ORM\Table(name="abonne")
+ * @ORM\Entity(repositoryClass="AssocBundle\Repository\AbonneRepository")
  */
-class Lettre
+class Abonne
 {
     /**
      * @var int
@@ -28,6 +28,11 @@ class Lettre
      */
     private $emailabonne;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Membre")
+     * @ORM\JoinColumn(name="Membre_id",referencedColumnName="id",nullable=true,onDelete="CASCADE")
+     */
+    private $membre;
 
     /**
      * Get id
@@ -44,7 +49,7 @@ class Lettre
      *
      * @param string $emailabonne
      *
-     * @return Lettre
+     * @return Abonne
      */
     public function setEmailabonne($emailabonne)
     {
@@ -61,5 +66,29 @@ class Lettre
     public function getEmailabonne()
     {
         return $this->emailabonne;
+    }
+
+    /**
+     * Set membre
+     *
+     * @param \AssocBundle\Entity\Membre $membre
+     *
+     * @return Abonne
+     */
+    public function setMembre(\AssocBundle\Entity\Membre $membre = null)
+    {
+        $this->membre = $membre;
+
+        return $this;
+    }
+
+    /**
+     * Get membre
+     *
+     * @return \AssocBundle\Entity\Membre
+     */
+    public function getMembre()
+    {
+        return $this->membre;
     }
 }

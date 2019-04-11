@@ -2,8 +2,8 @@
 
 namespace AssocBundle\Controller;
 
+use AssocBundle\Entity\Abonne;
 use AssocBundle\Entity\Article;
-use AssocBundle\Entity\Lettre;
 use AssocBundle\Entity\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,9 +68,6 @@ class AssocController extends Controller
     public function afficherJournalAction()
     {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
-        foreach ($articles as $key => $value) {
-            $value->setPhoto(base64_encode(stream_get_contents($value->getPhoto())));
-        }
 
         return $this->render('AssocBundle:Default:journal.html.twig', array('articles' => $articles));
     }
@@ -87,10 +84,6 @@ class AssocController extends Controller
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
-            //$images = base64_encode(stream_get_contents($article->getPhoto()));
-            $someNewFilename = 'article.jpg';
-            $file = $form['photo']->getData();
-            $file->move('/img', $someNewFilename);
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush($article);
@@ -112,28 +105,21 @@ class AssocController extends Controller
     {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->find($id);
         $articles->setTitre($articles->getTitre());
-        $articles->setCorps($articles->getCorps());
         $articles->setAuteur($articles->getAuteur());
+        $articles->setCorps($articles->getCorps());
         $articles->setDate($articles->getDate());
-        $articles->setPhoto($articles->getPhoto());
-        $articles->setLettre($articles->getLettre());
         $form = $this->createForm('AssocBundle\Form\ArticleType', $articles);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
             $titre = $form["titre"]->getData();
-            $corps = $form["corps"]->getData();
             $auteur = $form["auteur"]->getData();
+            $corps = $form["corps"]->getData();
             $date = $form["date"]->getData();
-            $lettre = $form["lettre"]->getData();
-            $someNewFilename = 'article.jpg';
-            $file = $form['photo']->getData();
-            $file->move('/img', $someNewFilename);
             $articles->setTitre($titre);
-            $articles->setCorps($corps);
             $articles->setAuteur($auteur);
+            $articles->setCorps($corps);
             $articles->setDate($date);
-            $articles->setLettre($lettre);
             $em->persist($articles);
             $em->flush($articles);
             $request->getSession()->getFlashBag()->add('success', 'Article modifié !');
@@ -166,28 +152,29 @@ class AssocController extends Controller
      */
     public function inscriptionNewsletterAction(Request $request)
     {
-        $lettres = new lettre();
-        $form = $this->createForm('AssocBundle\Form\LettreType', $lettres);
+        $abonnes = new Abonne();
+
+        $form = $this->createForm('AssocBundle\Form\AbonneType', $abonnes);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($lettres);
-            $em->flush($lettres);
+            $em->persist($abonnes);
+            $em->flush($abonnes);
             $request->getSession()->getFlashBag()->add('success', 'Inscription à la newsletter réussie');
             $lettreinfo = \Swift_Message::newInstance()
                 ->setSubject('La lettre d\'information')
                 ->setFrom('admin@admin.com')
-                ->setTo($lettres->getEmailabonne())
+                ->setTo($abonnes->getEmailabonne())
                 ->setBody(
                     $this->renderView(
-                        'Emails/lettreinfos.html.twig'
+                        'Emails/inscription.html.twig'
                     ),
                     'text/html'
                 );
             $this->get('mailer')->send($lettreinfo);
             return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView()));
         }
-        return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'lettre' => $lettres));
+        return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes));
     }
 
     /**
@@ -197,8 +184,8 @@ class AssocController extends Controller
      */
     public function listeAbonnesAction()
     {
-        $lettres = $this->getDoctrine()->getRepository('AssocBundle:Lettre')->findAll();
-        return $this->render('AssocBundle:Default:listeabonnenews.html.twig', array('lettres' => $lettres));
+        $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
+        return $this->render('AssocBundle:Default:listeabonnenews.html.twig', array('abonnes' => $abonnes));
     }
 
     /**
@@ -209,23 +196,23 @@ class AssocController extends Controller
      */
     public function envoyerNewsletterAction(Request $request)
     {
-        $lettres = $this->getDoctrine()->getRepository('AssocBundle:Lettre')->findAll();
-        foreach ($lettres as $lettre) {
-            
+        $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
+        foreach ($abonnes as $abonne) {
+
             $lettreinfo = \Swift_Message::newInstance()
                 ->setSubject('La lettre d\'information')
                 ->setFrom('admin@admin.com')
-                ->setTo($lettre->getEmailabonne())
+                ->setTo($abonne->getEmailabonne())
                 ->setContentType("text/html")
                 ->setBody($this->renderView(
-                        'Emails/lettreinfos.html.twig'
-                    )
+                    'Emails/lettreinfos.html.twig'
+                )
                 );
         }
         $this->get('mailer')->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
-        return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'lettres' => $lettres));
+        return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
 
     }
 }
