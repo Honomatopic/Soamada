@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -9,23 +11,23 @@ and open the template in the editor.
 */
 
 body {
-    padding : 10%;
+    padding : 5%;
 }
 
 #cantine {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 }
 
 #nous {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 }
 
 #accueil {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 
@@ -35,29 +37,29 @@ body {
     background: transparent;
 }
 #fontaine {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 }
 
 #fourniture {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 }
 
 #message {
-    padding : 10%;
+    padding : 5%;
     display: block;
     vertical-align:middle;
 }
 
 .fos_user_user_show {
-    padding: 10%;
+    padding: 5%;
 }
 
 #info {
-    padding: 10%;
+    padding: 5%;
 }
 
 #auteur {
@@ -92,4 +94,28 @@ a.bouton {
 .navbar-nav > li {
       float: none;
       display: inline-block;
+}
+.presentation {
+    font-family: 'Kanit', cursive;
+    font-size: 50px;
+}
+.titre {
+    float: none;
+    display: block;
+    text-align: center;
+    font-family: 'Kanit', cursive;
+    font-size: 40px;
+    margin-right: 100px;
+    text-shadow: white 0.2em 0.2em 0.2em;
+}
+
+.logo {
+    float: left;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+}
+
+.bienvenue {
+    font-size: 50px;
 }

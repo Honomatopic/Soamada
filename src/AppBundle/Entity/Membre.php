@@ -50,17 +50,23 @@ class Membre extends BaseUser
      */
     protected $tel;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Lettre")
-     * @ORM\Column(name="lettre_id",nullable=true,type="integer")
-     */
-    protected $lettre;
 
     /**
      * @ORM\ManyToMany(targetEntity="Article")
      * @ORM\Column(name="article_id",nullable=true,type="integer")
      */
     protected $article;
+    
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $facebook_id;
+    
+     /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $google_id;
+    
 
     public function __construct()
     {
@@ -210,5 +216,77 @@ class Membre extends BaseUser
     public function getVille()
     {
         return $this->ville;
+    }
+
+    /**
+     * Set article
+     *
+     * @param integer $article
+     *
+     * @return Membre
+     */
+    public function setArticle($article)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return integer
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     *
+     * @return Membre
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebook_id = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebook_id;
+    }
+
+    /**
+     * Set googleId
+     *
+     * @param string $googleId
+     *
+     * @return Membre
+     */
+    public function setGoogleId($googleId)
+    {
+        $this->google_id = $googleId;
+
+        return $this;
+    }
+
+    /**
+     * Get googleId
+     *
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
     }
 }

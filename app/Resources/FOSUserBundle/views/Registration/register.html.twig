@@ -1,8 +1,21 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
+
     <div id="info">
-    <h1>Veuillez-vous enregister</h1>
-{% include "@FOSUser/Registration/register_content.html.twig" %}
-    </div>
-{% endblock fos_user_content %}
+        <div class="card mb-3">
+            <h1 class="card-header">Veuillez-vous enregister</h1>
+            <div class="card-body">
+                <h5 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires pour l'adhésion :
+                    <br>
+                    <ul>
+                        <li><em>Nom d'utilisateur</em></li>
+                        <li><em>Nom</em></li>
+                        <li><em>Prénom</em></li>
+                        <li><em>Email</em></li>
+                        <li><em>Mot de passe</em></li>
+                        <li><em>Répeter le mot de passe</em></li>
+                    </ul></h5>
+                    {% include "@FOSUser/Registration/register_content.html.twig" %}
+            </div>
+        {% endblock fos_user_content %}

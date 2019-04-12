@@ -146,3 +146,26 @@ fos_user:
     profile:
         form: 
             type: AppBundle\Form\ProfileFormType
+            
+# hwi configuration         
+hwi_oauth:
+    connect:
+        confirmation: true
+    firewall_names: [main]
+    fosub:
+        username_iterations: 30
+        properties:
+            # these properties will be used/redefined later in the custom FOSUBUserProvider service.
+            facebook: facebook_id
+            google: google_id
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           584168508726974
+            client_secret:       660423666a239cd7c47fe1d18a825b11
+            scope:               ""
+        google:
+            type:                google
+            client_id:           ?
+            client_secret:       ?
+            scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"

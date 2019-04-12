@@ -1,9 +1,10 @@
+
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
-
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-group">
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -19,7 +20,24 @@
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
     <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+   
 </form>
+
+     <div class="fb-login-button" href="{{ path('facebook_login') }} "data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+     <div class="g-signin2" data-width="200" data-height="40" data-longtitle="true">
+    </div>
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/facebook.js') }}"></script>
+    <script src="{{ asset('js/scrollmenu.js') }}"></script>
+    <script src="{{ asset('js/autocompleteregistration.js') }}"></script>
+    <script src="{{ asset('js/autocompleteprofile.js') }}"></script>
+    <!--script src="{{ asset('js/bootstrap.js') }}"></script-->
+{% endblock %}
