@@ -20,12 +20,15 @@
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
     <input type="submit" class="btn btn-success" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-   
-</form>
-
-     <div class="fb-login-button" href="{{ path('facebook_login') }} "data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2&appId=369436007091999&autoLogAppEvents=1"></script>
+   <a href="{{ path('hwi_oauth_connect') }}">Lien</a>
+<div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
      <div class="g-signin2" data-width="200" data-height="40" data-longtitle="true">
     </div>
+</form>
+
+     <div id="fb-root"></div>
+
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>

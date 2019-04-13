@@ -161,9 +161,9 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                facebook
-            client_id:           584168508726974
-            client_secret:       660423666a239cd7c47fe1d18a825b11
-            scope:               ""
+            client_id:           369436007091999
+            client_secret:       c58a3a2c384bb6d87f2d71696fcaa909
+            scope:               "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2&appId=369436007091999&autoLogAppEvents=1"
         google:
             type:                google
             client_id:           ?

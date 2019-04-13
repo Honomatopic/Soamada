@@ -1,10 +1,9 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
         <script>
-    window.fbAsyncInit = function() {
+   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '584168508726974',
-      cookie     : true,
+      appId      : '369436007091999',
       xfbml      : true,
       version    : 'v3.2'
     });
@@ -12,6 +11,20 @@
     FB.AppEvents.logPageView();   
       
   };
+
+   FB.getLoginStatus(function(response) {
+     statusChangeCallback(response);
+     
+{
+    status: 'connected',
+    authResponse: {
+        accessToken: '...',
+        expiresIn:'...',
+        signedRequest:'...',
+        userID:'...'
+    }
+}
+});
 
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -21,9 +34,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
    
-   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-});
+
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
@@ -31,7 +42,25 @@ function checkLoginState() {
   });
 }
 
-async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=584168508726974">
+async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=369436007091999">
+        function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+
     </script>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control'}}) }}
@@ -50,7 +79,10 @@ async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v3.2&appId=369436007091999&autoLogAppEvents=1"></script>
 <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+       <div class="g-signin2" data-width="200" data-height="40" data-longtitle="true">
+    </div>
 {{ form_end(form) }}
-
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 {% endblock %}
