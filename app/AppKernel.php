@@ -18,6 +18,7 @@ class AppKernel extends Kernel {
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new AssocBundle\AssocBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
         ];
 

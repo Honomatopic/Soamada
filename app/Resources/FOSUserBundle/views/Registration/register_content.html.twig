@@ -1,67 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
-        <script>
-   window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '369436007091999',
-      xfbml      : true,
-      version    : 'v3.2'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
 
-   FB.getLoginStatus(function(response) {
-     statusChangeCallback(response);
-     
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-});
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/fr_FR/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-   
-
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-
-async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=369436007091999">
-        function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-
-    </script>
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control'}}) }}
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}

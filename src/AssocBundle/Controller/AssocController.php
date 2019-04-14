@@ -37,12 +37,12 @@ class AssocController extends Controller
             $em->flush($message);
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
             $message = \Swift_Message::newInstance()
-                ->setSubject('Votre message sur le formulaire de contact')
-                ->setFrom('admin@admin.com')
-                ->setTo($message->getEmail())
+                ->setSubject('Un nouveau message sur le formulaire de contact')
+                ->setFrom($message->getEmail())
+                ->setTo('honore.rasamoelina@gmail.com')
                 ->setBody(
                     $this->renderView(
-                        'Emails/contact.html.twig'
+                        'Emails/contact.html.twig', array('messages' => $message)
                     ),
                     'text/html'
                 );
@@ -194,6 +194,7 @@ class AssocController extends Controller
     public function envoyerNewsletterAction(Request $request)
     {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
+        $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
 
             $lettreinfo = \Swift_Message::newInstance()
@@ -202,13 +203,12 @@ class AssocController extends Controller
                 ->setTo($abonne->getEmailabonne())
                 ->setContentType("text/html")
                 ->setBody($this->renderView(
-                    'Emails/lettreinfos.html.twig'
+                    'Emails/lettreinfos.html.twig', array('articles' => $articles) 
                 )
                 );
         }
         $this->get('mailer')->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
-        $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
 }

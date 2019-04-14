@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Controller;
+namespace AppBundle\Controller;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
@@ -89,8 +89,19 @@ class RegistrationController extends Controller
             if (null !== $response = $event->getResponse()) {
                 return $response;
             }
-            
+            $membre = \Swift_Message::newInstance()
+                ->setSubject('Un nouveau membre')
+                ->setFrom('honore.rasamoelina@gmail.com')
+                ->setTo('honore.rasamoelina@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/inscription.html.twig'
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($membre);
         }
+        
 
         return $this->render('@FOSUser/Registration/register.html.twig', array(
             'form' => $form->createView(),

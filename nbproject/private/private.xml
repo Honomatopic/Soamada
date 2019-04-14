@@ -5,7 +5,6 @@
         <group>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/inscriptionnews.html.twig</file>
-            <file>file:/C:/wamp64/www/Soamada/web/js/facebook.js</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/security.yml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Security/login_content.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/layout.html.twig</file>

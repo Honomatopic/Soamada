@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Controller;
+namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
