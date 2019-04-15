@@ -151,6 +151,7 @@ fos_user:
 hwi_oauth:
     connect:
         confirmation: true
+        registration_form: fos_user.registration.form.factory
     firewall_names: [main]
     fosub:
         username_iterations: 30
@@ -163,14 +164,16 @@ hwi_oauth:
             type:                facebook
             client_id:           369436007091999
             client_secret:       c58a3a2c384bb6d87f2d71696fcaa909
+            scope:               "email"
             options:
                 display: popup #dialog is optimized for popup window
-                auth_type: rerequest # Re-asking for Declined Permissions
         google:
             type:                google
-            client_id:           568202124242-4pbf7dh73ethrd62vcupjqhlf4peia22.apps.googleusercontent.com
-            client_secret:       lMgDOmrZ-QAYam4fh94U8Tte
+            client_id:           568202124242-qv144kjplbpncb9jgkh4nq2hrqssbq7q.apps.googleusercontent.com
+            client_secret:       akOdu_MclstK-B3NMwQUZRtc
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
             options:
+                #request_visible_actions: "http://schemas.google.com/AddActivity http://schemas.google.com/CommentActivity"
                 display: popup #dialog is optimized for popup window
                 #auth_type: rerequest # Re-asking for Declined Permissions
          

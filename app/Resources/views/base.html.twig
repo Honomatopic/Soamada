@@ -40,8 +40,9 @@
                 <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
               </ul>
                         <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
                         <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
+                        
                         
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                 <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span

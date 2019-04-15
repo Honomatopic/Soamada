@@ -18,6 +18,9 @@
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
-
+  <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+     Se connecter avec Google
+     </a>
+   <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">Se connecter avec Facebook </a>  
 {{ form_end(form) }}
 {% endblock %}

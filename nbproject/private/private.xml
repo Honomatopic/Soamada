@@ -30,6 +30,8 @@
             <file>file:/C:/wamp64/www/Soamada/composer.json</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Security/login.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/journal.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/mailer.xml</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/doctrine-mapping/Group.couchdb.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/resetting.xml</file>
             <file>file:/C:/wamp64/www/Soamada/web/css/bootstrap.css</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/index.html.twig</file>
@@ -50,11 +52,15 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuth/views/layout.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/show_content.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/editerarticles.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/all.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Group/edit_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Entity/FOSUBUserProvider.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Form/RegistrationType.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Entity/Abonne.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Controller/AssocController.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/email.txt.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/profile.xml</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Form/MessageType.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/config/routing.yml</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Controller/DefaultController.php</file>

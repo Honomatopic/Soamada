@@ -8,6 +8,7 @@ security:
             memory: ~
         fos_userbundle:
             id: fos_user.user_provider.username
+        
             
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -28,6 +29,8 @@ security:
                 use_forward:       false
                 failure_path:      /login
 
+                #oauth_user_provider:
+                    #service: hwi_oauth.user.provider.entity
                 oauth_user_provider:
                     service: hwi_oauth.user.provider.fosub_bridge
                     

@@ -9,10 +9,11 @@
  * file that was distributed with this source code.
  */
 
-//namespace FOS\UserBundle\Controller;
-namespace AppBundle\Controller;
+namespace FOS\UserBundle\Controller;
+//namespace AppBundle\Controller;
 
-use AppBundle\Entity\Membre;
+//use AppBundle\Entity\Membre;
+//use AppBundle\Form\ProfileFormType;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\GetResponseUserEvent;

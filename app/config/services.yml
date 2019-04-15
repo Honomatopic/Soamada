@@ -14,7 +14,8 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     my.oauth_aware.user_provider.service:
-        class: HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
-        arguments:
+         class: AppBundle\Entity\FOSUBUserProvider
+         arguments:
             - '@fos_user.user_manager'
+            - ["@doctrine", AppBundle\Entity\Membre, { facebook : facebook_id, google : google_id }]
 
