@@ -159,6 +159,7 @@ hwi_oauth:
             # these properties will be used/redefined later in the custom FOSUBUserProvider service.
             facebook: facebook_id
             google: google_id
+            twitter: twitter_id
     resource_owners:
         facebook:
             type:                facebook
@@ -173,7 +174,12 @@ hwi_oauth:
             client_secret:       akOdu_MclstK-B3NMwQUZRtc
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
             options:
-                #request_visible_actions: "http://schemas.google.com/AddActivity http://schemas.google.com/CommentActivity"
                 display: popup #dialog is optimized for popup window
-                #auth_type: rerequest # Re-asking for Declined Permissions
+        twitter: 
+            type:               twitter
+            client_id:          ?
+            client_secret:      ?
+            score:              ?
+            options:
+                display: popup #dialog is optimized for popup window
          

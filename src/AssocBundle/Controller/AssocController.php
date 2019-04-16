@@ -35,10 +35,14 @@ class AssocController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush($message);
+            $message->getId();
+            //$message->setEmail($form["email"]->getData());
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
-            $message = \Swift_Message::newInstance()
+     
+             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
+             $contact = \Swift_Message::newInstance()
                 ->setSubject('Un nouveau message sur le formulaire de contact')
-                ->setFrom($message->getEmail())
+                ->setFrom($form["email"]->getData())
                 ->setTo('honore.rasamoelina@gmail.com')
                 ->setBody(
                     $this->renderView(
@@ -46,8 +50,10 @@ class AssocController extends Controller
                     ),
                     'text/html'
                 );
-            $this->get('mailer')->send($message);
-        }
+            $this->get('mailer')->send($contact);
+         }
+            
+
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
         return $this->render('AssocBundle:Default:index.html.twig', array('form' => $form->createView(),
@@ -191,7 +197,7 @@ class AssocController extends Controller
      * @param Request $request
      * @return void
      */
-    public function envoyerNewsletterAction(Request $request)
+    public function envoyerNewsletterAction(Request $request, $parameters = array())
     {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
@@ -203,8 +209,7 @@ class AssocController extends Controller
                 ->setTo($abonne->getEmailabonne())
                 ->setContentType("text/html")
                 ->setBody($this->renderView(
-                    'Emails/lettreinfos.html.twig', array('articles' => $articles) 
-                )
+                    'Emails/lettreinfos.html.twig', array('articles' => $articles)), 'text/html'  
                 );
         }
         $this->get('mailer')->send($lettreinfo);

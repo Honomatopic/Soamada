@@ -69,6 +69,11 @@ class Membre extends BaseUser
      */
     protected $google_id;
     
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $twitter_id;
+    
 
     public function __construct()
     {

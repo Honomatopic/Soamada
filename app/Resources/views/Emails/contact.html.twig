@@ -1,13 +1,12 @@
 
 <h1>L'association Soamada</h1>
-<p>Vous avez reçu un nouveau message, voici le message</p>
+<p>Vous avez reçu un nouveau message, voici le message : </p>
 {% block body %}
     {% for message in messages %}
-        <h3>{{ message.titre }}</h3>
-        <p>{{ message.nom }}</p>
-        <p>{{ message.prenom }}</p>
-        <p>{{ message.email }}</p>
-        <p>{{ message.corps }}</p>
+        <p>{{ message.nom | raw }}</p>
+        <p>{{ message.prenom | raw }}</p>
+        <p>{{ message.email | raw }}</p>
+        <p>{{ message.corps | raw }}</p>
         {% endfor %}
 {% endblock %}
 

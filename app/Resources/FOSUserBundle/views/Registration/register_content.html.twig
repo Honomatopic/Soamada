@@ -14,13 +14,13 @@
 {{ form_row(form.plainPassword.second, {'attr': {'placeholder': 'Votre mot de passe confirmé', 'class': 'form-control', 'label': 'form.password'}}) }}    
     <div>
         <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+        <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}"><button type="button" class="btn-social btn-facebook" style="height: 35px"><span class="fa fa-facebook"></span>Se connecter avec Facebook</button></a>  
+        <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}"><button type="button" class="btn-social btn-google"  style="height: 35px"><span class="fa fa-google"></span>Se connecter avec Google</button></a>
+        <a href="{{ path('hwi_oauth_service_redirect', {'service': 'twitter' }) }}"><button type="button" class="btn-social btn-twitter"  style="height: 35px"><span class="fa fa-twitter"></span>Se connecter avec Twitter</button></a> 
     </div>
+
+{{ form_end(form) }}
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
-  <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
-     Se connecter avec Google
-     </a>
-   <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">Se connecter avec Facebook </a>  
-{{ form_end(form) }}
 {% endblock %}

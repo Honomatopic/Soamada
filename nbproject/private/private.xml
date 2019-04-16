@@ -17,6 +17,7 @@
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Entity/Membre.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuth/views/Connect/registration.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/routing.yml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/security.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/show.html.twig</file>
@@ -55,6 +56,7 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/all.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Group/edit_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuth/views/Connect/connect_confirm.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Entity/FOSUBUserProvider.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Form/RegistrationType.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Entity/Abonne.php</file>

@@ -50,8 +50,16 @@ body {
 
 #message {
     padding : 5%;
-    display: block;
+    display: inline;
+    float: right;
     vertical-align:middle;
+}
+
+#coordonnee {
+    padding : 5%;
+    display: inline;
+    float: left;
+    vertical-align: middle;
 }
 
 .fos_user_user_show {

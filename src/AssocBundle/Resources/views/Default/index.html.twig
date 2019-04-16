@@ -58,40 +58,51 @@
                                                     <img style="height: 600px; width: 100%; display: block;" src="{{ asset('img/fourniture.jpg') }}" alt="Card image">
                                                     </article>
                                                     </section>
-
-                                                    <section id="message">
-                                                        <article class="row">
-                                                            <div class="card mb-3">
-                                                    <h3 class="card-header">Pour nous contacter : </h3>
-                                                    <div class="card-body">
-                                                        <h5 class="card-title">Si vous souhaitez nous contacter : </h5>
-                                                        <h6 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires dans le message :
-                                                            <br>
-                                                            <ul>
-                                                        <li><em>Email</em></li>
-                                                                    <li><em>Corps</em></li>
-                                                            </ul></h6>
-                                                    </div>
-
-                                                            {% for flash_message in app.session.flashBag.get('info') %}
-                                                                <div class="alert alert-success flash-notice" role="alert">
-                                                                    {{ flash_message }}
+                                                    <section>
+                                                        <article class="col-lg-6" id="coordonnee">
+                                                            <div class="card mb-6">
+                                                                <h3 class="card-header">Les coordonnées de l'association </h3>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">L'adresse de l'association</h5>
+                                                                    <h6 class="card-subtitle text-muted">Adresse
+                                                                    </h6>
                                                                 </div>
-                                                            {% endfor %}
-                                                            <ul>
-                                                            </ul>
+                                                        </article>
 
-                                                            <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-                                                                {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
-                                                                {{ form_row(form.nom) }}
-                                                                {{ form_row(form.prenom) }}
-                                                                {{ form_row(form.email) }}
-                                                                {{ form_row(form.corps) }}
-                                                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                                    {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
-                                                                {% endif %}
-                                                                {{ form_end(form) }}
-                                                            </div>
+
+
+                                                        <article class="col-lg-6" id="message">
+                                                            <div class="card mb-6">
+                                                                <h3 class="card-header">Pour nous contacter : </h3>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">Si vous souhaitez nous contacter : </h5>
+                                                                    <h6 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires dans le message :
+                                                                        <br>
+                                                                        <ul>
+                                                                            <li><em>Email</em></li>
+                                                                            <li><em>Corps</em></li>
+                                                                        </ul></h6>
+                                                                </div>
+
+                                                                {% for flash_message in app.session.flashBag.get('info') %}
+                                                                    <div class="alert alert-success flash-notice" role="alert">
+                                                                        {{ flash_message }}
+                                                                    </div>
+                                                                {% endfor %}
+                                                                <ul>
+                                                                </ul>
+
+                                                                <div >
+                                                                    {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
+                                                                    {{ form_row(form.nom) }}
+                                                                    {{ form_row(form.prenom) }}
+                                                                    {{ form_row(form.email) }}
+                                                                    {{ form_row(form.corps) }}
+                                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                                        {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
+                                                                    {% endif %}
+                                                                    {{ form_end(form) }}
+                                                                </div>
                                                         </article>
                                                     </section>
                                                 {% endblock %}
