@@ -10,12 +10,14 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/edit.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/views/default/index.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/web/css/style.css</file>
+            <file>file:/C:/wamp64/www/Soamada/web/js/scrollmenu.js</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Repository/MessageRepository.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/AppKernel.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/config.yml</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Controller/ConnectController.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Entity/Membre.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/check_email.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/web/js/modal.js</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuth/views/Connect/registration.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/routing.yml</file>
@@ -32,6 +34,7 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Security/login.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/journal.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/mailer.xml</file>
+            <file>file:/C:/wamp64/www/Soamada/web/js/autocompleteregistration.js</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/doctrine-mapping/Group.couchdb.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/resetting.xml</file>
             <file>file:/C:/wamp64/www/Soamada/web/css/bootstrap.css</file>

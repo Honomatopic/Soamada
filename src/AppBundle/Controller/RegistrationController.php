@@ -89,7 +89,7 @@ class RegistrationController extends Controller
             if (null !== $response = $event->getResponse()) {
                 return $response;
             }
-            $membre = \Swift_Message::newInstance()
+            $courriel = \Swift_Message::newInstance()
                 ->setSubject('Un nouveau membre')
                 ->setFrom('honore.rasamoelina@gmail.com')
                 ->setTo('honore.rasamoelina@gmail.com')
@@ -99,7 +99,7 @@ class RegistrationController extends Controller
                     ),
                     'text/html'
                 );
-            $this->get('mailer')->send($membre);
+            $this->get('mailer')->send($courriel);
         }
         
 

@@ -5,7 +5,7 @@
         <meta charset="UTF-8" />
         <title>{% block title %}L'association Soamada{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" rel="stylesheet">
             <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.css') }}">
@@ -15,75 +15,76 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
-        <nav class="navbar-fixed-top navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    
-                    <p class="navbar-brand titre"><img class="logo" src="{{ asset('img/logo.jpg') }}">Soamada</p>
-                </div>
+    <nav class="navbar-fixed-top navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
 
-                <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ path('assoc_homepage') }}"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#nous"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
-                        <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>  Projets<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#cantine"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
-                <li><a href="#fontaine"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
-                <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
-              </ul>
-                        <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
-                        
-                        
-                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
-                                            class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
-                                    <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </button>
-                                    </a>
-                                     <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning my-2 my-sm-0">
-                                            {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
-                                        </button></a>
-                                    {% else %}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-                                <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="bouton btn btn-success"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }} </button></a>
-                                  
-                            {% endif %}
-                    
-              </div>
+                <p class="navbar-brand titre"><img class="logo" src="{{ asset('img/logo.jpg') }}">Soamada</p>
             </div>
-        </nav>
-    
 
-<!-- /.nav-collapse -->
+            <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('assoc_homepage') }}"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#nous"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>  Projets<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#cantine"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
+                            <li><a href="#fontaine"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
+                            <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
+                        </ul>
+                    <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#" id="enregistrer" data-toggle="modal" data-target="#membre"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
+                    
 
-<!-- /.container -->
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
+                                class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
+                        <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </button>
+                        </a>
+                        <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning my-2 my-sm-0">
+                                {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
+                            </button></a>
+                        {% else %}
+
+                        <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="bouton btn btn-success"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }} </button></a>
+
+                        {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 
-<section class="container center-block">
-{% block body %}  {% endblock %}
-</section>
-<hr>
-<footer class="container center-block">&copy {{ "now"|date("Y") }} Andria</footer>
-{% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/scrollmenu.js') }}"></script>
-    <script src="{{ asset('js/autocompleteregistration.js') }}"></script>
-    <script src="{{ asset('js/autocompleteprofile.js') }}"></script>
-{% endblock %}
+    <!-- /.nav-collapse -->
+
+    <!-- /.container -->
+
+
+    <section class="container center-block">
+        {% block body %}  {% endblock %}
+    </section>
+    <hr>
+    <footer class="container center-block">&copy {{ "now"|date("Y") }} Andria</footer>
+        {% block javascripts %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+        <script src="{{ asset('js/scrollmenu.js') }}"></script>
+        <script src="{{ asset('js/autocompleteregistration.js') }}"></script>
+        <script src="{{ asset('js/autocompleteprofile.js') }}"></script>
+        <script src="{{ asset('js/modal.js') }}"></script>
+    {% endblock %}
 </body>
 </html>

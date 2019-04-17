@@ -1,6 +1,5 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
-
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control'}}) }}
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}
@@ -18,7 +17,6 @@
         <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}"><button type="button" class="btn-social btn-google"  style="height: 35px"><span class="fa fa-google"></span>Se connecter avec Google</button></a>
         <a href="{{ path('hwi_oauth_service_redirect', {'service': 'twitter' }) }}"><button type="button" class="btn-social btn-twitter"  style="height: 35px"><span class="fa fa-twitter"></span>Se connecter avec Twitter</button></a> 
     </div>
-
 {{ form_end(form) }}
     <div>
         <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
