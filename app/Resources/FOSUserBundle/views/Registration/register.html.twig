@@ -1,18 +1,8 @@
 {% extends "@FOSUser/layout.html.twig" %}
 {% block fos_user_content %}
-    <div id="membre" class="modal-fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="monModalMembre">
-                        Veuillez-vous enregister</h4>
-                </div>
-                <div class="modal-body">
-
-
-
-                    <h5 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires pour l'adhésion :
+    <div id="info">
+    <h1>Veuillez-vous enregistrer</h1>
+ <h5 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires pour l'adhésion :
                         <br>
                         <ul>
                             <li><em>Nom d'utilisateur</em></li>
@@ -23,10 +13,5 @@
                             <li><em>Répeter le mot de passe</em></li>
                         </ul></h5>
                         {% include "@FOSUser/Registration/register_content.html.twig" %}
-
-                </div>
-            </div>
-        </div>
     </div>
 {% endblock fos_user_content %}
-

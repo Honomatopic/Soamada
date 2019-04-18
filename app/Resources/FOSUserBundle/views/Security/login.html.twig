@@ -1,11 +1,5 @@
 {% extends "@FOSUser/layout.html.twig" %}
-
 {% block fos_user_content %}
-    
-    <div id="info">
-    <h1>Veuillez-vous connecter</h1>
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
-    </div>
-  
-
+<h1>Veuillez-vous connecter</h1>
+{{ include('@FOSUser/Security/login_content.html.twig') }}
 {% endblock fos_user_content %}

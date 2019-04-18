@@ -1,13 +1,21 @@
 {% extends "::base.html.twig" %}
-
-
 {% block body %}
-    <div class="container">
-        <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+    <div class="modal fade" id="membre" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="monModalMembre">
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+            </div>
         </div>
-        </div>
+    </div>
+
 {% endblock %}
-            
+
 
