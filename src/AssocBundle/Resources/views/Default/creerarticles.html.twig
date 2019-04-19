@@ -1,20 +1,24 @@
-{% extends "base.html.twig" %}
+{% extends "::base.html.twig" %}
 
-{% block body %} 
-{% for flash_message in app.session.flashBag.get('success') %}
-<div class="alert alert-success flash-notice" role="alert">
-{{ flash_message }}
-</div>
-{% endfor %}
-<div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-<h1>Créer un article</h1>
-    {{ form_start(form, {'method': 'post', 'action': path('assoc_creerarticles'), 'attr': {'class': 'form-group'}}) }}
-    {{ form_widget(form) }}
-    {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'value': app.user.username }}) }}
-    {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': "now"|date("d/m/Y") }}) }}
-    <div>
-        <input type="submit" class="btn btn-primary" value="Créer un article" />
+
+{% block body %}
+    {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success flash-notice" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
+        <h1>Créer un article</h1>
+        {{ form_start(form, {'method': 'post', 'action': path('assoc_creerarticles'), 'attr': {'class': 'form-group'}}) }}
+        {{ form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Le titre de l\'article'}}) }}
+    {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'placeholder': 'L\'auteur de l\'article', 'value': app.user.username }}) }}
+    {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': 'now'|date('d/m/Y') }}) }}
+    {{ form_row(form.corps, {'attr': {'class': 'form-control', 'placeholder': 'Le corps de l\'article', 'rows': '5' }}) }}
+        <input type="submit" class="btn btn-success" value="Créer un article">
+        {{ form_end(form) }}
     </div>
-     {{ form_end(form) }}
-</div>
+    <div>
+
+    </div>
 {% endblock %}
+
