@@ -3,6 +3,7 @@
 namespace AssocBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -48,6 +49,21 @@ class Article
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+    
+    /**
+     * @ORM\Column(type="string")
+     * 
+     * @Assert\Notblank(message="Veuillez télécharger une photo")
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
+     * 
+     * @var type 
+     */
+    private $photo;
 
 
     /**
