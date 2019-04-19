@@ -76,17 +76,7 @@ class RegistrationController extends Controller
                     $response = new RedirectResponse($url);
                    
                 }
-                $courriel = \Swift_Message::newInstance()
-                ->setSubject('Un nouveau membre')
-                ->setFrom('honore.rasamoelina@gmail.com')
-                ->setTo('honore.rasamoelina@gmail.com')
-                ->setBody(
-                    $this->renderView(
-                        'Emails/inscription.html.twig'
-                    ),
-                    'text/html'
-                );
-            $this->get('mailer')->send($courriel);
+               
 
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
@@ -99,7 +89,17 @@ class RegistrationController extends Controller
             if (null !== $response = $event->getResponse()) {
                 return $response;
             }
-           
+            $courriel = \Swift_Message::newInstance()
+                ->setSubject('Un nouveau membre')
+                ->setFrom('honore.rasamoelina@gmail.com')
+                ->setTo('honore.rasamoelina@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'Emails/inscription.html.twig'
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($courriel);
         }
         
 

@@ -3,7 +3,6 @@
 namespace AssocBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -49,7 +48,6 @@ class Article
      * @ORM\Column(name="date", type="date")
      */
     private $date;
-
 
 
     /**
@@ -157,5 +155,4 @@ class Article
     {
         return $this->date;
     }
-
 }
