@@ -7,18 +7,13 @@
         </div>
     {% endfor %}
     <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-        <h1>Modifier un article</h1>
-
-        
-            
-            {{ form_start(form, {'method': 'post', 'action': path('assoc_editerarticles',{'id':article.id}), 'attr': {'class': 'form-group'}}) }}
-            {{ form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Le titre de l\'article', 'value': article.titre }}) }}
+        <h1>Modifier un article</h1> 
+        {{ form_start(form, {'method': 'post', 'action': path('assoc_editerarticles',{'id':article.id}), 'attr': {'class': 'form-group'}}) }}
+        {{ form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Le titre de l\'article', 'value': article.titre }}) }}
     {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'placeholder': 'L\'auteur de l\'article', 'value': article.auteur }}) }}
     {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': 'now'|date('d/m/Y') }}) }}
     {{ form_row(form.corps, {'attr': {'class': 'form-control', 'placeholder': 'Le corps de l\'article', 'rows': '5', 'value': article.corps }}) }}
-            <input type="submit" class="btn btn-warning" value="Modifier un article">
-            {{ form_end(form) }}
-        
-
+        <input type="submit" class="btn btn-warning" value="Modifier un article">
+        {{ form_end(form) }}
     </div>
 {% endblock %}

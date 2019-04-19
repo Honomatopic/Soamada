@@ -111,7 +111,7 @@ class AssocController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AssocBundle:Article')->find($id);
         if (null == $article) {
-            throw new \Http\Discovery\Exception\NotFoundException("L'article avec l'id ".$id. "n'existe pas");
+            throw new NotFoundException("L'article avec l'id ".$id. "n'existe pas");
         }
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
