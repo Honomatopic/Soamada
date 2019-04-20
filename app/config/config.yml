@@ -167,20 +167,14 @@ hwi_oauth:
             client_id:           369436007091999
             client_secret:       c58a3a2c384bb6d87f2d71696fcaa909
             scope:               "email"
-            options:
-                display: popup #dialog is optimized for popup window
         google:
             type:                google
             client_id:           568202124242-qv144kjplbpncb9jgkh4nq2hrqssbq7q.apps.googleusercontent.com
             client_secret:       akOdu_MclstK-B3NMwQUZRtc
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
-            options:
-                display: popup #dialog is optimized for popup window
         twitter: 
             type:               twitter
             client_id:          ?
             client_secret:      ?
             score:              ?
-            options:
-                display: popup #dialog is optimized for popup window
          

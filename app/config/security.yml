@@ -26,9 +26,9 @@ security:
                     facebook:           "/login/check-facebook"
                     google:             "/login/check-google"
                     twitter:            "/login/check-twitter"
-                login_path:        /login
+                login_path:        /connect
                 use_forward:       false
-                failure_path:      /login
+                failure_path:      /connect
 
                 #oauth_user_provider:
                     #service: hwi_oauth.user.provider.entity
