@@ -127,3 +127,10 @@ a.bouton {
 .bienvenue {
     font-size: 50px;
 }
+
+section#don {
+    display: inline;
+    text-align: center;
+    margin : 500px;
+    padding: 100px;
+}

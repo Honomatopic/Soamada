@@ -15,14 +15,15 @@
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control' }}) }}
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}
-{{ form_row(form.Nom, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control'}}) }}
-{{ form_row(form.Prenom, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control'}}) }}
+{{ form_row(form.Nom, {'attr': {'placeholder': 'Votre nom', 'class': 'form-control', 'required' : 'true' }}) }}
+{{ form_row(form.Prenom, {'attr': {'placeholder': 'Votre prénom', 'class': 'form-control', 'required' : 'true' }}) }}
 {{ form_row(form.Adresse, {'attr': {'placeholder': 'Votre adresse', 'class': 'form-control'}}) }}
 {{ form_row(form.Cp, {'attr': {'placeholder': 'Votre code postal', 'class': 'form-control'}}) }}
 {{ form_row(form.Ville, {'attr': {'placeholder': 'Votre ville', 'class': 'form-control'}}) }}
 {{ form_row(form.Tel, {'attr': {'placeholder': 'Votre téléphone', 'class': 'form-control'}}) }}
 {{ form_row(form.plainPassword.first, {'attr': {'placeholder': 'Votre mot de passe', 'class': 'form-control', 'label': 'form.password'}}) }}   
-{{ form_row(form.plainPassword.second, {'attr': {'placeholder': 'Votre mot de passe confirmé', 'class': 'form-control', 'label': 'form.password'}}) }}    
+{{ form_row(form.plainPassword.second, {'attr': {'placeholder': 'Votre mot de passe confirmé', 'class': 'form-control', 'label': 'form.password'}}) }}  
+<br>  
     <div>
         <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
         <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}"><button type="button" class="btn-social btn-facebook" style="height: 35px"><span class="fa fa-facebook"></span>Se connecter avec Facebook</button></a>  

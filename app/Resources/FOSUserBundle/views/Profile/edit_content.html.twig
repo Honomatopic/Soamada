@@ -4,11 +4,11 @@
 {{ form_row(form.username, {'attr': {'class': 'form-control', 'value': app.user.username }}) }}
 {{ form_row(form.email, {'attr': {'class': 'form-control', 'value': app.user.email }}) }}
 {{ form_row(form.nom, {'attr': {'class': 'form-control', 'value': app.user.nom }}) }}
-{{ form_row(form.prenom, {'attr': {'class': 'form-control', 'value': app.user.prenom }}) }}
-{{ form_row(form.adresse, {'attr': {'class': 'form-control', 'value': app.user.adresse }}) }}
-{{ form_row(form.cp, {'attr': {'class': 'form-control', 'value': app.user.cp }}) }}
-{{ form_row(form.ville, {'attr': {'class': 'form-control', 'value': app.user.ville }}) }}
-{{ form_row(form.tel, {'attr': {'class': 'form-control', 'value': app.user.tel }}) }}
+{{ form_row(form.prenom, {'attr': {'class': 'form-control', 'value': app.user.prenom  }}) }}
+{{ form_row(form.adresse, {'attr': {'class': 'form-control', 'value': app.user.adresse, 'required' : 'false' }}) }}
+{{ form_row(form.cp, {'attr': {'class': 'form-control', 'value': app.user.cp, 'required' : 'false'  }}) }}
+{{ form_row(form.ville, {'attr': {'class': 'form-control', 'value': app.user.ville, 'required' : 'false'  }}) }}
+{{ form_row(form.tel, {'attr': {'class': 'form-control', 'value': app.user.tel, 'required' : 'false'  }}) }}
 {{ form_row(form.current_password, {'attr': {'class': 'form-control', 'value': app.user.password}}) }}
     <div>
         <input type="submit" class="btn btn-warning" value="{{ 'profile.edit.submit'|trans }}" />

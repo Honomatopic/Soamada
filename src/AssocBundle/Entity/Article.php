@@ -44,7 +44,7 @@ class Article
     private $corps;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
      * @ORM\Column(name="date", type="date")
      */

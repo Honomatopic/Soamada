@@ -67,9 +67,6 @@
                                                                     </h6>
                                                                 </div>
                                                         </article>
-
-
-
                                                         <article class="col-lg-6" id="message">
                                                             <div class="card mb-6">
                                                                 <h3 class="card-header">Pour nous contacter : </h3>
@@ -82,7 +79,6 @@
                                                                             <li><em>Corps</em></li>
                                                                         </ul></h6>
                                                                 </div>
-
                                                                 {% for flash_message in app.session.flashBag.get('info') %}
                                                                     <div class="alert alert-success flash-notice" role="alert">
                                                                         {{ flash_message }}
@@ -90,7 +86,6 @@
                                                                 {% endfor %}
                                                                 <ul>
                                                                 </ul>
-
                                                                 <div >
                                                                     {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
                                                                     {{ form_row(form.nom) }}
@@ -103,5 +98,13 @@
                                                                     {{ form_end(form) }}
                                                                 </div>
                                                         </article>
+                                                    </section>
+                                                                <section id="don">
+                                            <article class="row">
+                                                <h3>Pour soutenir l'association :</h3>
+                                                <p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Faire un don</a>
+            </p>
+                                                    </article>
                                                     </section>
                                                 {% endblock %}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "13a500950d3d74b783b56818d956e2db",
+    "content-hash": "b217bcf6ad037f583bb4a1489eb0898d",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -1378,6 +1378,68 @@
             "time": "2014-01-12T16:20:24+00:00"
         },
         {
+            "name": "jeremykendall/php-domain-parser",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremykendall/php-domain-parser.git",
+                "reference": "896e7e70f02bd4fd77190052799bc61e4d779672"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremykendall/php-domain-parser/zipball/896e7e70f02bd4fd77190052799bc61e4d779672",
+                "reference": "896e7e70f02bd4fd77190052799bc61e4d779672",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-intl": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "jeremykendall/debug-die": "0.0.1.*",
+                "mikey179/vfsstream": "~1.4",
+                "phpunit/phpunit": "~4.4"
+            },
+            "bin": [
+                "bin/parse",
+                "bin/update-psl"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Pdp\\": "src/"
+                },
+                "files": [
+                    "src/pdp-parse-url.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Kendall",
+                    "homepage": "http://about.me/jeremykendall",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/jeremykendall/php-domain-parser/graphs/contributors"
+                }
+            ],
+            "description": "Public Suffix List based URL parsing implemented in PHP.",
+            "homepage": "https://github.com/jeremykendall/php-domain-parser",
+            "keywords": [
+                "Public Suffix List",
+                "domain parsing",
+                "url parsing"
+            ],
+            "time": "2015-03-30T12:49:45+00:00"
+        },
+        {
             "name": "kriswallsmith/assetic",
             "version": "v1.3.2",
             "source": {
@@ -1503,6 +1565,74 @@
                 "http client"
             ],
             "time": "2018-03-19T10:34:40+00:00"
+        },
+        {
+            "name": "league/uri",
+            "version": "4.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/uri.git",
+                "reference": "a2e73bad7e60c3bc61b649680fb8b46876e342e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/a2e73bad7e60c3bc61b649680fb8b46876e342e3",
+                "reference": "a2e73bad7e60c3bc61b649680fb8b46876e342e3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-intl": "*",
+                "ext-mbstring": "*",
+                "jeremykendall/php-domain-parser": "^3.0",
+                "php": ">=5.5.9",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^1.9",
+                "phpunit/phpunit": "^4.0",
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Uri\\": "src"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://nyamsprod.com"
+                }
+            ],
+            "description": "URI manipulation library",
+            "homepage": "http://uri.thephpleague.com",
+            "keywords": [
+                "data-uri",
+                "ftp",
+                "http",
+                "https",
+                "parse_url",
+                "psr-7",
+                "rfc3986",
+                "uri",
+                "url",
+                "ws"
+            ],
+            "time": "2016-12-12T11:36:42+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1691,6 +1821,467 @@
                 "random"
             ],
             "time": "2016-04-03T06:00:07+00:00"
+        },
+        {
+            "name": "payum/be2bill",
+            "version": "1.3.0",
+            "target-dir": "Payum/Be2Bill",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/Be2Bill.git",
+                "reference": "cfaeaaa0921a1c90ea26d38a5fa4a3d0e6635eea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/Be2Bill/zipball/cfaeaaa0921a1c90ea26d38a5fa4a3d0e6635eea",
+                "reference": "cfaeaaa0921a1c90ea26d38a5fa4a3d0e6635eea",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "~1.0"
+            },
+            "require-dev": {
+                "payum/core": "~1.0@dev",
+                "php-http/guzzle6-adapter": "^1.0",
+                "phpunit/phpunit": "~4.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Payum\\Be2Bill": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Be2Bill/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "The Payum extension. It provides Be2Bill payment integration.",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "be2bill",
+                "payment"
+            ],
+            "time": "2016-03-25T14:09:06+00:00"
+        },
+        {
+            "name": "payum/core",
+            "version": "1.4.3",
+            "target-dir": "Payum/Core",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/Core.git",
+                "reference": "9483535dc912d2b248aa01dfc6254d938586550a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/Core/zipball/9483535dc912d2b248aa01dfc6254d938586550a",
+                "reference": "9483535dc912d2b248aa01dfc6254d938586550a",
+                "shasum": ""
+            },
+            "require": {
+                "league/uri": "~4.0",
+                "payum/iso4217": "~1.0",
+                "php": "^5.5.0|^7.0",
+                "php-http/client-implementation": "^1.0",
+                "php-http/message": "^1.0",
+                "twig/twig": "~1.0|~2.0"
+            },
+            "require-dev": {
+                "defuse/php-encryption": "^2",
+                "doctrine/orm": "2.*",
+                "ext-curl": "*",
+                "ext-pdo_sqlite": "*",
+                "omnipay/dummy": "~2.0",
+                "payum/omnipay-bridge": "^1",
+                "php-http/guzzle6-adapter": "^1.0",
+                "phpunit/phpunit": "~4.0",
+                "propel/propel1": "~1.7",
+                "psr/log": "~1.0",
+                "symfony/dependency-injection": "~2.8|~3.0",
+                "symfony/form": "~2.8|~3.0",
+                "symfony/http-foundation": "~2.8|~3.0",
+                "symfony/http-kernel": "~2.8|~3.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0",
+                "symfony/routing": "~2.8|~3.0",
+                "symfony/validator": "~2.8|~3.0",
+                "zendframework/zend-db": "~2"
+            },
+            "suggest": {
+                "defuse/php-encryption": "^2 If you want to encrypt gateways credentials in database",
+                "doctrine/mongodb-odm": "~1.1 If you want to store models to mongo doctrin2 ODM",
+                "doctrine/orm": "~2.3 If you want to store models to database using doctrin2 ORM",
+                "monolog/monolog": "~1.0 If you want to use PSR-3 logger",
+                "payum/authorize-net-aim": "self.version If you want to use Authorize.Net AIM payment gateway",
+                "payum/be2bill": "self.version If you want to use be2bill payment gateway",
+                "payum/omnipay-bridge": "self.version If you want to use omnipay's gateways",
+                "payum/payex": "self.version If you want to use payex payment gateway",
+                "payum/paypal-express-checkout-nvp": "self.version If you want to use paypal express checkout, digital goods or recurring payments",
+                "payum/paypal-ipn": "self.version If you want to use paypal instant payment notifications(Paypal IPN)",
+                "payum/paypal-pro-checkout-nvp": "self.version If you want to use paypal pro checkout",
+                "payum/paypal-rest": "self.version If you want to use paypal rest gateway",
+                "propel/propel": "If you want to store models to Propel2 ORM",
+                "propel/propel1": "~1.7 If you want to store models to Propel1 ORM",
+                "symfony/dependency-injection": "~2.8|~3.0 If you want to use container aware stuff",
+                "symfony/form": "~2.8|~3.0 If you want to use forms",
+                "symfony/http-foundation": "~2.8|~3.0 If you want to use HttpRequestVerifier or HttpResponse reply from symfony's bridge",
+                "symfony/http-kernel": "~2.8|~3.0 If you want to use HttpRequestVerifier from symfony's bridge",
+                "symfony/routing": "~2.8|~3.0 If you want to use TokenFactory from symfony's bridge",
+                "zendframework/zend-db": "~2.0 If you want to store models to Zend Db ORM"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Payum\\Core\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Payum/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "Payum offers everything you need to work with payments. From simplest use cases to very advanced ones.",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "authorize",
+                "capture",
+                "notify",
+                "payment",
+                "payout",
+                "recurring payment",
+                "refund",
+                "subscription",
+                "withdrawal"
+            ],
+            "time": "2017-09-01T08:19:41+00:00"
+        },
+        {
+            "name": "payum/iso4217",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/iso4217.git",
+                "reference": "6a45480e2818350dea58b7a076d0115aa7ff5789"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/iso4217/zipball/6a45480e2818350dea58b7a076d0115aa7ff5789",
+                "reference": "6a45480e2818350dea58b7a076d0115aa7ff5789",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Payum\\ISO4217\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Payum/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "ISO 4217 PHP Library",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "4217",
+                "ISO 4217",
+                "currencies",
+                "iso",
+                "library"
+            ],
+            "time": "2016-08-04T08:15:12+00:00"
+        },
+        {
+            "name": "payum/offline",
+            "version": "1.3.0",
+            "target-dir": "Payum/Offline",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/Offline.git",
+                "reference": "6ebd3dd741ef0d0d3271265f795c90b4a34d1487"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/Offline/zipball/6ebd3dd741ef0d0d3271265f795c90b4a34d1487",
+                "reference": "6ebd3dd741ef0d0d3271265f795c90b4a34d1487",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "~1.0"
+            },
+            "require-dev": {
+                "payum/core": "~1.0@dev",
+                "phpunit/phpunit": "~4.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Payum\\Offline": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/Offline/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "The Payum extension. It provides Offline payment integration.",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "invoice",
+                "offlile",
+                "payment"
+            ],
+            "time": "2016-03-25T14:09:06+00:00"
+        },
+        {
+            "name": "payum/paypal-express-checkout-nvp",
+            "version": "1.3.0",
+            "target-dir": "Payum/Paypal/ExpressCheckout/Nvp",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/PaypalExpressCheckoutNvp.git",
+                "reference": "736bd27324db4ceb725bee33ee3409afc4f2bb2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/PaypalExpressCheckoutNvp/zipball/736bd27324db4ceb725bee33ee3409afc4f2bb2f",
+                "reference": "736bd27324db4ceb725bee33ee3409afc4f2bb2f",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "~1.0"
+            },
+            "require-dev": {
+                "payum/core": "~1.0@dev",
+                "php-http/guzzle6-adapter": "^1.0",
+                "phpunit/phpunit": "~4.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Payum\\Paypal\\ExpressCheckout\\Nvp": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/PaypalExpressCheckoutNvp/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "The Payum extension. It provides Paypal ExpressCheckout payment integration.",
+            "homepage": "http://payum.org/",
+            "keywords": [
+                "digital goods",
+                "express checkout",
+                "payment",
+                "paypal",
+                "recurring payment"
+            ],
+            "time": "2016-03-25T14:09:06+00:00"
+        },
+        {
+            "name": "payum/payum-bundle",
+            "version": "2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Payum/PayumBundle.git",
+                "reference": "fd930cb9516c8a5f19b4eeae35c8e37eea77ce11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/fd930cb9516c8a5f19b4eeae35c8e37eea77ce11",
+                "reference": "fd930cb9516c8a5f19b4eeae35c8e37eea77ce11",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "^1.4",
+                "php": "^5.5.0|^7.0",
+                "symfony/form": "~2.8|~3.0",
+                "symfony/framework-bundle": "~2.8|~3.0",
+                "symfony/validator": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "defuse/php-encryption": "^2",
+                "doctrine/orm": "~2.5",
+                "ext-curl": "*",
+                "ext-pdo_sqlite": "*",
+                "ext-soap": "*",
+                "fp/klarna-invoice": "0.1.*",
+                "klarna/checkout": "~1|~2.0",
+                "omnipay/dummy": "~2.0",
+                "omnipay/paypal": "~2.0",
+                "omnipay/stripe": "~2.0",
+                "paypal/rest-api-sdk-php": "0.5.*",
+                "payum/jms-payment-bridge": "^1@dev",
+                "payum/omnipay-bridge": "^1@dev",
+                "payum/payum": "^1.4@dev",
+                "php-http/guzzle6-adapter": "^1",
+                "phpunit/phpunit": "~4.0",
+                "sonata-project/admin-bundle": "^3",
+                "stripe/stripe-php": "~1.0",
+                "symfony/browser-kit": "~2.8|~3.0",
+                "symfony/class-loader": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/phpunit-bridge": "~2.8|~3.0",
+                "symfony/security-acl": "~2.8|~3.0",
+                "symfony/twig-bundle": "^2.8|^3",
+                "twig/twig": "~1.16|~2.0"
+            },
+            "suggest": {
+                "sonata-project/admin-bundle": "^3 If you want to configure payments in the backend."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Payum\\Bundle\\PayumBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Payum/PayumBundle/contributors"
+                },
+                {
+                    "name": "Kotlyar Maksim",
+                    "email": "kotlyar.maksim@gmail.com"
+                },
+                {
+                    "name": "Payum project",
+                    "homepage": "http://payum.org/"
+                }
+            ],
+            "description": "Rich payment solutions for symfony2. Paypal, payex, authorize.net, be2bill, omnipay, recurring payments, instant notifications and many more",
+            "homepage": "http://payum.org",
+            "keywords": [
+                "authorize.net",
+                "be2bill",
+                "instant notifications",
+                "klarna",
+                "offline",
+                "omnipay",
+                "payex",
+                "payment",
+                "paypal",
+                "paypal express checkout",
+                "paypal pro checkout",
+                "recurring payment",
+                "stripe",
+                "stripe checkout",
+                "stripe.js",
+                "symfony"
+            ],
+            "time": "2017-08-02T07:32:51+00:00"
         },
         {
             "name": "php-http/client-common",
@@ -3480,7 +4071,11 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "payum/be2bill": 20,
+        "payum/paypal-express-checkout-nvp": 20,
+        "payum/offline": 20,
+        "payum/payum-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

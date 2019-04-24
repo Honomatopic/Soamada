@@ -23,7 +23,7 @@ class ArticleType extends AbstractType {
                 ->add('auteur', TextType::class)
                 ->add('corps', TextareaType::class)
                 ->add('date', DateType::class, array('widget' => 'single_text',
-                    'format' => 'dd-MM-yyyy',))
+                    'format' => 'dd/MM/yyyy',))
         //->add('photo', FileType::class, array('attr' =>array('placeholder' => 'La photo de l\'article', 'class'=>'form-control')))
         ;
     }

@@ -49,7 +49,12 @@ class RegistrationController extends Controller
         /** @var $dispatcher EventDispatcherInterface */
         $dispatcher = $this->get('event_dispatcher');
 
-        $user = $userManager->createUser();
+        try {
+            $user = $userManager->createUser();
+        } catch (Exception $ex) {
+            return $event->getResponse();
+        }
+        
         $user->setEnabled(true);
 
         $event = new GetResponseUserEvent($user, $request);
