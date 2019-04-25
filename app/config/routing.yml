@@ -33,7 +33,5 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    
-payum:
-    resource: "@PayumBundle/Resources/config/routing/all.xml"
+
 

@@ -20,7 +20,7 @@ class AppKernel extends Kernel {
             new \FOS\UserBundle\FOSUserBundle(),
             new Http\HttplugBundle\HttplugBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            new Payum\Bundle\PayumBundle\PayumBundle(),
+            //new Payum\Bundle\PayumBundle\PayumBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
