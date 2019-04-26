@@ -74,6 +74,11 @@ class Membre extends BaseUser
      */
     protected $twitter_id;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="Don")
+     * @ORM\Column(name="don_id",nullable=true,type="integer")
+     */
+    protected $don;
 
     public function __construct()
     {
@@ -295,5 +300,53 @@ class Membre extends BaseUser
     public function getGoogleId()
     {
         return $this->google_id;
+    }
+
+    /**
+     * Set twitterId
+     *
+     * @param string $twitterId
+     *
+     * @return Membre
+     */
+    public function setTwitterId($twitterId)
+    {
+        $this->twitter_id = $twitterId;
+
+        return $this;
+    }
+
+    /**
+     * Get twitterId
+     *
+     * @return string
+     */
+    public function getTwitterId()
+    {
+        return $this->twitter_id;
+    }
+
+    /**
+     * Set don
+     *
+     * @param integer $don
+     *
+     * @return Membre
+     */
+    public function setDon($don)
+    {
+        $this->don = $don;
+
+        return $this;
+    }
+
+    /**
+     * Get don
+     *
+     * @return integer
+     */
+    public function getDon()
+    {
+        return $this->don;
     }
 }

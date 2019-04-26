@@ -86,7 +86,7 @@ class AssocController extends Controller {
             //$photo = $article->getPhoto();
             //$nomphoto = md5(uniqid()) . '.' . $photo->guessExtension();
             //$photo->move(
-                    //$this->getParameter('photos_directory'), $nomphoto
+            //$this->getParameter('photos_directory'), $nomphoto
             //);
             //$article->setPhoto($nomphoto);
             //$this->generateUrl('assoc_journal');
@@ -94,7 +94,7 @@ class AssocController extends Controller {
             $em->persist($article);
             $em->flush($article);
             $request->getSession()->getFlashBag()->add('success', 'Article crée !');
-           return $this->redirectToRoute('assoc_journal');
+            return $this->redirectToRoute('assoc_journal');
         }
         return $this->render('AssocBundle:Default:creerarticles.html.twig', array('form' => $form->createView(), 'article' => $article));
     }
@@ -111,7 +111,7 @@ class AssocController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AssocBundle:Article')->find($id);
         if (null == $article) {
-            throw new NotFoundException("L'article avec l'id ".$id. "n'existe pas");
+            throw new NotFoundException("L'article avec l'id " . $id . "n'existe pas");
         }
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
@@ -201,6 +201,12 @@ class AssocController extends Controller {
         $this->get('mailer')->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
+    }
+
+    public function effectuerDonAction(Request $request) {
+        $form = $this->createForm('AssocBundle\Form\DonType');
+        $form->handleRequest($request);
+        return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
     }
 
 }

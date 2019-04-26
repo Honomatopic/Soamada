@@ -2,16 +2,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
 <h1>Veuillez-vous enregistrer</h1>
- <h5 class="card-subtitle text-muted">Veuillez remplir ses champs qui sont obligatoires pour l'adhésion :
-                        <br>
-                        <ul>
-                            <li><em>Nom d'utilisateur</em></li>
-                            <li><em>Nom</em></li>
-                            <li><em>Prénom</em></li>
-                            <li><em>Email</em></li>
-                            <li><em>Mot de passe</em></li>
-                            <li><em>Répeter le mot de passe</em></li>
-                        </ul></h5>
+ 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'class': 'form-group'}}) }}
 {{ form_row(form.username, {'attr': {'placeholder': 'Votre nom d\'utilisateur', 'class': 'form-control' }}) }}
 {{ form_row(form.email, {'attr': {'placeholder': 'Votre Email', 'class': 'form-control'}}) }}

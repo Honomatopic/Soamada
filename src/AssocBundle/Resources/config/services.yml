@@ -9,5 +9,9 @@ services:
          -  { name: form.type }
    assoc_lettre:
       class: AssocBundle\Form\LettreType
+   assoc_don:
+       class: AssocBundle\Form\DonType
+       tags:
+           - { name: form.don }
       
 

@@ -30,3 +30,6 @@ assoc_envoisnewsletter:
     path:    /envoi
     defaults: { _controller: AssocBundle:Assoc:envoyerNewsletter }
 
+assoc_effectuerdon:
+    path:   /effectuerdon
+    defaults: { _controller: AssocBundle:Assoc:effectuerDon }
