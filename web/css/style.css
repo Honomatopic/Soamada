@@ -11,7 +11,7 @@ and open the template in the editor.
 */
 
 body {
-    padding : 10%;
+    padding : 7%;
     background: url(../img/fondsoamada.jpg);
     position: absolue;
     width: 100%; /* Il occupe toute la largeur de l'écran */
@@ -145,4 +145,9 @@ section#don {
     text-align: center;
     margin : 500px;
     padding: 100px;
+}
+
+div#ligne {
+    float: none;
+    display: inline-block;
 }

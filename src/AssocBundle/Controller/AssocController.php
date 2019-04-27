@@ -5,6 +5,7 @@ namespace AssocBundle\Controller;
 use AssocBundle\Entity\Abonne;
 use AssocBundle\Entity\Article;
 use AssocBundle\Entity\Message;
+use AssocBundle\Entity\Don;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -145,7 +146,6 @@ class AssocController extends Controller {
      */
     public function inscriptionNewsletterAction(Request $request) {
         $abonnes = new Abonne();
-
         $form = $this->createForm('AssocBundle\Form\AbonneType', $abonnes);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
@@ -203,10 +203,37 @@ class AssocController extends Controller {
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
 
-    public function effectuerDonAction(Request $request) {
-        $form = $this->createForm('AssocBundle\Form\DonType');
+    /**
+     * Méthode qui enregistre un don en base de données
+     * 
+     * @param Request $request
+     * @return type
+     */
+    public function creerDonAction(Request $request) {
+        $donateur = new don();
+        $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($donateur);
+            $em->flush($donateur);
+            $request->getSession()->getFlashBag()->add('success', 'Don validé !');
+            return $this->redirectToRoute('assoc_effectuerdon' , array('id' => $donateur->getId()));
+        }
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
+    }
+
+    /**
+     * Méthode qui affiche les informations du donateur
+     * 
+     * @param Don $donateur
+     * @param Don $id
+     * @return type
+     */
+    public function effectuerDonAction(Don $donateur, Don $id) {
+        $em = $this->getDoctrine()->getManager();
+        $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+        return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
     }
 
 }

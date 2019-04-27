@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+        {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success flash-notice" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {{ donateur.nom }}<br>
+    {{ donateur.prenom }}<br>
+    {{ donateur.email }}<br>
+    {{ donateur.adresse }}<br>
+    {{ donateur.cp }}<br>
+    {{ donateur.ville }}<br>
+    {{ donateur.montant }}<br>
+    {{ donateur.moyen }}<br>
+    
+{% endblock %}

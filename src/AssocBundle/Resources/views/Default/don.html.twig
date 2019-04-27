@@ -2,7 +2,7 @@
 {% block body %}
      <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
           <h1>Pour soutenir l'association</h1>
-           {{ form_start(form, {'method': 'post', 'attr': {'class': 'form-group'}}) }}
+           {{ form_start(form, {'method': 'post', 'action':path('assoc_creerdon'), 'attr': {'class': 'form-group'}}) }}
            {{ form_row(form.nom) }}
            {{ form_row(form.prenom) }}
            {{ form_row(form.email) }}
@@ -10,8 +10,12 @@
            {{ form_row(form.cp) }}
            {{ form_row(form.ville) }}
            {{ form_row(form.tel) }}
+           <div class="col-md-4">
            {{ form_row(form.montant) }}
-           {{ form_row(form.moyen) }}
+           </div>
+           <div id="ligne">
+               {{ form_row(form.moyen) }}
+           </div>
            {{ form_row(form.Valider) }}
            {{ form_end(form) }}
      </div>
