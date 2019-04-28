@@ -24,6 +24,7 @@
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Form/AbonneType.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Entity/Effectuer.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/doneffectue.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuthBundle/views/layout.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/routing.yml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/security.xml</file>
@@ -31,6 +32,7 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/views/base.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/views/Emails/inscription.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/web/js/autocompletedon.js</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Controller/DefaultController.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Form/ArticleType.php</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/listeabonnenews.html.twig</file>

@@ -16,9 +16,11 @@
 <h2>{{ article.titre }}</h2>
 <p id="auteur">Par {{ article.auteur }} le {{ article.date|date("d/m/Y") }}</p>
 <p>{{ article.corps }}</p>
-<!--- 
-<img src="{#{ asset('img/'~ article.photo)}#}"/>
--->
+{% if article.image.webPath is defined %}
+<img src="{{ asset(article.image.webPath)}}" alt="{{ article.image.alt }}"/>
+{% endif %}
+
+
 {% if is_granted("ROLE_ADMIN") %}
 <p><a href="{{ path('assoc_editerarticles', {'id': article.id})}}"><button type="button" class="btn btn-warning">Editer</button></a>
 <a href="{{ path('assoc_supprimerarticles',{'id': article.id})}}" onclick="return confirm('Êtes-vous sûr de supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></p>

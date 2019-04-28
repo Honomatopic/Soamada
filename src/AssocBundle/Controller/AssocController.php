@@ -36,7 +36,6 @@ class AssocController extends Controller {
             $em->persist($message);
             $em->flush($message);
             $message->getId();
-            //$message->setEmail($form["email"]->getData());
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
 
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
@@ -84,13 +83,7 @@ class AssocController extends Controller {
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
-            //$photo = $article->getPhoto();
-            //$nomphoto = md5(uniqid()) . '.' . $photo->guessExtension();
-            //$photo->move(
-            //$this->getParameter('photos_directory'), $nomphoto
-            //);
-            //$article->setPhoto($nomphoto);
-            //$this->generateUrl('assoc_journal');
+           
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush($article);
@@ -209,7 +202,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return type
      */
-    public function creerDonAction(Request $request) {
+    /*public function creerDonAction(Request $request) {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
@@ -221,7 +214,7 @@ class AssocController extends Controller {
             return $this->redirectToRoute('assoc_effectuerdon' , array('id' => $donateur->getId()));
         }
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }
+    }*/
 
     /**
      * Méthode qui affiche les informations du donateur
@@ -230,10 +223,10 @@ class AssocController extends Controller {
      * @param Don $id
      * @return type
      */
-    public function effectuerDonAction(Don $donateur, Don $id) {
+    /*public function effectuerDonAction(Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
-    }
+    }*/
 
 }

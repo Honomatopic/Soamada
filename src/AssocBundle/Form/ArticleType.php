@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AssocBundle\Form\ImageType;
 
 class ArticleType extends AbstractType {
 
@@ -24,7 +25,7 @@ class ArticleType extends AbstractType {
                 ->add('corps', TextareaType::class)
                 ->add('date', DateType::class, array('widget' => 'single_text',
                     'format' => 'dd/MM/yyyy',))
-        //->add('photo', FileType::class, array('attr' =>array('placeholder' => 'La photo de l\'article', 'class'=>'form-control')))
+                ->add('image', ImageType::class)
         ;
     }
 

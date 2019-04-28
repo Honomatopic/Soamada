@@ -10,9 +10,11 @@
         <h1>Créer un article</h1>
         {{ form_start(form, {'method': 'post', 'action': path('assoc_creerarticles'), 'attr': {'class': 'form-group'}}) }}
         {{ form_row(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Le titre de l\'article'}}) }}
-    {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'placeholder': 'L\'auteur de l\'article', 'value': app.user.username }}) }}
-    {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': 'now'|date('d/m/Y') }}) }}
-    {{ form_row(form.corps, {'attr': {'class': 'form-control', 'placeholder': 'Le corps de l\'article', 'rows': '5' }}) }}
+        {{ form_row(form.auteur, {'attr': {'class': 'form-control', 'placeholder': 'L\'auteur de l\'article', 'value': app.user.username }}) }}
+        {{ form_row(form.date, {'attr': {'class': 'form-control', 'value': 'now'|date('d/m/Y') }}) }}
+        {{ form_row(form.corps, {'attr': {'class': 'form-control', 'placeholder': 'Le corps de l\'article', 'rows': '5' }}) }}
+        {{ form_row(form.image) }}
+<br>
         <input type="submit" class="btn btn-success" value="Créer un article">
         {{ form_end(form) }}
     </div>
