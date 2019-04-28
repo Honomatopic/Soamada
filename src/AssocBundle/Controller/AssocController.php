@@ -202,7 +202,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return type
      */
-    /*public function creerDonAction(Request $request) {
+    public function creerDonAction(Request $request) {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
@@ -214,7 +214,7 @@ class AssocController extends Controller {
             return $this->redirectToRoute('assoc_effectuerdon' , array('id' => $donateur->getId()));
         }
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }*/
+    }
 
     /**
      * Méthode qui affiche les informations du donateur
@@ -223,10 +223,10 @@ class AssocController extends Controller {
      * @param Don $id
      * @return type
      */
-    /*public function effectuerDonAction(Don $donateur, Don $id) {
+    public function effectuerDonAction(Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
-    }*/
+    }
 
 }
