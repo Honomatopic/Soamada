@@ -123,7 +123,7 @@ a.bouton {
     float: left;
     display: block;
     font-family: 'Kanit', cursive;
-    font-size: 40px;
+    font-size: 30px;
     margin-right: 100px;
     text-shadow: white 0.2em 0.2em 0.2em;
 }
@@ -132,8 +132,8 @@ a.bouton {
     float: left;
     display: block;
     text-align: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
 }
 
 .bienvenue {

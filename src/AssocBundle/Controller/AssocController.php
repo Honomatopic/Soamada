@@ -50,8 +50,6 @@ class AssocController extends Controller {
             );
             $this->get('mailer')->send($contact);
         }
-
-
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
         return $this->render('AssocBundle:Default:index.html.twig', array('form' => $form->createView(),
@@ -68,7 +66,6 @@ class AssocController extends Controller {
      */
     public function afficherJournalAction() {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
-
         return $this->render('AssocBundle:Default:journal.html.twig', array('articles' => $articles));
     }
 
@@ -83,7 +80,6 @@ class AssocController extends Controller {
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
-           
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush($article);
@@ -181,7 +177,6 @@ class AssocController extends Controller {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
-
             $lettreinfo = \Swift_Message::newInstance()
                     ->setSubject('La lettre d\'information')
                     ->setFrom('admin@admin.com')
