@@ -53,7 +53,6 @@ class AssocController extends Controller {
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
         return $this->render('AssocBundle:Default:index.html.twig', array('form' => $form->createView(),
-                    //'post' => $_POST,
                     'message' => $message,
                     'membres' => $membres,
         ));
@@ -218,10 +217,11 @@ class AssocController extends Controller {
      * @param Don $id
      * @return type
      */
+    /*
     public function effectuerDonAction(Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
-    }
+    }*/
 
 }
