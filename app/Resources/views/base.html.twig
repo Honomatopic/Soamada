@@ -14,8 +14,8 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-
-    <nav class="navbar-fixed-top navbar-default">
+   <body data-spy="scroll" data-target="#menu">
+    <nav class="navbar-fixed-top navbar-default js-scroll-trigger" id="menu">
         <div class="container-fluid">
             <div class="navbar-header">
 
@@ -65,7 +65,7 @@
             </div>
         </div>
     </nav>
-
+    
 
     <!-- /.nav-collapse -->
 
@@ -76,6 +76,7 @@
         
         {% block body %}  {% endblock %}
     </section>
+    </body>
     <hr>
     <footer class="container center-block police">&copy {{ "now"|date("Y") }} Andria</footer>
         {% block javascripts %}
