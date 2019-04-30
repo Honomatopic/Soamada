@@ -11,7 +11,7 @@ and open the template in the editor.
 */
 
 body {
-    padding : 10%;
+    padding : 7%;
     background: url(../img/fondsoamada.jpg);
     position: absolue;
     width: 100%; /* Il occupe toute la largeur de l'écran */
@@ -26,7 +26,7 @@ body {
 #cantine {
     padding : 10%;
     display: block;
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 #nous {
@@ -152,3 +152,17 @@ div#ligne {
     display: inline-block;
 }
 
+.map-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-responsive iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+}
