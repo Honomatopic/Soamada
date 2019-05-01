@@ -23,6 +23,7 @@ body {
     color: whitesmoke;
 }
 
+
 #cantine {
     padding : 10%;
     display: block;
@@ -39,7 +40,6 @@ body {
     padding : 10%;
     display: block;
     vertical-align:middle;
-
 }
 .jumbotron {
     color: blue;
@@ -69,6 +69,10 @@ body {
     display: inline;
     float: left;
     vertical-align: middle;
+}
+
+#don {
+
 }
 
 .fos_user_user_show {

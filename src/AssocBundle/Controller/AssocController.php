@@ -8,6 +8,7 @@ use AssocBundle\Entity\Message;
 use AssocBundle\Entity\Don;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AssocController extends Controller {
@@ -172,7 +173,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return void
      */
-    public function envoyerNewsletterAction(Request $request, $parameters = array()) {
+    public function envoyerNewsletterAction(Request $request) {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
@@ -189,6 +190,21 @@ class AssocController extends Controller {
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
+    
+    /**
+     * Méthode qui génère la page journal en PDF
+     * 
+     * @param Request $request
+     * @return Response
+     */
+    public function genererJournalenPdfAction(Request $request) {
+        $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
+        $snappy = $this->get("knp_snappy.pdf");
+        $html = $this->renderView("AssocBundle:Default:journal.html.twig", array('articles' => $articles)
+        );
+        $nomdufichier = "journal_de_l'association_en_pdf";
+        return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="'.$nomdufichier.'".pdf'));
+    }
 
     /**
      * Méthode qui enregistre un don en base de données
@@ -196,7 +212,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return type
      */
-    public function creerDonAction(Request $request) {
+    /*public function creerDonAction(Request $request) {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
@@ -208,7 +224,7 @@ class AssocController extends Controller {
             return $this->redirectToRoute('assoc_effectuerdon' , array('id' => $donateur->getId()));
         }
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }
+    }*/
 
     /**
      * Méthode qui affiche les informations du donateur

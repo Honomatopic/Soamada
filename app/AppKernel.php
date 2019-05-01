@@ -20,6 +20,7 @@ class AppKernel extends Kernel {
             new \FOS\UserBundle\FOSUserBundle(),
             new Http\HttplugBundle\HttplugBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             //new Payum\Bundle\PayumBundle\PayumBundle(),
         ];
 

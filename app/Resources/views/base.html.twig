@@ -8,11 +8,10 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" rel="stylesheet">
-            <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{app.request.schemeAndHttpHost ~ asset('css/bootswatch/bootstrap.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{app.request.schemeAndHttpHost ~ asset('css/style.css') }}" type="text/css">
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ app.request.schemeAndHttpHost ~ asset('favicon.ico') }}" />
     </head>
    <body data-spy="scroll" data-target="#menu">
     <nav class="navbar-fixed-top navbar-default js-scroll-trigger" id="menu">
@@ -26,22 +25,22 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <p class="navbar-brand titre"><img class="logo" src="{{ asset('img/logo.jpg') }}">Soamada 28</p>
+                <p class="navbar-brand titre"><img class="logo" src="{{ app.request.schemeAndHttpHost ~ asset('img/logo.jpg') }}">Soamada 28</p>
             </div>
 
             <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path('assoc_homepage') }}"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#nous"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#accueil" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#nous" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>  Projets<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#cantine"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
-                            <li><a href="#fontaine"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
-                            <li><a href="#fourniture"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
+                            <li><a href="#cantine" class="slide-section"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
+                            <li><a href="#fontaine" class="slide-section"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
+                            <li><a href="#fourniture" class="slide-section"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
                         </ul>
-                    <li><a href="#message"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#don"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#message" class="slide-section"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
+                    <li><a href="#don" class="slide-section"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
                     <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
                     <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
 
@@ -84,12 +83,12 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="{{ asset('js/scrollmenu.js') }}"></script>
-        <script src="{{ asset('js/autocompleteregistration.js') }}"></script>
-        <script src="{{ asset('js/autocompleteprofile.js') }}"></script>
-        <script src="{{ asset('js/autocompletedon.js') }}"></script>
-        <script src="{{ asset('js/modal_connecter.js') }}"></script>
-        <script src="{{ asset('js/modal_enregistrer.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/scrollmenu.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompleteregistration.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompleteprofile.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompletedon.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/modal_connecter.js') }}"></script>
+        <script src="{{app.request.schemeAndHttpHost ~  asset('js/modal_enregistrer.js') }}"></script>
     {% endblock %}
 </body>
 </html>
