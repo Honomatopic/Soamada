@@ -1,0 +1,15 @@
+{% extends "AssocBundle::layout.html.twig" %}
+
+{% block body %}
+    <h2>{{ article.titre }}</h2>
+<p id="auteur">Par {{ article.auteur }} le {{ article.date|date("d/m/Y") }}</p>
+<p>{{ article.corps }}</p>
+{% if article.image.webPath is defined %}
+<img src="{{ app.request.schemeAndHttpHost ~ asset(article.image.webPath)}}" alt="{{ article.image.alt }}"/>
+{% endif %} 
+<p><a href="{{ path('assoc_articlepdf', {'id': article.id}) }}"><button type="button" class="btn btn-primary"> Générer l'article en PDF</button></a>
+{% if is_granted("ROLE_ADMIN") %}
+<a href="{{ path('assoc_editerarticles', {'id': article.id})}}"><button type="button" class="btn btn-warning">Editer</button></a>
+<a href="{{ path('assoc_supprimerarticles',{'id': article.id})}}" onclick="return confirm('Êtes-vous sûr de supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></p>
+{% endif %}
+{% endblock %}

@@ -1,6 +1,7 @@
 {% extends "AssocBundle::layout.html.twig" %}
 {% block body %}
-<h1>Le journal de l'association</h1>
+    <section id="journal">
+<h1 class="bienvenue">Le journal de l'association</h1>
 <p><a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a></p>
 {% if is_granted("ROLE_ADMIN") %}
 {% for flash_message in app.session.flashBag.get('success') %}
@@ -12,22 +13,16 @@
 {% endif %}
 <h4><em>Pour recevoir la lettre d'information</em></h4>
 <p>Pour s'inscrire à la newsletter : <a href="{{ path('assoc_inscriptionnewsletter')}}">Cliquer ici</a></p>
-<p><a href="{{ path('assoc_journalpdf') }}"><button type="button" class="btn btn-primary btn-lg"> Le journal en PDF</button></a></p>
+
 {% for article in articles %}
 <h2>{{ article.titre }}</h2>
-<p id="auteur">Par {{ article.auteur }} le {{ article.date|date("d/m/Y") }}</p>
-<p>{{ article.corps }}</p>
-{% if article.image.webPath is defined %}
-<img src="{{ app.request.schemeAndHttpHost ~ asset(article.image.webPath)}}" alt="{{ article.image.alt }}"/>
-{% endif %}
+<a href="{{ path('assoc_unarticle', {'id': article.id}) }}">+ Savoir plus</a>
 
 
-{% if is_granted("ROLE_ADMIN") %}
-<p><a href="{{ path('assoc_editerarticles', {'id': article.id})}}"><button type="button" class="btn btn-warning">Editer</button></a>
-<a href="{{ path('assoc_supprimerarticles',{'id': article.id})}}" onclick="return confirm('Êtes-vous sûr de supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></p>
-{% endif %}
+
 {% endfor %}
 {% if is_granted("ROLE_ADMIN") %}
 <h2><em><a href="{{ path('assoc_listeabonnes') }}">La liste des abonnés</a></em></h2>
 {% endif %}
+    </section>
 {% endblock %}

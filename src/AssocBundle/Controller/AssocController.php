@@ -68,6 +68,18 @@ class AssocController extends Controller {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         return $this->render('AssocBundle:Default:journal.html.twig', array('articles' => $articles));
     }
+    
+    /**
+     * Méthode qui affiche un article en fonction de son identifiant
+     * 
+     * @param Article $id
+     * @return type
+     */
+    public function selectionnerUnArticleAction(Article $id) {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('AssocBundle:Article')->find($id);
+        return $this->render('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
+    }
 
     /**
      * Méthode qui permet de créer des articles pour le journal
@@ -192,17 +204,16 @@ class AssocController extends Controller {
     }
     
     /**
-     * Méthode qui génère la page journal en PDF
+     * Méthode qui génère l'article en PDF
      * 
      * @param Request $request
      * @return Response
      */
-    public function genererJournalenPdfAction(Request $request) {
-        $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
+    public function genererArticleenPdfAction(Request $request, Article $id) {
+        $article = $this->getDoctrine()->getRepository('AssocBundle:Article')->find($id);
         $snappy = $this->get("knp_snappy.pdf");
-        $html = $this->renderView("AssocBundle:Default:journal.html.twig", array('articles' => $articles)
-        );
-        $nomdufichier = "journal_de_l'association_en_pdf";
+        $html = $this->renderView('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
+        $nomdufichier = "article_de_l'association_en_pdf";
         return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="'.$nomdufichier.'".pdf'));
     }
 
