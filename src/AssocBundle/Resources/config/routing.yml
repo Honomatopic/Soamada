@@ -33,13 +33,18 @@ assoc_envoisnewsletter:
 assoc_unarticle:
     path:    /article/{id}
     defaults: { _controller: AssocBundle:Assoc:selectionnerUnArticle }
-#assoc_creerdon:
-    #path:   /creerdon
-    #defaults: { _controller: AssocBundle:Assoc:creerDon }
+    
+assoc_creerdon:
+    path:   /creerdon
+    defaults: { _controller: AssocBundle:Assoc:creerDon }
 
-#assoc_effectuerdon:
-    #path:   /effectuerdon/{id}
-    #defaults: { _controller: AssocBundle:Assoc:effectuerDon }
+assoc_paiementdon:
+    path:   /paiementdon
+    defaults: { _controller: AssocBundle:Assoc:paiementDon }
+    
+assoc_effectuerdon:
+    path:   /effectuerdon/{id}
+    defaults: { _controller: AssocBundle:Assoc:effectuerDon }
     
 assoc_articlepdf:
     path:  /articleenpdf/{id}

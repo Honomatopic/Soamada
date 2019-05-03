@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Payum\Core\Model\Payment;
+use Payum\Core\Reply\HttpRedirect;
+use Payum\Core\Reply\HttpResponse;
+use Payum\Core\Request\Capture;
 
 class AssocController extends Controller {
 
@@ -68,7 +72,7 @@ class AssocController extends Controller {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         return $this->render('AssocBundle:Default:journal.html.twig', array('articles' => $articles));
     }
-    
+
     /**
      * Méthode qui affiche un article en fonction de son identifiant
      * 
@@ -202,7 +206,7 @@ class AssocController extends Controller {
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
-    
+
     /**
      * Méthode qui génère l'article en PDF
      * 
@@ -214,7 +218,7 @@ class AssocController extends Controller {
         $snappy = $this->get("knp_snappy.pdf");
         $html = $this->renderView('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
         $nomdufichier = "article_de_l'association_en_pdf";
-        return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="'.$nomdufichier.'".pdf'));
+        return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="' . $nomdufichier . '".pdf'));
     }
 
     /**
@@ -223,7 +227,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return type
      */
-    /*public function creerDonAction(Request $request) {
+    public function creerDonAction(Request $request) {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
@@ -232,10 +236,54 @@ class AssocController extends Controller {
             $em->persist($donateur);
             $em->flush($donateur);
             $request->getSession()->getFlashBag()->add('success', 'Don validé !');
-            return $this->redirectToRoute('assoc_effectuerdon' , array('id' => $donateur->getId()));
+            return $this->redirectToRoute('assoc_effectuerdon');
         }
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }*/
+    }
+
+    /**
+     * Méthode qui valide le paiement du donateur
+     * 
+     * @param Don $donateur
+     * @return type
+     */
+    /* public function paiementDonAction(Request $request) {
+      /*$em = $this->getDoctrine()->getManager();
+      $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+      if (null == $article) {
+      throw new NotFoundException("Le don avec avec l'id " . $id . "n'existe pas");
+      }
+      $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
+      $form->handleRequest($request); */
+    /* \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
+      \Stripe\Charge::create(array("amount" => 500,
+      "currency" => "eur",
+      "source" => $request->$request->get('stripeToken'),
+      "description" => "Paiement en ligne"));
+      $request->getSession()->getFlashBag()->add('success', 'Don validé !');
+      return $this->render('AssocBundle:Default:doneffectue.html.twig');
+      } */
+
+    /**
+     * Méthode qui valide le paiement du donateur
+     * 
+     * @param Don $donateur
+     * @return type
+     */
+    public function paiementDonAction(Request $request) {
+        $payment = new Payment;
+        $payment->setNumber(uniqid());
+        $payment->setCurrencyCode('EUR');
+        $payment->setTotalAmount(123); // 1.23 EUR
+        $payment->setDescription('Test du paiement en ligne');
+        $payment->setClientId('anId');
+        $payment->setClientEmail('foo@example.com');
+
+        $gateway = $this->get('payum')->getGateway('offline');
+        $gateway->execute(new Capture($payment));
+        $request->getSession()->getFlashBag()->add('success', 'Don validé !');
+        return $this->render('AssocBundle:Default:doneffectue.html.twig');
+    }
 
     /**
      * Méthode qui affiche les informations du donateur
@@ -244,11 +292,10 @@ class AssocController extends Controller {
      * @param Don $id
      * @return type
      */
-    /*
     public function effectuerDonAction(Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
-    }*/
+    }
 
 }

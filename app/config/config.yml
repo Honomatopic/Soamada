@@ -191,3 +191,24 @@ knp_snappy:
         enabled: true
         binary: "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\""
         options: []
+     
+#Payum Bundle configuration
+payum:
+    storages:
+        Payum\Core\Model\Payment:
+            filesystem:
+                storage_dir: '%kernel.root_dir%/Resources/payments'
+                id_property: number
+
+    security:
+        token_storage:
+            Payum\Core\Model\Token:
+                filesystem:
+                    storage_dir: '%kernel.root_dir%/Resources/gateways'
+                    id_property: hash
+                
+    gateways:
+        offline:
+            factory: offline
+        stripe:
+            factory: stripe

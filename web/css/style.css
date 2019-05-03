@@ -15,7 +15,7 @@ body {
     position: absolue;
     
     /*text-shadow: cyan 0.05em 0.05em 0.05em;*/
-    text-align: center;
+    
 }
 
 .police {
@@ -135,6 +135,7 @@ a.bouton {
     font-family: 'Kanit', cursive;
     font-size: 30px;
     margin-right: 100px;
+    
     /*text-shadow: white 0.2em 0.2em 0.2em;*/
 }
 
@@ -148,6 +149,7 @@ a.bouton {
 
 .bienvenue {
     font-size: 50px;
+    text-align: center;
 }
 
 section#don {

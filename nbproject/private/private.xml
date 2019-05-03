@@ -29,6 +29,8 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuthBundle/views/layout.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/routing.yml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/security.xml</file>
+            <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/unarticle.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/web/js/paiement.js</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/show.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Profile/edit_content.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/views/base.html.twig</file>
@@ -54,6 +56,7 @@
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/Default/index.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/confirmed.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Security/login_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/app/Resources/PayumBundle/views/Profiler/payum.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/web/js/modal_enregistrer.js</file>
             <file>file:/C:/wamp64/www/Soamada/web/js/autocompleteprofile.js</file>
             <file>file:/C:/wamp64/www/Soamada/app/config/parameters.yml</file>
@@ -72,6 +75,8 @@
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/config/routing/all.xml</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Registration/register.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/FOSUserBundle/views/Group/edit_content.html.twig</file>
+            <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Form/DonType.php</file>
+            <file>file:/C:/wamp64/www/Soamada/app/config/config_dev.yml</file>
             <file>file:/C:/wamp64/www/Soamada/src/AssocBundle/Resources/views/layout.html.twig</file>
             <file>file:/C:/wamp64/www/Soamada/src/AppBundle/Entity/FOSUBUserProvider.php</file>
             <file>file:/C:/wamp64/www/Soamada/app/Resources/HWIOAuthBundle/views/Connect/registration.html.twig</file>

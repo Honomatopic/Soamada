@@ -22,54 +22,11 @@ class Don
     private $id;
 
      /**
-     * @var int
-     *
-     * @ORM\Column(name="numero", type="integer")
-     */
-    private $numero;
-    
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="campagne", type="string", length=255, nullable=true)
-     */
-    private $campagne;
-        
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
-     */
-    private $type;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="designation", type="string", length=255, nullable=true)
-     */
-    private $designation;
-    
-    /**
-     * @var straing
-     *
-     * @ORM\Column(name="date", type="string", length=255, nullable=true)
-     */
-    private $date;
-    
-     /**
      * @var float
      *
      * @ORM\Column(name="montant", type="float")
      */
     private $montant;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="statut", type="string", length=255, nullable=true)
-     */
-    private $statut;
     
      /**
      * @var string
@@ -77,34 +34,7 @@ class Don
      * @ORM\Column(name="moyen", type="text")
      */
     private $moyen;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="options", type="string", length=255, nullable=true)
-     */
-    private $options;
-    
-     /**
-     * @var text
-     *
-     * @ORM\Column(name="attestation", type="text",  nullable=true)
-     */
-    private $attestation;
-    
-     /**
-     * @var text
-     *
-     * @ORM\Column(name="recu", type="text",  nullable=true)
-     */
-    private $recu;
-    
-     /**
-     * @var string
-     *
-     * @ORM\Column(name="donanonyme", type="string", length=255, nullable=true)
-     */
-    private $donanonyme;
+
     
     /**
      * @var string
@@ -119,13 +49,6 @@ class Don
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="societe", type="string", length=255)
-     */
-    private $societe;
     
     /**
      * @var string
@@ -149,11 +72,11 @@ class Don
     private $ville;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="pays", type="string", length=255)
+     * @var type
+     *  
+     * @ORM\Column(name="tel", type="string", length=255)
      */
-    private $pays;
+    private $tel;
     
     /**
      * @var string
@@ -161,27 +84,14 @@ class Don
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
-
+    
     /**
+     *
      * @var string
-     *
-     * @ORM\Column(name="datenaissance", type="string", length=255)
+     * 
+     * @ORM\Column(name="token", type="string", length=255) 
      */
-    private $datenaissance;
-
-    /**
-     * @var text
-     *
-     * @ORM\Column(name="commentaire", type="text", length=255)
-     */
-    private $commentaire;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="numrecu", type="string", length=255)
-     */
-    private $numrecu;
+    private $token;
 
 
     /**
@@ -401,352 +311,6 @@ class Don
     }
 
     /**
-     * Get numero
-     *
-     * @return integer
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
-
-    /**
-     * Set campagne
-     *
-     * @param string $campagne
-     *
-     * @return Don
-     */
-    public function setCampagne($campagne)
-    {
-        $this->campagne = $campagne;
-
-        return $this;
-    }
-
-    /**
-     * Get campagne
-     *
-     * @return string
-     */
-    public function getCampagne()
-    {
-        return $this->campagne;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Don
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set designation
-     *
-     * @param string $designation
-     *
-     * @return Don
-     */
-    public function setDesignation($designation)
-    {
-        $this->designation = $designation;
-
-        return $this;
-    }
-
-    /**
-     * Get designation
-     *
-     * @return string
-     */
-    public function getDesignation()
-    {
-        return $this->designation;
-    }
-
-    /**
-     * Set date
-     *
-     * @param string $date
-     *
-     * @return Don
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return string
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set statut
-     *
-     * @param string $statut
-     *
-     * @return Don
-     */
-    public function setStatut($statut)
-    {
-        $this->statut = $statut;
-
-        return $this;
-    }
-
-    /**
-     * Get statut
-     *
-     * @return string
-     */
-    public function getStatut()
-    {
-        return $this->statut;
-    }
-
-    /**
-     * Set options
-     *
-     * @param string $options
-     *
-     * @return Don
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
-
-        return $this;
-    }
-
-    /**
-     * Get options
-     *
-     * @return string
-     */
-    public function getOptions()
-    {
-        return $this->options;
-    }
-
-    /**
-     * Set attestation
-     *
-     * @param string $attestation
-     *
-     * @return Don
-     */
-    public function setAttestation($attestation)
-    {
-        $this->attestation = $attestation;
-
-        return $this;
-    }
-
-    /**
-     * Get attestation
-     *
-     * @return string
-     */
-    public function getAttestation()
-    {
-        return $this->attestation;
-    }
-
-    /**
-     * Set recu
-     *
-     * @param string $recu
-     *
-     * @return Don
-     */
-    public function setRecu($recu)
-    {
-        $this->recu = $recu;
-
-        return $this;
-    }
-
-    /**
-     * Get recu
-     *
-     * @return string
-     */
-    public function getRecu()
-    {
-        return $this->recu;
-    }
-
-    /**
-     * Set donanonyme
-     *
-     * @param string $donanonyme
-     *
-     * @return Don
-     */
-    public function setDonanonyme($donanonyme)
-    {
-        $this->donanonyme = $donanonyme;
-
-        return $this;
-    }
-
-    /**
-     * Get donanonyme
-     *
-     * @return string
-     */
-    public function getDonanonyme()
-    {
-        return $this->donanonyme;
-    }
-
-    /**
-     * Set societe
-     *
-     * @param string $societe
-     *
-     * @return Don
-     */
-    public function setSociete($societe)
-    {
-        $this->societe = $societe;
-
-        return $this;
-    }
-
-    /**
-     * Get societe
-     *
-     * @return string
-     */
-    public function getSociete()
-    {
-        return $this->societe;
-    }
-
-    /**
-     * Set pays
-     *
-     * @param string $pays
-     *
-     * @return Don
-     */
-    public function setPays($pays)
-    {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    /**
-     * Get pays
-     *
-     * @return string
-     */
-    public function getPays()
-    {
-        return $this->pays;
-    }
-
-    /**
-     * Set datenaissance
-     *
-     * @param string $datenaissance
-     *
-     * @return Don
-     */
-    public function setDatenaissance($datenaissance)
-    {
-        $this->datenaissance = $datenaissance;
-
-        return $this;
-    }
-
-    /**
-     * Get datenaissance
-     *
-     * @return string
-     */
-    public function getDatenaissance()
-    {
-        return $this->datenaissance;
-    }
-
-    /**
-     * Set commentaire
-     *
-     * @param string $commentaire
-     *
-     * @return Don
-     */
-    public function setCommentaire($commentaire)
-    {
-        $this->commentaire = $commentaire;
-
-        return $this;
-    }
-
-    /**
-     * Get commentaire
-     *
-     * @return string
-     */
-    public function getCommentaire()
-    {
-        return $this->commentaire;
-    }
-
-    /**
-     * Set numrecu
-     *
-     * @param string $numrecu
-     *
-     * @return Don
-     */
-    public function setNumrecu($numrecu)
-    {
-        $this->numrecu = $numrecu;
-
-        return $this;
-    }
-
-    /**
-     * Get numrecu
-     *
-     * @return string
-     */
-    public function getNumrecu()
-    {
-        return $this->numrecu;
-    }
-
-    /**
      * Get id
      *
      * @return integer
@@ -756,17 +320,28 @@ class Don
         return $this->id;
     }
 
+
     /**
-     * Set numero
+     * Set token
      *
-     * @param integer $numero
+     * @param string $token
      *
      * @return Don
      */
-    public function setNumero($numero)
+    public function setToken($token)
     {
-        $this->numero = $numero;
+        $this->token = $token;
 
         return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }

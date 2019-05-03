@@ -21,7 +21,7 @@ class AppKernel extends Kernel {
             new Http\HttplugBundle\HttplugBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
-            //new Payum\Bundle\PayumBundle\PayumBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
