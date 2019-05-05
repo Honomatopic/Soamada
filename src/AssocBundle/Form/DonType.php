@@ -31,6 +31,7 @@ class DonType extends AbstractType {
                     'expanded' => true, // => boutons
                     'required' => true
         ]);
+        
         ;
     }
 

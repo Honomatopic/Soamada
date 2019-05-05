@@ -38,6 +38,7 @@ form.addEventListener('submit', function(event) {
       // Send the token to your server.
       stripeTokenHandler(result.token);
     }
+    console.log("Test");
   });
 });
 

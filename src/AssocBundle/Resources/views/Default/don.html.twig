@@ -1,34 +1,36 @@
 {% extends "AssocBundle::layout.html.twig" %}
 {% block body %}
-     <div class="don col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 col-sm-12 col-xs-12">
-          <h1>Pour soutenir l'association</h1>
-           {{ form_start(form, {'method': 'post', 'action': path('assoc_paiementdon'), 'attr': {'class': 'form-group'}}) }}
-           {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom', 'required':true}}) }}
-           {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom', 'required':true}}) }}
-           {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email', 'required':true}}) }}
-           {{ form_row(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Votre adresse', 'required':true}}) }}
-           {{ form_row(form.cp, {'attr': {'class': 'form-control', 'placeholder': 'Votre code postal', 'required':true}}) }}
-           {{ form_row(form.ville, {'attr': {'class': 'form-control', 'placeholder': 'Votre ville', 'required':true}}) }}
-           {{ form_row(form.tel, {'attr': {'class': 'form-control', 'placeholder': 'Votre téléphone', 'required':true}}) }}
-           <div class="col-md-4">
-           {{ form_row(form.montant, {'attr': {'class': 'form-control', 'placeholder': 'Votre montant', 'required':true}}) }}
-           </div>
-           
-           <div id="ligne">
-               {{ form_row(form.moyen) }}
-           </div>
-           input
-           <div class="form-row">
- 
-    <div id="card-element">
-      <!-- A Stripe Element will be inserted here. -->
+    <div class="modal-fade" id="modaldon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="modaldon">
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <h1>Pour soutenir l'association</h1>
+                    {{ form_start(form, {'method': 'post', 'action': path('assoc_creerdon'), 'attr': {'class': 'form-group'}}) }}
+                    {{ form_row(form.nom, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+                    {{ form_row(form.prenom, {'attr': {'class': 'form-control', 'placeholder': 'Votre prénom'}}) }}
+                    {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Votre email'}}) }}
+                    {{ form_row(form.adresse, {'attr': {'class': 'form-control', 'placeholder': 'Votre adresse'}}) }}
+                    {{ form_row(form.cp, {'attr': {'class': 'form-control', 'placeholder': 'Votre code postal'}}) }}
+                    {{ form_row(form.ville, {'attr': {'class': 'form-control', 'placeholder': 'Votre ville'}}) }}
+                    {{ form_row(form.tel, {'attr': {'class': 'form-control', 'placeholder': 'Votre téléphone'}}) }}
+                    <div id="col-md-4">
+                        {{ form_row(form.montant, {'attr': {'class': 'form-control', 'placeholder': 'Votre montant'}}) }}
+                    </div>
+
+                    <div id="ligne">
+                        {{ form_row(form.moyen) }}
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="suivant">
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Used to display form errors. -->
-    <div id="card-errors" role="alert"></div>
-  </div>
-
-  <button>Submit Payment</button>
-           {{ form_end(form) }}
-     </div>
 {% endblock %}
+

@@ -231,70 +231,49 @@ class AssocController extends Controller {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($donateur);
             $em->flush($donateur);
-            $request->getSession()->getFlashBag()->add('success', 'Don validé !');
-            return $this->redirectToRoute('assoc_effectuerdon');
+            return $this->render('AssocBundle:Default:donsuite.html.twig', array('donateur' => $donateur));
         }
+
+        //return $this->redirectToRoute('assoc_effectuerdon', array('id' => $donateur->getId()));
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
     }
 
     /**
-     * Méthode qui valide le paiement du donateur
+     * Méthode qui valide les informations du donateur
      * 
+     * @param Request $request
+     * @param Don $id
      * @param Don $donateur
      * @return type
      */
-    /* public function paiementDonAction(Request $request) {
-      /*$em = $this->getDoctrine()->getManager();
-      $donateur = $em->getRepository('AssocBundle:Don')->find($id);
-      if (null == $article) {
-      throw new NotFoundException("Le don avec avec l'id " . $id . "n'existe pas");
-      }
-      $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
-      $form->handleRequest($request); */
-    /* \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
-      \Stripe\Charge::create(array("amount" => 500,
-      "currency" => "eur",
-      "source" => $request->$request->get('stripeToken'),
-      "description" => "Paiement en ligne"));
-      $request->getSession()->getFlashBag()->add('success', 'Don validé !');
-      return $this->render('AssocBundle:Default:doneffectue.html.twig');
-      } */
-
-    /**
-     * Méthode qui valide le paiement du donateur
-     * 
-     * @param Don $donateur
-     * @return type
-     */
-    public function paiementDonAction(Request $request) {
-        $payment = new Payment;
-        $payment->setNumber(uniqid());
-        $payment->setCurrencyCode('EUR');
-        $payment->setTotalAmount(123); // 1.23 EUR
-        $payment->setDescription('Test du paiement en ligne');
-        $payment->setClientId('anId');
-        $payment->setClientEmail('foo@example.com');
-
-        $gateway = $this->get('payum')->getGateway('offline');
-        $gateway->execute(new Capture($payment));
-        $request->getSession()->getFlashBag()->add('success', 'Don validé !');
-        return $this->render('AssocBundle:Default:doneffectue.html.twig');
+    public function confirmerDonAction(Request $request, Don $donateur, Don $id) {
+        $em = $this->getDoctrine()->getManager();
+        $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+        \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
+        \Stripe\Charge::create(array("amount" => 500,
+            "currency" => "eur",
+            "source" => $request->$request->get('stripeToken'),
+            "description" => "Paiement en ligne"));
+            return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur, 'id' => $donateur->getId()));
+        
     }
 
     /**
-     * Méthode qui affiche les informations du donateur
+     * Méthode qui valide les informations bancaires du donateur
      * 
      * @param Don $donateur
      * @param Don $id
      * @return type
      */
-    public function effectuerDonAction(Don $donateur, Don $id) {
+    public function validerDonAction(Request $request, Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+        $request->getSession()->getFlashBag()->add('success', 'Don validé !');
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
     }
 

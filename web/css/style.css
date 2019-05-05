@@ -12,10 +12,10 @@ and open the template in the editor.
 
 body {
     padding : 7%;
-    position: absolue;
-    
+    position: relative;
+
     /*text-shadow: cyan 0.05em 0.05em 0.05em;*/
-    
+
 }
 
 .police {
@@ -26,6 +26,7 @@ body {
 #cantine {
     padding : 10%;
     display: block;
+    width: 100%; /* Il occupe toute la largeur de l'écran */
     vertical-align: middle;
 }
 
@@ -36,7 +37,7 @@ body {
 }
 
 #accueil {
-    background: url(../img/fondsoamada.jpg);
+    background-image: url(../img/fondsoamada.jpg);
     padding : 10%;
     display: block;
     width: 100%; /* Il occupe toute la largeur de l'écran */
@@ -95,6 +96,9 @@ body {
 }
 
 footer {
+    position: absolute; 
+    left: 0; 
+    right: 0;
     text-align: center;
 }
 
@@ -135,7 +139,7 @@ a.bouton {
     font-family: 'Kanit', cursive;
     font-size: 30px;
     margin-right: 100px;
-    
+
     /*text-shadow: white 0.2em 0.2em 0.2em;*/
 }
 

@@ -85,13 +85,6 @@ class Don
      */
     private $email;
     
-    /**
-     *
-     * @var string
-     * 
-     * @ORM\Column(name="token", type="string", length=255) 
-     */
-    private $token;
 
 
     /**
@@ -320,28 +313,4 @@ class Don
         return $this->id;
     }
 
-
-    /**
-     * Set token
-     *
-     * @param string $token
-     *
-     * @return Don
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
-    }
-
-    /**
-     * Get token
-     *
-     * @return string
-     */
-    public function getToken()
-    {
-        return $this->token;
-    }
 }

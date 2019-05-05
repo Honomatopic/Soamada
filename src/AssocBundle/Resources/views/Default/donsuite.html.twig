@@ -1,0 +1,33 @@
+  {% extends "AssocBundle::layout.html.twig" %}
+{% block body %}
+     {% for flash_message in app.session.flashBag.get('success') %}
+        <div class="alert alert-success flash-notice" role="alert">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    {{ donateur.nom }}<br>
+    {{ donateur.prenom }}<br>
+    {{ donateur.email }}<br>
+    {{ donateur.adresse }}<br>
+    {{ donateur.cp }}<br>
+    {{ donateur.ville }}<br>
+    {{ donateur.montant }}<br>
+    {{ donateur.moyen }}<br>
+    <form action="/Soamada/web/app_dev.php/effectuerdon/{{ donateur.id }}" method="post" id="payment-form">
+    <div class="form-row">
+ 
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button>Submit Payment</button>
+    </form>
+  {% endblock %}
+  {% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{app.request.schemeAndHttpHost ~  asset('js/paiement.js') }}"></script>
+    {% endblock %}

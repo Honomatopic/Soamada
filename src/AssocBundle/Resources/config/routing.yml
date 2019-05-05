@@ -38,13 +38,13 @@ assoc_creerdon:
     path:   /creerdon
     defaults: { _controller: AssocBundle:Assoc:creerDon }
 
-assoc_paiementdon:
-    path:   /paiementdon
-    defaults: { _controller: AssocBundle:Assoc:paiementDon }
+assoc_confirmerdon:
+    path:   /confirmerdon
+    defaults: { _controller: AssocBundle:Assoc:confirmerDon }
     
-assoc_effectuerdon:
-    path:   /effectuerdon/{id}
-    defaults: { _controller: AssocBundle:Assoc:effectuerDon }
+assoc_validerdon:
+    path:   /validerdon/{id}
+    defaults: { _controller: AssocBundle:Assoc:validerDon }
     
 assoc_articlepdf:
     path:  /articleenpdf/{id}
