@@ -52,7 +52,7 @@ class Message
     /**
      * @var int
      * 
-     * @ORM\ManyToOne(targetEntity="Membre")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membre")
      * @ORM\JoinColumn(name="membre_id", referencedColumnName="id", onDelete="CASCADE")
      * @ORM\Column(name="Membre_id",nullable=true,type="integer")
      */

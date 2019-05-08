@@ -10,12 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Payum\Core\Model\Payment;
-use Payum\Core\Reply\HttpRedirect;
-use Payum\Core\Reply\HttpResponse;
-use Payum\Core\Request\Capture;
+
 
 class AssocController extends Controller {
+    
 
     /**
      * Méthode permettant d'afficher la page d'accueil
