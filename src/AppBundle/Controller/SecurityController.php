@@ -16,8 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Security;
+use FOS\UserBundle\Controller\SecurityController as BaseController;
+use AppBundle\Entity\Membre;
 
-class SecurityController extends Controller
+class SecurityController extends BaseController
 {
     /**
      * @param Request $request
@@ -70,7 +72,7 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
-        return $this->render('base.html.twig', $data);
+        return $this->render('@FOSUser/Security/login.html.twig', $data);
     }
 
     public function checkAction()

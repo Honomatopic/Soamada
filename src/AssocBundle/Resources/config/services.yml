@@ -4,9 +4,8 @@ services:
 #        arguments: ["@service_id", "plain_value", %parameter%]
    app_user_profile:
       class: AppBundle\Form\ProfileFormType
-      arguments: [%fos_user.model.user.class%]
       tags:
-         -  { name: form.type }
+            - { name: form.type, alias: app_user_profile }
    assoc_lettre:
       class: AssocBundle\Form\LettreType
    assoc_don:

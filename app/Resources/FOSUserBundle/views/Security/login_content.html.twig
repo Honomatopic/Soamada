@@ -1,5 +1,6 @@
+
 {% trans_default_domain 'FOSUserBundle' %}
-{% block body %}
+
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
@@ -30,4 +31,4 @@
 <div>
     <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
 </div>
-{% endblock %}
+

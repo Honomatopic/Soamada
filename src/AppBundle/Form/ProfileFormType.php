@@ -17,8 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 
-class ProfileFormType extends AbstractType
-{
+class ProfileFormType extends AbstractType {
 
     /**
      * @var string
@@ -28,16 +27,14 @@ class ProfileFormType extends AbstractType
     /**
      * @param string $class The User class name
      */
-    public function __construct($class)
-    {
+    public function __construct($class) {
         $this->class = $class;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $this->buildUserForm($builder, $options);
 
         $constraintsOptions = array(
@@ -54,14 +51,12 @@ class ProfileFormType extends AbstractType
             'mapped' => false,
             'constraints' => new UserPassword($constraintsOptions),
         ));
-
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => $this->class,
             'csrf_token_id' => 'profile',
@@ -70,21 +65,23 @@ class ProfileFormType extends AbstractType
         ));
     }
 
+    public function getParent() {
+        return 'FOS\UserBundle\Form\Type\ProfileFormType';
+    }
+
     // BC for SF < 3.0
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->getBlockPrefix();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
-        return 'fos_user_profile';
+    public function getBlockPrefix() {
+        return 'app_user_profile';
     }
 
     /**
@@ -93,18 +90,18 @@ class ProfileFormType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
-    protected function buildUserForm(FormBuilderInterface $builder, array $options)
-    {
+    protected function buildUserForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-            ->add('nom', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.nom', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre nom', 'class' => 'form-control')))
-            ->add('prenom', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.prenom', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre prénom', 'class' => 'form-control')))
-            ->add('adresse', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre adresse', 'class' => 'form-control')))
-            ->add('cp', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.cp', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre code postal', 'class' => 'form-control')))
-            ->add('ville', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.ville', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre ville', 'class' => 'form-control')))
-            ->add('tel', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.tel', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre téléphone', 'class' => 'form-control')))
+                ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+                ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
+                ->add('nom', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.nom', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre nom', 'class' => 'form-control')))
+                ->add('prenom', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.prenom', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre prénom', 'class' => 'form-control')))
+                ->add('adresse', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.adresse', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre adresse', 'class' => 'form-control')))
+                ->add('cp', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.cp', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre code postal', 'class' => 'form-control')))
+                ->add('ville', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.ville', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre ville', 'class' => 'form-control')))
+                ->add('tel', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\TextType'), array('attr' => array('label' => 'form.tel', 'translation_domain' => 'FOSUserBundle', 'placeholder' => 'Votre téléphone', 'class' => 'form-control')))
 
         ;
     }
+
 }
