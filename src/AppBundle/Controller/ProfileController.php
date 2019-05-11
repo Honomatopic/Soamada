@@ -68,10 +68,7 @@ class ProfileController extends BaseController {
 
         
         $user = $this->getUser();
-        $em = $this->getDoctrine()
-                     ->getManager();
- 
-        $membre = $em->getRepository('AppBundle:Membre')->find($user);
+        
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
@@ -88,7 +85,7 @@ class ProfileController extends BaseController {
 
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.profile.form.factory');
-        $form = $formFactory->createForm(new ProfileFormType('app_user_profile') , $user);
+        $form = $formFactory->createForm();
         
         $form->setData($user);
 
@@ -115,6 +112,7 @@ class ProfileController extends BaseController {
 
         return $this->render('@FOSUser/Profile/edit.html.twig', array(
                     'form' => $form->createView(),
+           
         ));
     }
 
