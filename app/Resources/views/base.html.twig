@@ -1,4 +1,3 @@
-{% trans_default_domain 'FOSUserBundle' %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,64 +12,13 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ app.request.schemeAndHttpHost ~ asset('favicon.ico') }}" />
     </head>
-   <body data-spy="scroll" data-target="#menu">
-    <nav class="navbar-fixed-top navbar-default js-scroll-trigger" id="menu">
-        <div class="container-fluid">
-            <div class="navbar-header">
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <p class="navbar-brand titre"><img class="logo" src="{{ app.request.schemeAndHttpHost ~ asset('img/logo.jpg') }}">Soamada 28</p>
-            </div>
-
-            <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#accueil" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#nous" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>  Projets<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#cantine" class="slide-section"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
-                            <li><a href="#fontaine" class="slide-section"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
-                            <li><a href="#fourniture" class="slide-section"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
-                        </ul>
-                    <li><a href="#message" class="slide-section"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
-                    <li><a href="#don" class="slide-section"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
-
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
-                                class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
-                        <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                            </button>
-                        </a>
-                        <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning my-2 my-sm-0">
-                                {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
-                            </button></a>
-                        {% else %}
-
-                        <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="bouton btn btn-success"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }} </button></a>
-
-                        {% endif %}
-
-                </ul>
-            </div>
-        </div>
-    </nav>
    
 
     <section class="container center-block police">
         
         {% block body %}  {% endblock %}
     </section>
-    </body>
     <footer class="container center-block police"><hr>&copy {{ "now"|date("Y") }} Andria</footer>
         {% block javascripts %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -87,5 +35,5 @@
         <script src="{{app.request.schemeAndHttpHost ~  asset('js/modal_enregistrer.js') }}"></script>
         
     {% endblock %}
-</body>
+
 </html>

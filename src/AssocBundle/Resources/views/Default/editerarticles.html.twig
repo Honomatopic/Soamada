@@ -1,4 +1,4 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
 {% block body %} 
     {% for flash_message in app.session.flashBag.get('success') %}
@@ -15,5 +15,7 @@
     {{ form_row(form.corps, {'attr': {'class': 'form-control', 'placeholder': 'Le corps de l\'article', 'rows': '5', 'value': article.corps }}) }}
         <input type="submit" class="btn btn-warning" value="Modifier un article">
         {{ form_end(form) }}
+        <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
     </div>
+  
 {% endblock %}

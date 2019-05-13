@@ -1,4 +1,4 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 {% block body %}
     <section id="journal">
 <h1 class="bienvenue">Le journal de l'association</h1>
@@ -11,12 +11,13 @@
 {% endfor %}
 <p><a href="{{ path('assoc_creerarticles') }}"><button type="button" class="btn btn-primary btn-lg">Créer un article</button></a></p>
 {% endif %}
+
 <h4><em>Pour recevoir la lettre d'information</em></h4>
 <p>Pour s'inscrire à la newsletter : <a href="{{ path('assoc_inscriptionnewsletter')}}">Cliquer ici</a></p>
 
 {% for article in articles %}
 <h2>{{ article.titre }}</h2>
-<a href="{{ path('assoc_unarticle', {'id': article.id}) }}">+ Savoir plus</a>
+<a href="{{ path('assoc_unarticle', {'id': article.id}) }}">Savoir plus + </a>
 
 
 
@@ -25,4 +26,5 @@
 <h2><em><a href="{{ path('assoc_listeabonnes') }}">La liste des abonnés</a></em></h2>
 {% endif %}
     </section>
+
 {% endblock %}

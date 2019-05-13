@@ -1,110 +1,165 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
-    <section id="accueil">
-        <article class="row">
-            <h1 class="bienvenue">Bienvenue sur le site de l'association Soamada 28</h1>
-            <p class="lead police">L'association SOAMADA 28 est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
-                Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc. Madagascar est reconnu par ses richesses mais malheureusement le pays est pauvre. Pourtant elle est capable de s'en sortir;
-                Le projet de SOAMADA 28 c'est d'apporter ce peu qu'elle a pour aider d'abord les enfants leur donné un cadre stable et de la santé. D'où ces actions social et humanitaire puis de l'infrastructures.
-                Nous pouvons encore apporter des aides pour certains régions d'ou ce projet de site afin de bien développer  nos actions.</p>
-            <hr>
-            <div class="centre">
-                <p >Si vous voulez plus d'information, cliquez en bas : </p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="#nous" role="button">Plus d'informations</a>
-                </p>
-            </div>
-        </article>
-    </section>
-    <section id="nous">
-        <article class="row">
-            <div class="card mb-3">
-                <h1 class="card-header bienvenue">Qui sommes-nous ?</h1>
-                <div class="card-body ">
-                    <h5 class="card-title police">L'association Soamada 28 est composé de Ruben Andriafehivolarisoa, représentant et son frère Elie Andriafehivolarisoa</h5>
-                    <h6 class="card-subtitle text-muted police">Madagascar vue de quelque part</h6>
-                </div>
-                <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/mada.jpg') }}" alt="Card image">
-                </article>
-                </section>
-                <section id="cantine">
-                    <article class="row">
-                        <div class="card mb-3">
-                            <h1 class="card-header bienvenue">Création d'une cantine</h1>
-                            <div class="card-body">
-                                <h5 class="card-title police">Il a recommencé et recommencé. Pratiquement tout les ordinateurs existants furent sous son contrôle. Il ne laissait pas de trace, ne se montrait pas. Et puis, il a découvert les dialogues en direct via Internet, le téléphone, la visio conférence, la domotique...</h5>
-                                <h6 class="card-subtitle text-muted police">Une classe à l'école à Madagascar</h6>
-                            </div>
-                            <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/cantine.jpg') }}" alt="Card image">
-                            </article>
-                            </section>
+    <body data-spy="scroll" data-target="#menu">
+        <nav class="navbar-fixed-top navbar-default js-scroll-trigger" id="menu">
+            <div class="container-fluid">
+                <div class="navbar-header">
 
-                            <section id="fontaine">
-                                <article class="row">
-                                    <div class="card mb-3">
-                                        <h1 class="card-header bienvenue">Création d'une fontaine à eau</h1>
-                                        <div class="card-body">
-                                            <h5 class="card-title police">Florence est très excitée à l’idée de se brancher sur un réseau militaire, mais en même temps, elle sait que cela va lui apporter des ennuis. Au moins, elle saura. Elle saura si David l’aime. Et en préparant le matériel demandé par Prélude, tout en pensant à David, elle se rappelle comment elle en est arrivée là.</h5>
-                                            <h6 class="card-subtitle text-muted police">Une fontaine construite à Madagascar</h6>
-                                        </div>
-                                        <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/fontaine.jpg') }}" alt="Card image">
-                                        </article>
-                                        </section>
-                                        <section id="fourniture">
-                                            <article class="row">
-                                                <div class="card mb-3">
-                                                    <h1 class="card-header bienvenue">Distribution de fourniture scolaire</h1>
-                                                    <div class="card-body ">
-                                                        <h5 class="card-title police">Florence est une jeune femme, grande et filiforme. Ses longs cheveux blonds ressemblent aux vagues que forment les blés dans les champs sous l’effet du vent. Et l’on pourrait croire que ses yeux sont des émeraudes trouvés sous les deux petites collines qui masquent une mine d’or : son cœur.</h5>
-                                                        <h6 class="card-subtitle text-muted police">Des fournitures scolaires reçus par les petits enfants</h6>
-                                                    </div>
-                                                    <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/fourniture.jpg') }}" alt="Card image">
-                                                    </article>
-                                                    </section>
-                                                    <section>
-                                                        <article class="col-lg-6" id="coordonnee">
-                                                            <div class="card mb-6">
-                                                                <h3 class="card-header">Les coordonnées de l'association </h3>
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title police">L'adresse de l'association</h5>
-                                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5736575653195!2d2.7054189156746653!3d48.86633977928821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e61b406690c19b%3A0x8f70421a03f52e7b!2s9+Avenue+Albert+Camus%2C+77400+Lagny-sur-Marne!5e0!3m2!1sfr!2sfr!4v1556631285935!5m2!1sfr!2sfr" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>    
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <p class="navbar-brand titre"><img class="logo" src="{{ app.request.schemeAndHttpHost ~ asset('img/logo.jpg') }}">Soamada 28</p>
+                </div>
+
+                <div class="collapse navbar-collapse center" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#accueil" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Accueil <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#nous" class="slide-section"><span class="glyphicon glyphicon-home"> </span> Qui sommes-nous ? <span class="sr-only">(current)</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-folder-open"></span>  Projets<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#cantine" class="slide-section"><span class="glyphicon glyphicon-cutlery"></span> Cantine</a></li>
+                                <li><a href="#fontaine" class="slide-section"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
+                                <li><a href="#fourniture" class="slide-section"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
+                            </ul>
+                        <li><a href="#message" class="slide-section"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#don" class="slide-section"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
+
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
+                                    class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
+                            <a href="{{ path('fos_user_security_logout') }}"><button type="button" class="btn btn-success my-2 my-sm-0">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </button>
+                            </a>
+                            <a href="{{ path('fos_user_profile_edit') }}"><button type="button" class="btn btn-warning my-2 my-sm-0">
+                                    {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
+                                </button></a>
+                            {% else %}
+
+                            <li><a href="{{ path('fos_user_security_login') }}"><button type="button" class="bouton btn btn-success"> {{ 'layout.login'|trans({}, 'FOSUserBundle') }} </button></a>
+
+                            {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <section id="accueil">
+            <article class="row">
+                <h1 class="bienvenue">Bienvenue sur le site de l'association Soamada 28</h1>
+                <span class="lead police">L'association SOAMADA 28 est une association humanitaire œuvrant à Madagascar pour venir en aide à des populations en difficulté sociales ou en situation d’urgence humanitaire. 
+                    Les actions vont du micro-crédit au soutien des cantines scolaires, en passant par la construction d’école, de sanitaires, etc. Madagascar est reconnu par ses richesses mais malheureusement le pays est pauvre. Pourtant elle est capable de s'en sortir;
+                    Le projet de SOAMADA 28 c'est d'apporter ce peu qu'elle a pour aider d'abord les enfants leur donné un cadre stable et de la santé. D'où ces actions social et humanitaire puis de l'infrastructures.
+                    Nous pouvons encore apporter des aides pour certains régions d'ou ce projet de site afin de bien développer  nos actions.</span>
+                <hr>
+                <div class="centre">
+                    <p >Si vous voulez plus d'information, cliquez en bas : </p>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="#nous" role="button">Plus d'informations</a>
+                    </p>
+                </div>
+            </article>
+        </section>
+        <section id="nous">
+            <article class="row">
+                <div class="card mb-3">
+                    <h1 class="card-header bienvenue">Qui sommes-nous ?</h1>
+                    <div class="card-body ">
+                        <h5 class="card-title police">L'association Soamada 28 est composé de Ruben Andriafehivolarisoa, représentant et son frère Elie Andriafehivolarisoa</h5>
+                        <h6 class="card-subtitle text-muted police">Madagascar vue de quelque part</h6>
+                    </div>
+                    <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/mada.jpg') }}" alt="Card image">
+                    </article>
+                    </section>
+                    <section id="cantine">
+                        <article class="row">
+                            <div class="card mb-3">
+                                <h1 class="card-header bienvenue">Création d'une cantine</h1>
+                                <div class="card-body">
+                                    <h5 class="card-title police">Il a recommencé et recommencé. Pratiquement tout les ordinateurs existants furent sous son contrôle. Il ne laissait pas de trace, ne se montrait pas. Et puis, il a découvert les dialogues en direct via Internet, le téléphone, la visio conférence, la domotique...</h5>
+                                    <h6 class="card-subtitle text-muted police">Une classe à l'école à Madagascar</h6>
+                                </div>
+                                <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/cantine.jpg') }}" alt="Card image">
+                                </article>
+                                </section>
+
+                                <section id="fontaine">
+                                    <article class="row">
+                                        <div class="card mb-3">
+                                            <h1 class="card-header bienvenue">Création d'une fontaine à eau</h1>
+                                            <div class="card-body">
+                                                <h5 class="card-title police">Florence est très excitée à l’idée de se brancher sur un réseau militaire, mais en même temps, elle sait que cela va lui apporter des ennuis. Au moins, elle saura. Elle saura si David l’aime. Et en préparant le matériel demandé par Prélude, tout en pensant à David, elle se rappelle comment elle en est arrivée là.</h5>
+                                                <h6 class="card-subtitle text-muted police">Une fontaine construite à Madagascar</h6>
+                                            </div>
+                                            <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/fontaine.jpg') }}" alt="Card image">
+                                            </article>
+                                            </section>
+                                            <section id="fourniture">
+                                                <article class="row">
+                                                    <div class="card mb-3">
+                                                        <h1 class="card-header bienvenue">Distribution de fourniture scolaire</h1>
+                                                        <div class="card-body ">
+                                                            <h5 class="card-title police">Florence est une jeune femme, grande et filiforme. Ses longs cheveux blonds ressemblent aux vagues que forment les blés dans les champs sous l’effet du vent. Et l’on pourrait croire que ses yeux sont des émeraudes trouvés sous les deux petites collines qui masquent une mine d’or : son cœur.</h5>
+                                                            <h6 class="card-subtitle text-muted police">Des fournitures scolaires reçus par les petits enfants</h6>
+                                                        </div>
+                                                        <img class="img-responsive" src="{{ app.request.schemeAndHttpHost ~ asset('img/fourniture.jpg') }}" alt="Card image">
+                                                        </article>
+                                                        </section>
+                                                        <section>
+                                                            <article class="col-lg-6" id="coordonnee">
+                                                                <div class="card mb-6">
+                                                                    <h3 class="card-header">Les coordonnées de l'association </h3>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title police">L'adresse de l'association</h5>
+                                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5736575653195!2d2.7054189156746653!3d48.86633977928821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e61b406690c19b%3A0x8f70421a03f52e7b!2s9+Avenue+Albert+Camus%2C+77400+Lagny-sur-Marne!5e0!3m2!1sfr!2sfr!4v1556631285935!5m2!1sfr!2sfr" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>    
                                                                     </div>
-                                                        </article>
-                                                        <article class="col-lg-6" id="message">
-                                                            <div class="card mb-6">
-                                                                <h3 class="card-header">Pour nous contacter : </h3>
-                                                                <div class="card-body">
-                                                                    <h5 class="card-title police">Si vous souhaitez nous contacter : </h5>
-                                                                </div>
-                                                                {% for flash_message in app.session.flashBag.get('info') %}
-                                                                    <div class="alert alert-success flash-notice" role="alert">
-                                                                        {{ flash_message }}
+                                                            </article>
+                                                            <article class="col-lg-6" id="message">
+                                                                <div class="card mb-6">
+                                                                    <h3 class="card-header">Pour nous contacter : </h3>
+                                                                    <div class="card-body">
+                                                                        <h5 class="card-title police">Si vous souhaitez nous contacter : </h5>
                                                                     </div>
-                                                                {% endfor %}
-                                                                <ul>
-                                                                </ul>
-                                                                <div >
-                                                                    {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
-                                                                    {{ form_row(form.nom) }}
-                                                                    {{ form_row(form.prenom) }}
-                                                                    {{ form_row(form.email) }}
-                                                                    {{ form_row(form.corps) }}
-                                                                    <br>
-                                                                    {{ form_row(form.Envoyer) }}
-                                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                                        {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
-                                                                    {% endif %}
-                                                                    {{ form_end(form) }}
-                                                                </div>
-                                                        </article>
-                                                    </section>
-                                                    <section id="don">
-                                                        <article class="row">
-                                                            <h3>Pour soutenir l'association :</h3>
-                                                            <p>
-                                                                <a href="{{ path('assoc_creerdon') }}"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modaldon">Faire un don</button></a>
-                                                                <iframe id="haWidget" allowtransparency="true" src="https://www.helloasso.com/associations/soamada-28/formulaires/1/widget-bouton" style="width:100%;height:70px;border:none;"></iframe><div style="width:100%;text-align:center;">Propulsé par <a href="https://www.helloasso.com" rel="nofollow">HelloAsso</a></div>
-                                                            </p>
-                                                        </article>
-                                                    </section>
-                                                {% endblock %}
+                                                                    {% for flash_message in app.session.flashBag.get('info') %}
+                                                                        <div class="alert alert-success flash-notice" role="alert">
+                                                                            {{ flash_message }}
+                                                                        </div>
+                                                                    {% endfor %}
+                                                                    <ul>
+                                                                    </ul>
+                                                                    <div >
+                                                                        {{ form_start(form, {'method': 'post', 'action': path('assoc_homepage'), 'attr': {'class': 'form-group'}}) }}
+                                                                        {{ form_row(form.nom) }}
+                                                                        {{ form_row(form.prenom) }}
+                                                                        {{ form_row(form.email) }}
+                                                                        {{ form_row(form.corps) }}
+                                                                        <br>
+                                                                        {{ form_row(form.Envoyer) }}
+                                                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                                            {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
+                                                                        {% endif %}
+                                                                        {{ form_end(form) }}
+                                                                    </div>
+                                                            </article>
+                                                        </section>
+                                                        <section id="don">
+                                                            <article class="row">
+                                                                <h3>Pour soutenir l'association :</h3>
+                                                                <p>
+                                                                    <a href="{{ path('assoc_creerdon') }}"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modaldon">Faire un don</button></a>
+                                                                    <iframe id="haWidget" allowtransparency="true" src="https://www.helloasso.com/associations/soamada-28/formulaires/1/widget-bouton" style="width:100%;height:70px;border:none;"></iframe><div style="width:100%;text-align:center;">Propulsé par <a href="https://www.helloasso.com" rel="nofollow">HelloAsso</a></div>
+                                                                </p>
+                                                            </article>
+                                                        </section>
+                                                    
+                                                    </body>
+                                                    {% endblock %}

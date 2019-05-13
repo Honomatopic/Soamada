@@ -27,6 +27,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Entity\Membre;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Controller managing the registration.
@@ -108,6 +111,38 @@ class RegistrationController extends BaseController {
         return $this->render('@FOSUser/Registration/register.html.twig', array(
                     'form' => $form->createView(),
         ));
+    }
+
+    public function exportCsvAction() {
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        $handle = fopen('php://output', 'w+');
+
+        // Nom des colonnes du CSV
+        fputcsv($handle, array('Name',
+            'Adress',
+            'City',
+            'Code'
+                ), ';');
+
+        //Champs
+        foreach ($customers as $index => $user) {
+            //dump($client);die();
+            fputcsv($handle, array(
+                $user->getName(),
+                $customer->getAdress(),
+                $customer->getCity(),
+                $customer->getCode(),
+                    ), ';');
+        }
+        fclose($handle);
+        
+
+
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'text/csv; charset=utf-8', 'application/force-download');
+        $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName);
+        return $response;
     }
 
 }

@@ -1,4 +1,4 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 {% block body %}
 {% if is_granted("ROLE_ADMIN") %}
 {% for abonne in abonnes %}
@@ -10,4 +10,7 @@
     </div>
 {% endfor %}
 {% endif %}
+<div>
+    <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
+</div>
 {% endblock %}

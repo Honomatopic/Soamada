@@ -1,4 +1,4 @@
-  {% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 {% block body %}
      {% for flash_message in app.session.flashBag.get('success') %}
         <div class="alert alert-success flash-notice" role="alert">
@@ -26,6 +26,9 @@
 
   <button>Submit Payment</button>
     </form>
+    <div>
+    <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
+</div>
   {% endblock %}
   {% block javascripts %}
     <script src="https://js.stripe.com/v3/"></script>

@@ -1,4 +1,4 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
 {% block body %}
 {% for flash_message in app.session.flashBag.get('success') %}
@@ -15,5 +15,7 @@
                 <input type="submit" class="btn btn-primary" value="S'inscrire à la newsletter" />
     </div>
                 {{ form_end(form) }}
+                <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
 </div>
+
 {% endblock %}

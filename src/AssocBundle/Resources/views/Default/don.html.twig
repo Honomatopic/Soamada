@@ -1,4 +1,4 @@
-{% extends "AssocBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 {% block body %}
     <div class="modal-fade" id="modaldon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -32,5 +32,8 @@
             </div>
         </div>
     </div>
+                    <div>
+    <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
+</div>
 {% endblock %}
 
