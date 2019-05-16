@@ -37,14 +37,16 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  * @author Christophe Coevoet <stof@notk.org>
  */
-class RegistrationController extends BaseController {
+class RegistrationController extends BaseController
+{
 
     /**
      * @param Request $request
      *
      * @return Response
      */
-    public function registerAction(Request $request) {
+    public function registerAction(Request $request)
+    {
         /** @var $formFactory FactoryInterface */
         $formFactory = $this->get('fos_user.registration.form.factory');
         /** @var $userManager UserManagerInterface */
@@ -84,14 +86,15 @@ class RegistrationController extends BaseController {
                     $response = new RedirectResponse($url);
                 }
                 $courriel = \Swift_Message::newInstance()
-                        ->setSubject('Un nouveau membre')
-                        ->setFrom($form["email"]->getData())
-                        ->setTo('honore.rasamoelina@gmail.com')
-                        ->setBody(
+                    ->setSubject('Un nouveau membre')
+                    ->setFrom($form["email"]->getData())
+                    ->setTo('honore.rasamoelina@gmail.com')
+                    ->setBody(
                         $this->renderView(
-                                'Emails/inscription.html.twig'
-                        ), 'text/html'
-                );
+                            'Emails/inscription.html.twig'
+                        ),
+                        'text/html'
+                    );
                 $this->get('mailer')->send($courriel);
 
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
@@ -109,40 +112,22 @@ class RegistrationController extends BaseController {
 
 
         return $this->render('@FOSUser/Registration/register.html.twig', array(
-                    'form' => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
-    public function exportCsvAction() {
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $handle = fopen('php://output', 'w+');
+    public function exporterEnCsvAction()
+    {
 
-        // Nom des colonnes du CSV
-        fputcsv($handle, array('Name',
-            'Adress',
-            'City',
-            'Code'
-                ), ';');
-
-        //Champs
-        foreach ($customers as $index => $user) {
-            //dump($client);die();
-            fputcsv($handle, array(
-                $user->getName(),
-                $customer->getAdress(),
-                $customer->getCity(),
-                $customer->getCode(),
-                    ), ';');
+        $em = $this->getDoctrine()->getManager();
+        $membres = $em->getRepository('AppBundle:Membre')->findAll();
+        $writer = $this->container->get('egyg33k.csv.writer');
+        $csv = $writer::createFromFileObject(new \SplTempFileObject());
+        $csv->insertOne(['id', 'username', 'username_canonical', 'email', 'email_canonical', 'enabled', 'salt', 'password', 'confirmation_token', 'password_requested_at', 'nom', 'prenom', 'adresse', 'cp', 'article_id', 'facebook_id', 'google_id', 'twitter_id', 'don_id']);
+        foreach ($membres as $membre) {
+            $csv->insertOne([$membre->getId(), $membre->getUsername(), $membre->getUsernameCanonical(), $membre->getEmail(), $membre->getEmailCanonical(), $membre->isEnabled(), $membre->getSalt(), $membre->getPassword(), $membre->getConfirmationToken(), $membre->getPlainPassword(), $membre->getNom(), $membre->getPrenom(), $membre->getAdresse(), $membre->getCp(), $membre->getArticle(), $membre->getFacebookId(), $membre->getGoogleId(), $membre->getTwitterId(), $membre->getDon()]);
         }
-        fclose($handle);
-        
-
-
-        $response->setStatusCode(200);
-        $response->headers->set('Content-Type', 'text/csv; charset=utf-8', 'application/force-download');
-        $response->headers->set('Content-Disposition', 'attachment; filename=' . $fileName);
-        return $response;
+        $csv->output('membres.csv');
+        exit();
     }
-
 }

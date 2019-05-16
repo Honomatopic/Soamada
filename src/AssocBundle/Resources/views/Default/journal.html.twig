@@ -2,7 +2,9 @@
 {% block body %}
     <section id="journal">
 <h1 class="bienvenue">Le journal de l'association</h1>
+<div class="alert alert-info">
 <p><a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a></p>
+</div>
 {% if is_granted("ROLE_ADMIN") %}
 {% for flash_message in app.session.flashBag.get('success') %}
 <div class="alert alert-success flash-notice" role="alert">
@@ -19,11 +21,11 @@
 <h2>{{ article.titre }}</h2>
 <a href="{{ path('assoc_unarticle', {'id': article.id}) }}">Savoir plus + </a>
 
-
-
 {% endfor %}
 {% if is_granted("ROLE_ADMIN") %}
+    <div class="alert alert-success">
 <h2><em><a href="{{ path('assoc_listeabonnes') }}">La liste des abonnés</a></em></h2>
+    </div>
 {% endif %}
     </section>
 

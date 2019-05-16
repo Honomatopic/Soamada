@@ -50,6 +50,10 @@ assoc_articlepdf:
     path:  /articleenpdf/{id}
     defaults: { _controller: AssocBundle:Assoc:genererArticleenPdf }
     
-export_csv:
-    path: /exportcsv
-    defaults: { _controller: AppBundle:Registration:exportCsv }
+exportmembres_csv:
+    path: /exportmembrecsv
+    defaults: { _controller: AppBundle:Registration:exporterEnCsv }
+    
+exportabonnes_csv:
+    path: /exportabonnescsv
+    defaults: { _controller: AssocBundle:Assoc:exporterEnCsv }

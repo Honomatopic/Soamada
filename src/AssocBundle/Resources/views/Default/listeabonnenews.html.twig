@@ -1,16 +1,21 @@
 {% extends "::base.html.twig" %}
 {% block body %}
+    <h2>La liste des abonnés à la lettre d'information</h2>
 {% if is_granted("ROLE_ADMIN") %}
 {% for abonne in abonnes %}
     <div id="liste">
 <p>{{abonne.emailabonne }}</p>
 <div>
     <a href="{{ path('assoc_envoisnewsletter') }}"><input type="submit" class="btn btn-primary" value="Envoyer la newsletter" /></a>
+    <a href="{{ path('exportabonnes_csv')}}"><button type="button" class="btn btn-success">Générer CSV abonnés</button></a>
 </div>
     </div>
 {% endfor %}
+
+
+
 {% endif %}
-<div>
+<div class="alert alert-info">
     <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
 </div>
 {% endblock %}

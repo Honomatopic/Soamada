@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
 class AssocController extends Controller {
-    
 
     /**
      * Méthode permettant d'afficher la page d'accueil
@@ -225,7 +223,7 @@ class AssocController extends Controller {
      * @param Request $request
      * @return type
      */
-    public function creerDonAction(Request $request) {
+    /*public function creerDonAction(Request $request) {
         $donateur = new don();
         $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
         $form->handleRequest($request);
@@ -239,7 +237,7 @@ class AssocController extends Controller {
 
         //return $this->redirectToRoute('assoc_effectuerdon', array('id' => $donateur->getId()));
         return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }
+    }*/
 
     /**
      * Méthode qui valide les informations du donateur
@@ -249,7 +247,7 @@ class AssocController extends Controller {
      * @param Don $donateur
      * @return type
      */
-    public function confirmerDonAction(Request $request, Don $donateur, Don $id) {
+    /*public function confirmerDonAction(Request $request, Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
@@ -257,9 +255,8 @@ class AssocController extends Controller {
             "currency" => "eur",
             "source" => $request->$request->get('stripeToken'),
             "description" => "Paiement en ligne"));
-            return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur, 'id' => $donateur->getId()));
-        
-    }
+        return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur, 'id' => $donateur->getId()));
+    }*/
 
     /**
      * Méthode qui valide les informations bancaires du donateur
@@ -268,11 +265,28 @@ class AssocController extends Controller {
      * @param Don $id
      * @return type
      */
-    public function validerDonAction(Request $request, Don $donateur, Don $id) {
+    /*public function validerDonAction(Request $request, Don $donateur, Don $id) {
         $em = $this->getDoctrine()->getManager();
         $donateur = $em->getRepository('AssocBundle:Don')->find($id);
         $request->getSession()->getFlashBag()->add('success', 'Don validé !');
         return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
+    }*/
+
+    /**
+     * Méthode qui génère la liste des abonnés à la newsletter en format CSV
+     */
+    public function exporterEnCsvAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $abonnes = $em->getRepository('AssocBundle:Abonne')->findAll();
+        $writer = $this->container->get('egyg33k.csv.writer');
+        $csv = $writer::createFromFileObject(new \SplTempFileObject());
+        $csv->insertOne(['id', 'emailabonne', 'Membre_id']);
+        foreach ($abonnes as $abonne) {
+            $csv->insertOne([$abonne->getId(), $abonne->getEmailabonne(), $abonne->getMembre()]);
+        }
+        $csv->output('abonnes.csv');
+        exit();
     }
 
 }
