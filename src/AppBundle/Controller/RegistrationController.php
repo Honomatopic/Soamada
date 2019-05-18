@@ -116,6 +116,10 @@ class RegistrationController extends BaseController
         ));
     }
 
+    /**
+     * 
+     * Méthode qui génère la liste des membres en format CSV
+     */
     public function exporterEnCsvAction()
     {
 
