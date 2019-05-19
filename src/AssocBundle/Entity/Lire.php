@@ -2,6 +2,8 @@
 
 namespace AssocBundle\Entity;
 
+use AppBundle\Entity\Membre;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,11 +57,11 @@ class Lire
     /**
      * Set membre
      *
-     * @param \AssocBundle\Entity\Membre $membre
+     * @param \AppBundle\Entity\Membre $membre
      *
      * @return Lire
      */
-    public function setMembre(\AssocBundle\Entity\Membre $membre = null)
+    public function setMembre(Membre $membre)
     {
         $this->membre = $membre;
 
@@ -69,7 +71,7 @@ class Lire
     /**
      * Get membre
      *
-     * @return \AssocBundle\Entity\Membre
+     * @return \AppBundle\Entity\Membre
      */
     public function getMembre()
     {

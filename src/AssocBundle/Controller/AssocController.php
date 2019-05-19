@@ -43,7 +43,7 @@ class AssocController extends Controller {
             $contact = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau message sur le formulaire de contact')
                     ->setFrom($form["email"]->getData())
-                    ->setTo('honore.rasamoelina@gmail.com')
+                    ->setTo('honore@soamada.org')
                     ->setBody(
                     $this->renderView(
                             'Emails/contact.html.twig', array('messages' => $message)

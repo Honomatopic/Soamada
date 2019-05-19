@@ -88,7 +88,7 @@ class RegistrationController extends BaseController
                 $courriel = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau membre')
                     ->setFrom($form["email"]->getData())
-                    ->setTo('honore.rasamoelina@gmail.com')
+                    ->setTo('honore@soamada.org')
                     ->setBody(
                         $this->renderView(
                             'Emails/inscription.html.twig'
