@@ -47,7 +47,7 @@ assoc_validerdon:
     defaults: { _controller: AssocBundle:Assoc:validerDon }
     
 assoc_articlepdf:
-    path:  /articleenpdf/{id}
+    path:  /article/{id}/articleenpdf
     defaults: { _controller: AssocBundle:Assoc:genererArticleenPdf }
     
 exportmembres_csv:
