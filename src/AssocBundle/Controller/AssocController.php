@@ -9,6 +9,7 @@ use AssocBundle\Entity\Don;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
@@ -44,6 +45,7 @@ class AssocController extends Controller
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
 
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
+            $transport = \Swift_MailTransport::newInstance();
             $contact = \Swift_Message::newInstance()
                 ->setSubject('Un nouveau message sur le formulaire de contact')
                 ->setFrom($form["email"]->getData())
@@ -55,7 +57,9 @@ class AssocController extends Controller
                     ),
                     'text/html'
                 );
-            $this->get('mailer')->send($contact);
+            //$this->get('mailer')->send($contact);
+             $mailer = \Swift_Mailer::newInstance($transport)
+            ->send($contact);
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
@@ -167,9 +171,10 @@ class AssocController extends Controller
             $em->persist($abonnes);
             $em->flush($abonnes);
             $request->getSession()->getFlashBag()->add('success', 'Inscription à la newsletter réussie');
+            $transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
                 ->setSubject('La lettre d\'information')
-                ->setFrom('admin@admin.com')
+                ->setFrom('honore@soamada.org')
                 ->setTo($abonnes->getEmailabonne())
                 ->setBody(
                     $this->renderView(
@@ -177,7 +182,9 @@ class AssocController extends Controller
                     ),
                     'text/html'
                 );
-            $this->get('mailer')->send($lettreinfo);
+            //$this->get('mailer')->send($lettreinfo);
+            $mailer = \Swift_Mailer::newInstance($transport)
+            ->send($lettreinfo);
             return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView()));
         }
         return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes));
@@ -205,9 +212,10 @@ class AssocController extends Controller
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
+            $transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
                 ->setSubject('La lettre d\'information')
-                ->setFrom('admin@admin.com')
+                ->setFrom('honore@soamada.org')
                 ->setTo($abonne->getEmailabonne())
                 ->setContentType("text/html")
                 ->setBody(
@@ -218,7 +226,9 @@ class AssocController extends Controller
                     'text/html'
                 );
         }
-        $this->get('mailer')->send($lettreinfo);
+        //$this->get('mailer')->send($lettreinfo);
+        $mailer = \Swift_Mailer::newInstance($transport)
+        ->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
@@ -229,13 +239,14 @@ class AssocController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function genererArticleenPdfAction(Request $request, Article $id)
+    public function genererArticleenPdfAction(Article $article)
     {
-        $article = $this->getDoctrine()->getRepository('AssocBundle:Article')->find($id);
-        $snappy = $this->get("knp_snappy.pdf");
+
+        $snappy = $this->get('knp_snappy.pdf');
+        //var_dump($snappy);
+        $fichierNom = 'article';
         $html = $this->renderView('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
-        $nomdufichier = "article_de_l'association_en_pdf";
-        return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="' . $nomdufichier . '".pdf'));
+        return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="' . $fichierNom . '".pdf'));
     }
 
     /**

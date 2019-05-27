@@ -4,10 +4,7 @@
     <h2 class="bienvenue">{{ article.titre }}</h2>
 <p id="auteur" class="bienvenue">Par {{ article.auteur }} le {{ article.date|date("d/m/Y") }}</p>
 <p class="bienvenue">{{ article.corps }}</p>
-{#% if article.image.webPath is defined %}
-<img src="{{ app.request.schemeAndHttpHost ~ asset(article.image.webPath)}}" alt="{{ article.image.alt }}"/>
-{% endif %#} 
-<p class="bienvenue"><a href="{{ path('assoc_articlepdf', {'id': article.id}) }}"><button type="button" class="btn btn-lg btn-primary"> Générer l'article en PDF</button></a>
+<p class="bienvenue"><a href="{{ url('assoc_articlepdf', {'id': article.id}) }}"><button type="button" class="btn btn-lg btn-primary"> Générer l'article en PDF</button></a>
 {% if is_granted("ROLE_ADMIN") %}
 <a href="{{ path('assoc_editerarticles', {'id': article.id})}}"><button type="button" class="btn btn-warning">Editer</button></a>
 <a href="{{ path('assoc_supprimerarticles', {'id': article.id})}}" onclick="return confirm('Êtes-vous sûr de supprimer cet article ?')"><button type="button" class="btn btn-danger">Supprimer</button></a></p>

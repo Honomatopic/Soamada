@@ -4,13 +4,13 @@
         <meta charset="UTF-8" />
         <title>{% block title %}L'association Soamada 28{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
             <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css" rel="stylesheet">
-            <link rel="stylesheet" href="{{app.request.schemeAndHttpHost ~ asset('css/bootswatch/bootstrap.css') }}" type="text/css">
-            <link rel="stylesheet" href="{{app.request.schemeAndHttpHost ~ asset('css/style.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('css/bootswatch/bootstrap.css') }}" type="text/css">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ app.request.schemeAndHttpHost ~ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
 
    
@@ -26,13 +26,13 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/scrollmenu.js') }}"></script>
+        <script src="{{ asset('js/scrollmenu.js') }}"></script>
         <!--script src="{#{app.request.schemeAndHttpHost ~  asset('js/cantineanim.js') }#}"></script-->
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompleteregistration.js') }}"></script>
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompleteprofile.js') }}"></script>
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/autocompletedon.js') }}"></script>
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/modal_connecter.js') }}"></script>
-        <script src="{{app.request.schemeAndHttpHost ~  asset('js/modal_enregistrer.js') }}"></script>
+        <script src="{{ asset('js/autocompleteregistration.js') }}"></script>
+        <script src="{{ asset('js/autocompleteprofile.js') }}"></script>
+        <script src="{{ asset('js/autocompletedon.js') }}"></script>
+        <script src="{{ asset('js/modal_connecter.js') }}"></script>
+        <script src="{{ asset('js/modal_enregistrer.js') }}"></script>
         
     {% endblock %}
 
