@@ -2,6 +2,10 @@ assoc_homepage:
     path:     /
     defaults: { _controller: AssocBundle:Assoc:envoi }
 
+assoc_listemembres:
+    path:    /listemembres
+    defaults: { _controller: AssocBundle:Assoc:listeMembres }
+
 assoc_journal:
     path:    /journal
     defaults: { _controller: AssocBundle:Assoc:afficherJournal }

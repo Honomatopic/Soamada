@@ -12,30 +12,34 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AssocBundle\Form\ImageType;
 
-class ArticleType extends AbstractType {
+class ArticleType extends AbstractType
+{
 
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
-    public function buildForm(FormBuilderInterface $builder, array $options) {
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
-                ->add('titre', TextType::class)
-                ->add('auteur', TextType::class)
-                ->add('corps', TextareaType::class)
-                ->add('date', DateType::class, array('widget' => 'single_text',
-                    'format' => 'dd/MM/yyyy',))
-                ->add('image', ImageType::class)
+            ->add('titre', TextType::class)
+            ->add('auteur', TextType::class)
+            ->add('corps', TextareaType::class)
+            ->add('date', DateType::class, array(
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+            ))
+            //->add('image', ImageType::class)
         ;
     }
 
     /**
      * @param OptionsResolver $resolver
      */
-    public function configureOptions(OptionsResolver $resolver) {
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => 'AssocBundle\Entity\Article',
         ));
     }
-
 }

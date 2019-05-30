@@ -27,11 +27,23 @@
                                 <li><a href="#fontaine" class="slide-section"><span class="glyphicon glyphicon-glass"></span> Fontaine à eau</a></li>
                                 <li><a href="#fourniture" class="slide-section"><span class="glyphicon glyphicon-briefcase"></span> Fourniture scolaire</a></li>  
                             </ul>
+                           
                         <li><a href="#message" class="slide-section"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
                         <li><a href="#don" class="slide-section"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
                         <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
-                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
+                         
 
+                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
+                                               {% if is_granted("ROLE_ADMIN") %}
+                                                <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-lock"></span>  Espace administrateur<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('assoc_listeabonnes') }}" class="slide-section"><span class="glyphicon glyphicon-lock"></span> La liste des abonnés</a></li>
+                                <li><a href="{{ path('assoc_listemembres') }}" class="slide-section"><span class="glyphicon glyphicon-lock"></span> La liste des membres</a></li>
+                                 
+                            </ul>
+                            </li>
+                            {% endif %}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <a style="color: black" href="{{ path('fos_user_profile_show')}}"><span
                                     class="nav-link js-scroll-trigger glyphicon glyphicon-user"></span> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>|
@@ -52,7 +64,7 @@
                 </div>
             </div>
         </nav>
-    
+    <section class="onscrollbutton">
         <section id="accueil">
             <article class="row">
                 <h1 class="bienvenue">Bienvenue sur le site de l'association Soamada 28</h1>
@@ -160,6 +172,6 @@
                                                                 </p>
                                                             </article>
                                                         </section>
-                                                    
+                                                    </section>
                                                     </body>
                                                     {% endblock %}

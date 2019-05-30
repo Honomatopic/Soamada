@@ -58,8 +58,8 @@ class AssocController extends Controller
                     'text/html'
                 );
             //$this->get('mailer')->send($contact);
-             $mailer = \Swift_Mailer::newInstance($transport)
-            ->send($contact);
+            $mailer = \Swift_Mailer::newInstance($transport)
+                ->send($contact);
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
@@ -68,6 +68,17 @@ class AssocController extends Controller
             'message' => $message,
             'membres' => $membres,
         ));
+    }
+
+    /**
+     * Méthode affichant la liste des membres à l'association'
+     *
+     * @return void
+     */
+    public function listeMembresAction()
+    {
+        $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
+        return $this->render('AssocBundle:Default:listemembres.html.twig', array('membres' => $membres));
     }
 
     /**
@@ -184,7 +195,7 @@ class AssocController extends Controller
                 );
             //$this->get('mailer')->send($lettreinfo);
             $mailer = \Swift_Mailer::newInstance($transport)
-            ->send($lettreinfo);
+                ->send($lettreinfo);
             return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView()));
         }
         return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes));

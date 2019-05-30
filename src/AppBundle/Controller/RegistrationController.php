@@ -85,7 +85,7 @@ class RegistrationController extends BaseController
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
-                //$transport = \Swift_MailTransport::newInstance();
+                $transport = \Swift_MailTransport::newInstance();
                 $courriel = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau membre')
                     ->setFrom($form["email"]->getData())
@@ -96,9 +96,9 @@ class RegistrationController extends BaseController
                         ),
                         'text/html'
                     );
-                $this->get('mailer')->send($courriel);
-                //$mailer = \Swift_Mailer::newInstance($transport)
-                //->send($courriel);
+                //$this->get('mailer')->send($courriel);
+                $mailer = \Swift_Mailer::newInstance($transport)
+                ->send($courriel);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;

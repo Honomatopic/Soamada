@@ -22,9 +22,6 @@
         <a href="{{ path('hwi_oauth_service_redirect', {'service': 'twitter' }) }}"><button type="button" class="btn-social btn-twitter"  style="height: 35px"><span class="fa fa-twitter"></span>Se connecter avec Twitter</button></a> 
     </div>
 {{ form_end(form) }}
-{% if is_granted("ROLE_ADMIN") %}
-<a href="{{ path('exportmembres_csv')}}"><button type="button" class="btn btn-success">Générer CSV membres</button></a>
-{% endif %}
 
 <div class="alert alert-info">
     <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
