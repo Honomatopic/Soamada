@@ -11,10 +11,16 @@
     <h3><em>Pour recevoir la lettre d'information</em></h3>
                 {{ form_start(form, {'method': 'post', 'action': path('assoc_inscriptionnewsletter'), 'attr': {'class': 'form-group'}}) }}
                 {{ form_row(form.emailabonne) }}
-<div>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% for membre in membres %}
+                                                                            {{ form_row(form.membre, {'attr': {'value': membre.id}}) }}
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                                        <div>
                 <input type="submit" class="btn btn-primary" value="S'inscrire à la newsletter" />
     </div>
                 {{ form_end(form) }}
+
                <div class="alert alert-info">
     <a href="{{ path('assoc_homepage') }}"><button type="button" class="btn btn-link">Retour à la page d'accueil</button></a>
 </div>

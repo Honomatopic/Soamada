@@ -3,7 +3,6 @@
 namespace AssocBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use AppBundle\Entity\Membre;
 
 /**
  * Abonne
@@ -31,7 +30,8 @@ class Abonne
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Membre")
-     * @ORM\JoinColumn(name="Membre_id",referencedColumnName="id",nullable=true,onDelete="CASCADE")
+     * @ORM\JoinColumn(name="membre_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\Column(name="Membre_id",nullable=true,type="integer")
      */
     private $membre;
 
@@ -69,12 +69,11 @@ class Abonne
         return $this->emailabonne;
     }
 
+
     /**
      * Set membre
      *
-     * @param \AppBundle\Entity\Membre $membre
-     *
-     * @return Abonne
+     * @param integer $membre
      */
     public function setMembre($membre)
     {
@@ -85,8 +84,8 @@ class Abonne
 
     /**
      * Get membre
-     *
-     * @return \AppBundle\Entity\Membre
+     * 
+     *  @return integer
      */
     public function getMembre()
     {

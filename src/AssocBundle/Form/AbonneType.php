@@ -18,7 +18,7 @@ class AbonneType extends AbstractType
     {
         $builder
             ->add('emailabonne', EmailType::class, array('attr' => array('placeholder' => 'Votre email', 'class' => 'form-control')))
-            ->add('membre', HiddenType::class, array('attr' => array('placeholder' => 'Votre email', 'class' => 'form-control')))
+            ->add('membre', HiddenType::class, array('attr' => array('class' => 'form-control')))
         ;
     }
 

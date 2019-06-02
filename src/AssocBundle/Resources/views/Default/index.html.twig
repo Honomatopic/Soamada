@@ -31,7 +31,6 @@
                         <li><a href="#message" class="slide-section"><span class="glyphicon glyphicon-envelope"></span> Contactez-nous<span class="sr-only">(current)</span></a></li>
                         <li><a href="#don" class="slide-section"><span class="glyphicon glyphicon-heart"></span> Soutenez-nous<span class="sr-only">(current)</span></a></li>
                         <li><a href="{{ path('assoc_journal') }}"><span class="glyphicon glyphicon-list-alt"></span> Journal<span class="sr-only">(current)</span></a></li>
-                         
 
                         <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Devenir membre<span class="sr-only">(current)</span></a></li>
                                                {% if is_granted("ROLE_ADMIN") %}
@@ -157,7 +156,9 @@
                                                                         <br>
                                                                         {{ form_row(form.Envoyer) }}
                                                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                                            {{ form_row(form.Membre, {'attr': {'placeholder': 'Votre message', 'class': 'form-control', 'value': app.user.id}}) }}
+                                                                        {% for membre in membres %}
+                                                                            {{ form_row(form.Membre, {'attr': {'placeholder': 'le membre', 'class': 'form-control', 'value': membre.id}}) }}
+                                                                            {% endfor %}
                                                                         {% endif %}
                                                                         {{ form_end(form) }}
                                                                     </div>

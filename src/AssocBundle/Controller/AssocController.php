@@ -2,6 +2,7 @@
 
 namespace AssocBundle\Controller;
 
+use AppBundle\Entity\Membre;
 use AssocBundle\Entity\Abonne;
 use AssocBundle\Entity\Article;
 use AssocBundle\Entity\Message;
@@ -12,17 +13,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-
-class AssocController extends Controller
-{
+class AssocController extends Controller {
 
     /**
      * Méthode permettant d'afficher la page d'accueil
      *
      * @return void
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         return $this->render('AssocBundle:Default:index.html.twig');
     }
 
@@ -32,8 +30,7 @@ class AssocController extends Controller
      * @param Request $request
      * @return void
      */
-    public function envoiAction(Request $request)
-    {
+    public function envoiAction(Request $request) {
         $message = new Message();
         $form = $this->createForm('AssocBundle\Form\MessageType', $message);
         $form->handleRequest($request);
@@ -43,30 +40,27 @@ class AssocController extends Controller
             $em->flush($message);
             $message->getId();
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
-
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
             $transport = \Swift_MailTransport::newInstance();
             $contact = \Swift_Message::newInstance()
-                ->setSubject('Un nouveau message sur le formulaire de contact')
-                ->setFrom($form["email"]->getData())
-                ->setTo('honore@soamada.org')
-                ->setBody(
+                    ->setSubject('Un nouveau message sur le formulaire de contact')
+                    ->setFrom($form["email"]->getData())
+                    ->setTo('honore@soamada.org')
+                    ->setBody(
                     $this->renderView(
-                        'Emails/contact.html.twig',
-                        array('messages' => $message)
-                    ),
-                    'text/html'
-                );
+                            'Emails/contact.html.twig', array('messages' => $message)
+                    ), 'text/html'
+            );
             //$this->get('mailer')->send($contact);
             $mailer = \Swift_Mailer::newInstance($transport)
-                ->send($contact);
+                    ->send($contact);
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
         return $this->render('AssocBundle:Default:index.html.twig', array(
-            'form' => $form->createView(),
-            'message' => $message,
-            'membres' => $membres,
+                    'form' => $form->createView(),
+                    'message' => $message,
+                    'membres' => $membres,
         ));
     }
 
@@ -75,8 +69,7 @@ class AssocController extends Controller
      *
      * @return void
      */
-    public function listeMembresAction()
-    {
+    public function listeMembresAction() {
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         return $this->render('AssocBundle:Default:listemembres.html.twig', array('membres' => $membres));
     }
@@ -86,8 +79,7 @@ class AssocController extends Controller
      *
      * @return void
      */
-    public function afficherJournalAction()
-    {
+    public function afficherJournalAction() {
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         return $this->render('AssocBundle:Default:journal.html.twig', array('articles' => $articles));
     }
@@ -98,8 +90,7 @@ class AssocController extends Controller
      * @param Article $id
      * @return type
      */
-    public function selectionnerUnArticleAction(Article $id)
-    {
+    public function selectionnerUnArticleAction(Article $id) {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AssocBundle:Article')->find($id);
         return $this->render('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
@@ -111,8 +102,7 @@ class AssocController extends Controller
      * @param Request $request
      * @return void
      */
-    public function creerArticlesAction(Request $request)
-    {
+    public function creerArticlesAction(Request $request) {
         $article = new Article();
         $form = $this->createForm('AssocBundle\Form\ArticleType', $article);
         $form->handleRequest($request);
@@ -134,8 +124,7 @@ class AssocController extends Controller
      * @param Article $id
      * @return void
      */
-    public function editerArticlesAction(Request $request, Article $article, Article $id)
-    {
+    public function editerArticlesAction(Request $request, Article $article, Article $id) {
         $em = $this->getDoctrine()->getManager();
         $article = $em->getRepository('AssocBundle:Article')->find($id);
         if (null == $article) {
@@ -158,8 +147,7 @@ class AssocController extends Controller
      * @param Article $articles
      * @return void
      */
-    public function supprimerArticlesAction(Request $request, Article $articles)
-    {
+    public function supprimerArticlesAction(Request $request, Article $articles) {
         $em = $this->getDoctrine()->getManager();
         $em->remove($articles);
         $em->flush();
@@ -170,35 +158,33 @@ class AssocController extends Controller
     /**
      * Méthode permettant d'inscrire à la Newsletter
      *
-     * @return void
      */
-    public function inscriptionNewsletterAction(Request $request)
-    {
+    public function inscriptionNewsletterAction(Request $request) {
         $abonnes = new Abonne();
+        $em = $this->getDoctrine()->getManager();
+        $membres = $em->getRepository('AppBundle:Membre')->findAll();
         $form = $this->createForm('AssocBundle\Form\AbonneType', $abonnes);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($abonnes);
             $em->flush($abonnes);
             $request->getSession()->getFlashBag()->add('success', 'Inscription à la newsletter réussie');
             $transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
-                ->setSubject('La lettre d\'information')
-                ->setFrom('honore@soamada.org')
-                ->setTo($abonnes->getEmailabonne())
-                ->setBody(
+                    ->setSubject('La lettre d\'information')
+                    ->setFrom('honore@soamada.org')
+                    ->setTo($abonnes->getEmailabonne())
+                    ->setBody(
                     $this->renderView(
-                        'Emails/inscription.html.twig'
-                    ),
-                    'text/html'
-                );
+                            'Emails/inscription.html.twig'
+                    ), 'text/html'
+            );
             //$this->get('mailer')->send($lettreinfo);
             $mailer = \Swift_Mailer::newInstance($transport)
-                ->send($lettreinfo);
-            return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView()));
+                    ->send($lettreinfo);
+            return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'membres' => $membres));
         }
-        return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes));
+        return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes, 'membres' => $membres));
     }
 
     /**
@@ -206,8 +192,7 @@ class AssocController extends Controller
      *
      * @return void
      */
-    public function listeAbonnesAction()
-    {
+    public function listeAbonnesAction() {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         return $this->render('AssocBundle:Default:listeabonnenews.html.twig', array('abonnes' => $abonnes));
     }
@@ -218,28 +203,25 @@ class AssocController extends Controller
      * @param Request $request
      * @return void
      */
-    public function envoyerNewsletterAction(Request $request)
-    {
+    public function envoyerNewsletterAction(Request $request) {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
             $transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
-                ->setSubject('La lettre d\'information')
-                ->setFrom('honore@soamada.org')
-                ->setTo($abonne->getEmailabonne())
-                ->setContentType("text/html")
-                ->setBody(
+                    ->setSubject('La lettre d\'information')
+                    ->setFrom('honore@soamada.org')
+                    ->setTo($abonne->getEmailabonne())
+                    ->setContentType("text/html")
+                    ->setBody(
                     $this->renderView(
-                        'Emails/lettreinfos.html.twig',
-                        array('articles' => $articles)
-                    ),
-                    'text/html'
-                );
+                            'Emails/lettreinfos.html.twig', array('articles' => $articles)
+                    ), 'text/html'
+            );
         }
         //$this->get('mailer')->send($lettreinfo);
         $mailer = \Swift_Mailer::newInstance($transport)
-        ->send($lettreinfo);
+                ->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
@@ -250,8 +232,7 @@ class AssocController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function genererArticleenPdfAction(Article $article)
-    {
+    public function genererArticleenPdfAction(Article $article) {
 
         $snappy = $this->get('knp_snappy.pdf');
         //var_dump($snappy);
@@ -266,21 +247,21 @@ class AssocController extends Controller
      * @param Request $request
      * @return type
      */
-    /*public function creerDonAction(Request $request) {
-        $donateur = new don();
-        $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
-        $form->handleRequest($request);
+    /* public function creerDonAction(Request $request) {
+      $donateur = new don();
+      $form = $this->createForm('AssocBundle\Form\DonType', $donateur);
+      $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($donateur);
-            $em->flush($donateur);
-            return $this->render('AssocBundle:Default:donsuite.html.twig', array('donateur' => $donateur));
-        }
+      if ($form->isSubmitted() && $form->isValid() && $request->isMethod('POST')) {
+      $em = $this->getDoctrine()->getManager();
+      $em->persist($donateur);
+      $em->flush($donateur);
+      return $this->render('AssocBundle:Default:donsuite.html.twig', array('donateur' => $donateur));
+      }
 
-        //return $this->redirectToRoute('assoc_effectuerdon', array('id' => $donateur->getId()));
-        return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
-    }*/
+      //return $this->redirectToRoute('assoc_effectuerdon', array('id' => $donateur->getId()));
+      return $this->render('AssocBundle:Default:don.html.twig', array('form' => $form->createView()));
+      } */
 
     /**
      * Méthode qui valide les informations du donateur
@@ -290,16 +271,16 @@ class AssocController extends Controller
      * @param Don $donateur
      * @return type
      */
-    /*public function confirmerDonAction(Request $request, Don $donateur, Don $id) {
-        $em = $this->getDoctrine()->getManager();
-        $donateur = $em->getRepository('AssocBundle:Don')->find($id);
-        \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
-        \Stripe\Charge::create(array("amount" => 500,
-            "currency" => "eur",
-            "source" => $request->$request->get('stripeToken'),
-            "description" => "Paiement en ligne"));
-        return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur, 'id' => $donateur->getId()));
-    }*/
+    /* public function confirmerDonAction(Request $request, Don $donateur, Don $id) {
+      $em = $this->getDoctrine()->getManager();
+      $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+      \Stripe\Stripe::setApiKey("sk_test_ParFvEdERjF2CoBJWKyHoBno00war72AiD");
+      \Stripe\Charge::create(array("amount" => 500,
+      "currency" => "eur",
+      "source" => $request->$request->get('stripeToken'),
+      "description" => "Paiement en ligne"));
+      return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur, 'id' => $donateur->getId()));
+      } */
 
     /**
      * Méthode qui valide les informations bancaires du donateur
@@ -308,18 +289,17 @@ class AssocController extends Controller
      * @param Don $id
      * @return type
      */
-    /*public function validerDonAction(Request $request, Don $donateur, Don $id) {
-        $em = $this->getDoctrine()->getManager();
-        $donateur = $em->getRepository('AssocBundle:Don')->find($id);
-        $request->getSession()->getFlashBag()->add('success', 'Don validé !');
-        return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
-    }*/
+    /* public function validerDonAction(Request $request, Don $donateur, Don $id) {
+      $em = $this->getDoctrine()->getManager();
+      $donateur = $em->getRepository('AssocBundle:Don')->find($id);
+      $request->getSession()->getFlashBag()->add('success', 'Don validé !');
+      return $this->render('AssocBundle:Default:doneffectue.html.twig', array('donateur' => $donateur));
+      } */
 
     /**
      * Méthode qui génère la liste des abonnés à la newsletter en format CSV
      */
-    public function exporterEnCsvAction()
-    {
+    public function exporterEnCsvAction() {
 
         $em = $this->getDoctrine()->getManager();
         $abonnes = $em->getRepository('AssocBundle:Abonne')->findAll();
@@ -332,4 +312,6 @@ class AssocController extends Controller
         $csv->output('abonnes.csv');
         exit();
     }
+
+
 }

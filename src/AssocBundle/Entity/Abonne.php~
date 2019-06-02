@@ -3,6 +3,7 @@
 namespace AssocBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Membre;
 
 /**
  * Abonne
@@ -68,27 +69,4 @@ class Abonne
         return $this->emailabonne;
     }
 
-    /**
-     * Set membre
-     *
-     * @param \AssocBundle\Entity\Membre $membre
-     *
-     * @return Abonne
-     */
-    public function setMembre(\AssocBundle\Entity\Membre $membre = null)
-    {
-        $this->membre = $membre;
-
-        return $this;
-    }
-
-    /**
-     * Get membre
-     *
-     * @return \AssocBundle\Entity\Membre
-     */
-    public function getMembre()
-    {
-        return $this->membre;
-    }
-}
+}    

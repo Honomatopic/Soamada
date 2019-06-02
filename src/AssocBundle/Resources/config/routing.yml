@@ -1,7 +1,7 @@
 assoc_homepage:
     path:     /
     defaults: { _controller: AssocBundle:Assoc:envoi }
-
+    
 assoc_listemembres:
     path:    /listemembres
     defaults: { _controller: AssocBundle:Assoc:listeMembres }
@@ -53,7 +53,7 @@ assoc_validerdon:
 assoc_articlepdf:
     path:  /article/{id}/articleenpdf
     defaults: { _controller: AssocBundle:Assoc:genererArticleenPdf }
-    
+
 exportmembres_csv:
     path: /exportmembrecsv
     defaults: { _controller: AppBundle:Registration:exporterEnCsv }
