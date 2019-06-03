@@ -13,7 +13,6 @@
 <h2>{{ article.titre | raw  }}</h2>
 <p id="auteur">Par {{ article.auteur | raw }} le {{ article.date|date("d/m/Y") | raw }}</p>
 <p>{{ article.corps| raw  }}</p>
-<img src="{{ asset('img/solidaire.jpg') | raw  }}"/>
 {% endfor %}
 {% endblock %}
 

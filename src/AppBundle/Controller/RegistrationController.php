@@ -30,6 +30,7 @@ use AppBundle\Entity\Membre;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use AppBundle\Entity\Membre;
 
 /**
  * Controller managing the registration.
@@ -85,20 +86,20 @@ class RegistrationController extends BaseController
                     $url = $this->generateUrl('fos_user_registration_confirmed');
                     $response = new RedirectResponse($url);
                 }
-                $transport = \Swift_MailTransport::newInstance();
+                //$transport = \Swift_MailTransport::newInstance();
                 $courriel = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau membre')
                     ->setFrom($form["email"]->getData())
                     ->setTo('honore@soamada.org')
                     ->setBody(
                         $this->renderView(
-                            'Emails/inscription.html.twig'
+                            'Emails/inscription.html.twig', array('users'=>$user)
                         ),
                         'text/html'
                     );
-                //$this->get('mailer')->send($courriel);
-                $mailer = \Swift_Mailer::newInstance($transport)
-                ->send($courriel);
+                $this->get('mailer')->send($courriel);
+                //$mailer = \Swift_Mailer::newInstance($transport)
+                //->send($courriel);
                 $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
                 return $response;
@@ -135,5 +136,14 @@ class RegistrationController extends BaseController
         }
         $csv->output('membres.csv');
         exit();
+    }
+    
+    public function inscriptionMailAction() {
+         /** @var $userManager UserManagerInterface */
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->createUser();
+        return $this->render('Emails/inscription.html.twig', array(
+            'users' => $user,
+        ));
     }
 }

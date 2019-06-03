@@ -61,3 +61,7 @@ exportmembres_csv:
 exportabonnes_csv:
     path: /exportabonnescsv
     defaults: { _controller: AssocBundle:Assoc:exporterEnCsv }
+    
+courriel_inscris:
+    path: /inscription
+    defaults: { _controller: AppBundle:Registration:inscriptionMail }

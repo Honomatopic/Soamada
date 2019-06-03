@@ -41,7 +41,7 @@ class AssocController extends Controller {
             $message->getId();
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
-            $transport = \Swift_MailTransport::newInstance();
+            //$transport = \Swift_MailTransport::newInstance();
             $contact = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau message sur le formulaire de contact')
                     ->setFrom($form["email"]->getData())
@@ -51,9 +51,9 @@ class AssocController extends Controller {
                             'Emails/contact.html.twig', array('messages' => $message)
                     ), 'text/html'
             );
-            //$this->get('mailer')->send($contact);
-            $mailer = \Swift_Mailer::newInstance($transport)
-                    ->send($contact);
+            $this->get('mailer')->send($contact);
+            //$mailer = \Swift_Mailer::newInstance($transport)
+                    //->send($contact);
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
         // Puis on retourne la vue pour qu'elle affiche la page d'accueil
@@ -169,7 +169,7 @@ class AssocController extends Controller {
             $em->persist($abonnes);
             $em->flush($abonnes);
             $request->getSession()->getFlashBag()->add('success', 'Inscription à la newsletter réussie');
-            $transport = \Swift_MailTransport::newInstance();
+            //$transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
                     ->setSubject('La lettre d\'information')
                     ->setFrom('honore@soamada.org')
@@ -179,9 +179,9 @@ class AssocController extends Controller {
                             'Emails/inscription.html.twig'
                     ), 'text/html'
             );
-            //$this->get('mailer')->send($lettreinfo);
-            $mailer = \Swift_Mailer::newInstance($transport)
-                    ->send($lettreinfo);
+            $this->get('mailer')->send($lettreinfo);
+            //$mailer = \Swift_Mailer::newInstance($transport)
+                    //->send($lettreinfo);
             return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'membres' => $membres));
         }
         return $this->render('AssocBundle:Default:inscriptionnews.html.twig', array('form' => $form->createView(), 'abonnes' => $abonnes, 'membres' => $membres));
@@ -207,7 +207,7 @@ class AssocController extends Controller {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
         $articles = $this->getDoctrine()->getRepository('AssocBundle:Article')->findAll();
         foreach ($abonnes as $abonne) {
-            $transport = \Swift_MailTransport::newInstance();
+            //$transport = \Swift_MailTransport::newInstance();
             $lettreinfo = \Swift_Message::newInstance()
                     ->setSubject('La lettre d\'information')
                     ->setFrom('honore@soamada.org')
@@ -219,9 +219,9 @@ class AssocController extends Controller {
                     ), 'text/html'
             );
         }
-        //$this->get('mailer')->send($lettreinfo);
-        $mailer = \Swift_Mailer::newInstance($transport)
-                ->send($lettreinfo);
+        $this->get('mailer')->send($lettreinfo);
+        //$mailer = \Swift_Mailer::newInstance($transport)
+                //->send($lettreinfo);
         $request->getSession()->getFlashBag()->add('success', 'Envoi des news réussie');
         return $this->render('Emails/lettreinfos.html.twig', array('articles' => $articles, 'abonnes' => $abonnes));
     }
