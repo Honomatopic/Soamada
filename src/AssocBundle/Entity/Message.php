@@ -54,7 +54,7 @@ class Message
      * 
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Membre")
      * @ORM\JoinColumn(name="membre_id", referencedColumnName="id", onDelete="CASCADE")
-     * @ORM\Column(name="Membre_id",nullable=true,type="integer")
+     * @ORM\Column(nullable=true,type="integer")
      */
     private $Membre;
 

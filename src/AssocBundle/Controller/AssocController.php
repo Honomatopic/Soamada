@@ -10,7 +10,6 @@ use AssocBundle\Entity\Don;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AssocController extends Controller {
@@ -42,6 +41,19 @@ class AssocController extends Controller {
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
             //$transport = \Swift_MailTransport::newInstance();
+            $reponse = \Swift_Message::newInstance()
+                    ->setSubject('Votre message sur le formulaire de contact')
+                    ->setFrom('honore@soamada.org')
+                    ->setTo($form["email"]->getData())
+                    ->setBody(
+                    $this->renderView(
+                            'Emails/reponseauto.html.twig', array('messages' => $message)
+                    ), 'text/html'
+            );
+            $this->get('mailer')->send($reponse);
+            //$mailer = \Swift_Mailer::newInstance($transport)
+                    //->send($contact);
+            //$transport = \Swift_MailTransport::newInstance();
             $contact = \Swift_Message::newInstance()
                     ->setSubject('Un nouveau message sur le formulaire de contact')
                     ->setFrom($form["email"]->getData())
@@ -52,7 +64,7 @@ class AssocController extends Controller {
                     ), 'text/html'
             );
             $this->get('mailer')->send($contact);
-            //$mailer = \Swift_Mailer::newInstance($transport)
+           //$mailer = \Swift_Mailer::newInstance($transport)
                     //->send($contact);
         }
         $membres = $this->getDoctrine()->getRepository('AppBundle:Membre')->findAll();
@@ -190,7 +202,6 @@ class AssocController extends Controller {
     /**
      * Méthode affichant la liste des abonnées à la newsletter
      *
-     * @return void
      */
     public function listeAbonnesAction() {
         $abonnes = $this->getDoctrine()->getRepository('AssocBundle:Abonne')->findAll();
@@ -235,7 +246,6 @@ class AssocController extends Controller {
     public function genererArticleenPdfAction(Article $article) {
 
         $snappy = $this->get('knp_snappy.pdf');
-        //var_dump($snappy);
         $fichierNom = 'article';
         $html = $this->renderView('AssocBundle:Default:unarticle.html.twig', array('article' => $article));
         return new Response($snappy->getOutputFromHtml($html), 200, array('Content-Type' => 'application/pdf', 'Content-Disposition' => 'inline; filename="' . $fichierNom . '".pdf'));

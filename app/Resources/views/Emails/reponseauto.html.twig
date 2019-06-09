@@ -1,0 +1,8 @@
+<h1>L'association Soamada</h1>
+{% block body %}
+    {% for message in messages %}
+        <p>Bonjour {{ message.prenom | raw }}</p>
+        <p>Merci pour votre message. Nous vous répondrons dans les plus brefs délai</p>
+        <p>Bien cordialement</p>
+        {% endfor %}
+{% endblock %}

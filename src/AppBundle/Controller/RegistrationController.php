@@ -30,7 +30,6 @@ use AppBundle\Entity\Membre;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use AppBundle\Entity\Membre;
 
 /**
  * Controller managing the registration.
