@@ -39,7 +39,7 @@ body {
 
 #accueil {
     background-image: url(../img/fondsoamada.jpg);
-    padding : 10%;
+    padding: 10%;
     display: block;
     width: 100%; /* Il occupe toute la largeur de l'écran */
     vertical-align:middle;

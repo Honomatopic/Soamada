@@ -37,7 +37,6 @@ class AssocController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($message);
             $em->flush($message);
-            $message->getId();
             $request->getSession()->getFlashBag()->add('info', 'Message bien envoyé, on vous répondra dans les plus brefs délais');
             $message = $this->getDoctrine()->getRepository('AssocBundle:Message')->findById($message->getId());
             //$transport = \Swift_MailTransport::newInstance();
