@@ -3,7 +3,7 @@ $(document).ready(function(){
         var linkHref = $(this).attr('href');
         $('html, body').animate({
             scrollTop: $(linkHref).offset().top
-        }, 200);
+        }, 1000);
         e.preventDefault();
     });
 });

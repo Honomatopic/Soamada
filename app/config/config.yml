@@ -142,6 +142,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: AppBundle\Entity\Membre
+    from_email:
+        address:        honore@soamada.org
+        sender_name:    webmaster
     registration:
         form:
             type: AppBundle\Form\RegistrationType

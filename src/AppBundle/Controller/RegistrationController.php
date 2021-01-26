@@ -30,6 +30,8 @@ use AppBundle\Entity\Membre;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * Controller managing the registration.
@@ -39,6 +41,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class RegistrationController extends BaseController
 {
+    public function __construct()
+    { }
 
     /**
      * @param Request $request
@@ -92,7 +96,8 @@ class RegistrationController extends BaseController
                     ->setTo('honore@soamada.org')
                     ->setBody(
                         $this->renderView(
-                            'Emails/inscription.html.twig', array('users'=>$user)
+                            'Emails/inscription.html.twig',
+                            array('users' => $user)
                         ),
                         'text/html'
                     );
@@ -119,6 +124,95 @@ class RegistrationController extends BaseController
     }
 
     /**
+     * Tell the user to check their email provider.
+     */
+    public function checkEmailAction(Request $request)
+    {
+        $email = $request->getSession()->get('fos_user_send_confirmation_email/email');
+
+        if (empty($email)) {
+            return new RedirectResponse($this->generateUrl('fos_user_registration_register'));
+        }
+
+        $request->getSession()->remove('fos_user_send_confirmation_email/email');
+        $user = $this->userManager->findUserByEmail($email);
+
+        if (null === $user) {
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login'));
+        }
+
+        return $this->render('@FOSUser/Registration/check_email.html.twig', array(
+            'user' => $user,
+        ));
+    }
+
+    /**
+     * Receive the confirmation token from user email provider, login the user.
+     *
+     * @param Request $request
+     * @param string  $token
+     *
+     * @return Response
+     */
+    public function confirmAction(Request $request, $token)
+    {
+        $userManager = $this->userManager;
+
+        $user = $userManager->findUserByConfirmationToken($token);
+
+        if (null === $user) {
+            return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login'));
+        }
+
+        $user->setConfirmationToken(null);
+        $user->setEnabled(true);
+
+        $event = new GetResponseUserEvent($user, $request);
+        $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRM, $event);
+
+        $userManager->updateUser($user);
+
+        if (null === $response = $event->getResponse()) {
+            $url = $this->generateUrl('fos_user_registration_confirmed');
+            $response = new RedirectResponse($url);
+        }
+
+        $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_CONFIRMED, new FilterUserResponseEvent($user, $request, $response));
+
+        return $response;
+    }
+
+    /**
+     * Tell the user his account is now confirmed.
+     */
+    public function confirmedAction(Request $request)
+    {
+        $user = $this->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+
+        return $this->render('@FOSUser/Registration/confirmed.html.twig', array(
+            'user' => $user,
+            //'targetUrl' => $this->getTargetUrlFromSession($request->getSession()),
+        ));
+    }
+
+    /**
+     * @return string|null
+     */
+    /*private function getTargetUrlFromSession(SessionInterface $session)
+    {
+        $key = sprintf('_security.%s.target_path', $this->tokenStorage->getToken()->getProviderKey());
+
+        if ($session->has($key)) {
+            return $session->get($key);
+        }
+
+        return null;
+    }*/
+
+    /**
      * 
      * Méthode qui génère la liste des membres en format CSV
      */
@@ -136,9 +230,10 @@ class RegistrationController extends BaseController
         $csv->output('membres.csv');
         exit();
     }
-    
-    public function inscriptionMailAction() {
-         /** @var $userManager UserManagerInterface */
+
+    public function inscriptionMailAction()
+    {
+        /** @var $userManager UserManagerInterface */
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->createUser();
         return $this->render('Emails/inscription.html.twig', array(

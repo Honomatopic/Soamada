@@ -5,14 +5,14 @@
     "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-4": { "": "src/" },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "classmap": ["app/AppKernel.php", "app/AppCache.php"]
     },
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "3.0.*",
+        "symfony/symfony": "3.4.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -23,7 +23,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "symfony/assetic-bundle": "^2.8",
         "twbs/bootstrap": "^3.3",
-        "components/jquery": "^3.1" ,
+        "components/jquery": "^3.1",
         "oyejorge/less.php": "v1.7.0.14",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "hwi/oauth-bundle": "^0.5.3",
@@ -62,7 +62,7 @@
     },
     "config": {
         "platform": {
-            "php": "5.5.9"
+            "php": "7.4.0"
         }
     },
     "extra": {

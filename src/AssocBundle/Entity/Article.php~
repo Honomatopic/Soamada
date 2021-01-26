@@ -49,6 +49,13 @@ class Article
      * @ORM\Column(name="date", type="date")
      */
     private $date;
+    
+    /**
+     * @ORM\OneToOne(targetEntity="Image", cascade={"persist"})
+     * 
+     * @var type 
+     */
+    private $image;
 
 
 
@@ -158,4 +165,28 @@ class Article
         return $this->date;
     }
 
+
+    /**
+     * Set image
+     *
+     * @param \AssocBundle\Entity\Image $image
+     *
+     * @return Article
+     */
+    public function setImage(\AssocBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \AssocBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 }
